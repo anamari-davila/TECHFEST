@@ -12,14 +12,15 @@ def main(page: ft.Page):
     page.expand=True
     page.update()
 
-
     
+    Background= ft.Image(
+                src="lBG.png", fit=ft.Image.fit, scale= 1.2     )
+    Ball = ft.Image(src="Ball.png", left=10, expand=False)
+
 
     MainStack = ft.Stack(
-        width=1920, 
-        height=1080,
-        controls=[ft.Image(
-                src="lBG.jpg")])
+        expand=True,
+        controls=[Background,Ball])
     
     
     
