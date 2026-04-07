@@ -14,8 +14,8 @@ def main(page: ft.Page):
 
     
     Background= ft.Image(
-                src="lBG.png", fit=ft.Image.fit, scale= 1.2     )
-    Ball = ft.Image(src="Ball.png", left=10, expand=False)
+                src="lBG.png", fit=ft.Image.fit, scale= 1.2)
+    Ball = ft.Image(src="Ball.png", top=478.6, left=-730.9, expand=False)
 
 
     MainStack = ft.Stack(
