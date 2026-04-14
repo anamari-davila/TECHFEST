@@ -10,7 +10,7 @@ def main(page: ft.Page):
     }
 
     page.window.full_screen = False
-    page.theme = ft.Theme(font_family="Main")
+    # page.theme = ft.Theme(font_family="Main")
     page.title= "World Of Cinema"
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
 
@@ -19,34 +19,49 @@ def main(page: ft.Page):
     page.update()
 
     async def bola1():
+
         Ball.opacity=0
-        page.update()
-        await asyncio.sleep(.7)
+        Ball.update()
+        
+        await asyncio.sleep(0.350)
         Ball.left=-630.9
         Ball.top = 390.6
         Ball.scale=1
+        Ball.update()
+
+        await asyncio.sleep(0.310)
         Ball.opacity=1
-        page.update()
+        Ball.update()
 
     async def bola2():
+
         Ball.opacity=0
-        page.update()
-        await asyncio.sleep(.7)
-        Ball.left=240.9
+        Ball.update()
+        
+        await asyncio.sleep(0.310)
+        Ball.left=-250.9
         Ball.top = 200.6
         Ball.scale=1
+        Ball.update() 
+
+        await asyncio.sleep(0.310)
         Ball.opacity=1
-        page.update()
+        Ball.update()
 
     async def bola3():
+
         Ball.opacity=0
-        page.update()
-        await asyncio.sleep(0.7)
+        Ball.update()
+        
+        await asyncio.sleep(0.310)
         Ball.left= 1600.9
         Ball.top= -100
         Ball.scale=2.5
+        Ball.update()
+
+        await asyncio.sleep(0.310)
         Ball.opacity=1
-        page.update()
+        Ball.update()
 
 
     Background= ft.Image(
