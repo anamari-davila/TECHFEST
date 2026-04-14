@@ -128,11 +128,39 @@ def main(page: ft.Page):
         scale=0.75,
         )
     
-    MovieIcon1=ft.Image(src="")
-
-    MovieIcon2=ft.Image(src="")
-
+    MovieIcon1=ft.Image(
+        src="CameraV.png",
+        scale=0.6,
+        top=-420,
+        left= 100
+        )
     
+    Icon1Text=ft.Text(
+        value="ON SCREEN RIGHT NOW",
+        size=20,
+        left=1100,
+        top=70,
+        style=ft.TextStyle(letter_spacing=2) 
+        )
+
+    MovieIcon2=ft.Image(
+        src="CameraV.png",
+        scale=0.6,
+        top=-330,
+        left= 100
+        )
+
+    Icon2Text=ft.Text(
+        value="UPCOMING MOVIES",
+        size=20,
+        top= 160,
+        left=1100,
+        style=ft.TextStyle(letter_spacing=2) 
+        )
+    
+
+
+
 
     # l1= ft.Button(content="1st", on_click=bola1, top=100)
     # l2= ft.Button(content="2nd", on_click=bola2,top=200)
@@ -145,12 +173,23 @@ def main(page: ft.Page):
     MainStack = ft.Stack(
         expand=True,
         controls=[
+
+            #Generals
             Background, 
             Ball, 
+
+            #MainPage
             MainYellow, 
             MainWhite, 
             PopCorn, 
             MiniText,
+
+            MovieIcon1,
+            Icon1Text,
+            MovieIcon2,
+            Icon2Text,
+
+            
 
             ]
         )
