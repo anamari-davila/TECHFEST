@@ -4,8 +4,13 @@ import asyncio
 
 def main(page: ft.Page):
 
+    #fonts
+    page.fonts = {
+        "Main": "Comucan_PERSONAL_USE_ONLY.otf"
+    }
+
     page.window.full_screen = False
-    #page.theme = ft.Theme(font_family="Main")
+    page.theme = ft.Theme(font_family="Main")
     page.title= "World Of Cinema"
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
 
