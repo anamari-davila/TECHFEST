@@ -9,9 +9,9 @@ def main(page: ft.Page):
     #fonts
     page.fonts = {
         "Main": "Comucan_PERSONAL_USE_ONLY.otf",
-
-        "YellowMain": "TtNormsExtraBlack.otf",
-        "Whitemain": "BricolageBoldened.ttf"
+        "TtNormsExtra": "TtNormsExtraBlack.otf",
+        "TtNormsReg": "TT Norms Pro Regular.otf",
+        "BricolageBold": "BricolageBoldened.ttf"
     }
 
     #Page Setup
@@ -23,6 +23,7 @@ def main(page: ft.Page):
 
     page.bgcolor = "#000000"
     page.expand=True
+    page.theme= ft.Theme(font_family="TtNormsReg")
     page.update()
 
     #Balls functions
@@ -89,23 +90,34 @@ def main(page: ft.Page):
     #MainPageTextFields
     MainYellow= ft.Text(
         value="WORLD OF",
-        font_family="YellowMain", 
+        font_family="TtNormsExtra", 
         color="#d5b586", 
         top=100, 
-        left=315, 
+        left=300, 
         size=87.5,
         style=ft.TextStyle(letter_spacing=0)
         )
     
     MainWhite= ft.Text(
         value= "CINEMA", 
-        font_family= "Whitemain", 
+        font_family= "BricolageBold", 
+        color=ft.Colors.WHITE,
         top= 80, 
-        left= 40, 
-        size=376,
+        left= 55, 
+        size=365,
         style=ft.TextStyle(letter_spacing=-5)
         )
     
+    #MiniText
+    MiniText= ft.Text(
+        value="YOUR FAVORITE MOVE THEATER", 
+        color="#ffffff", 
+        top=485, 
+        left=715    , 
+        size=12,
+        style=ft.TextStyle(letter_spacing=3),
+    )
+
     #Popcorn image and icons
 
     PopCorn = ft.Image(
@@ -113,8 +125,14 @@ def main(page: ft.Page):
         top=165,
         left=-545,
         expand=False,
-        scale=0.72,
+        scale=0.75,
         )
+    
+    MovieIcon1=ft.Image(src="")
+
+    MovieIcon2=ft.Image(src="")
+
+    
 
     # l1= ft.Button(content="1st", on_click=bola1, top=100)
     # l2= ft.Button(content="2nd", on_click=bola2,top=200)
@@ -126,7 +144,15 @@ def main(page: ft.Page):
 
     MainStack = ft.Stack(
         expand=True,
-        controls=[Background, Ball, MainYellow, MainWhite, PopCorn]
+        controls=[
+            Background, 
+            Ball, 
+            MainYellow, 
+            MainWhite, 
+            PopCorn, 
+            MiniText,
+
+            ]
         )
     
     
