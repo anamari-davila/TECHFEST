@@ -16,7 +16,7 @@ def main(page: ft.Page):
     async def bola1():
         Ball.opacity=0
         page.update()
-        await asyncio.sleep(1)
+        await asyncio.sleep(.7)
         Ball.left=-630.9
         Ball.top = 390.6
         Ball.scale=1
@@ -26,7 +26,7 @@ def main(page: ft.Page):
     async def bola2():
         Ball.opacity=0
         page.update()
-        await asyncio.sleep(1)
+        await asyncio.sleep(.7)
         Ball.left=240.9
         Ball.top = 200.6
         Ball.scale=1
@@ -36,7 +36,7 @@ def main(page: ft.Page):
     async def bola3():
         Ball.opacity=0
         page.update()
-        await asyncio.sleep(1)
+        await asyncio.sleep(0.7)
         Ball.left= 1600.9
         Ball.top= -100
         Ball.scale=2.5
