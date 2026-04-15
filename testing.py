@@ -1,12 +1,10 @@
 import flet as ft
-import requests 
+from flet import View, Page, AppBar, ElevatedButton, Text
+from flet import RouteChangeEvent, ViewPopEvent, CrossAxisAlignment, MainAxisAlignment
 import asyncio
 
-def main(page: ft.Page):
-
+def main(page: Page) -> None:
     
-    
-    #fonts
     page.fonts = {
         "Main": "Comucan_PERSONAL_USE_ONLY.otf",
         "TtNormsExtra": "TtNormsExtraBlack.otf",
@@ -26,8 +24,7 @@ def main(page: ft.Page):
     page.theme= ft.Theme(font_family="TtNormsReg")
     page.update()
 
-    #Balls functions
-
+    #1st view
     async def bola1():
 
         Ball.opacity=0
@@ -73,6 +70,8 @@ def main(page: ft.Page):
         Ball.opacity=1
         Ball.update()
 
+    def testfunc(e):
+        print("hello World")
 
     # Background and ball
     Background= ft.Image(
@@ -135,13 +134,17 @@ def main(page: ft.Page):
         left= 100
         )
     
-    Icon1Text=ft.Text(
+    Icon1Text = ft.Container(
+    content=ft.Text(
         value="ON SCREEN RIGHT NOW",
         size=20,
-        left=1100,
-        top=70,
-        style=ft.TextStyle(letter_spacing=2) 
-        )
+        style=ft.TextStyle(letter_spacing=2),
+    ),
+    left=1100,
+    top=70,
+    on_click=lambda _: page.go('/store'))
+    
+   
 
     MovieIcon2=ft.Image(
         src="CameraV.png",
@@ -149,16 +152,19 @@ def main(page: ft.Page):
         top=-330,
         left= 100
         )
-
-    Icon2Text=ft.Text(
+    
+    Icon2Text= ft.Container(
+    content= ft.Text(
         value="UPCOMING MOVIES",
         size=20,
+        style=ft.TextStyle(letter_spacing=2) 
+    
+        ),
         top= 160,
         left=1100,
-        style=ft.TextStyle(letter_spacing=2) 
-        )
+        on_click=lambda e: testfunc(e)
     
-
+    )
 
 
 
@@ -175,9 +181,15 @@ def main(page: ft.Page):
         controls=[
 
             #Generals
-            Background, 
-            Ball, 
-
+            ft.Container(
+            expand=True,
+            image=ft.DecorationImage(
+                src="lBG.png",
+                fit=ft.ImageFit.COVER,
+                scale=1.2
+            )
+        ),
+            Ball,
             #MainPage
             MainYellow, 
             MainWhite, 
@@ -185,18 +197,56 @@ def main(page: ft.Page):
             MiniText,
 
             MovieIcon1,
-            Icon1Text,
+            
             MovieIcon2,
-            Icon2Text,
+            Icon1Text,
+            Icon2Text
 
             
 
             ]
+        )   
+    def route_change (e: RouteChangeEvent) -> None:
+        page.views.clear()
+        
+        page.views.append(
+            View(
+                route='/',
+                controls=[MainStack
+                ],
+                vertical_alignment= MainAxisAlignment.CENTER,
+                horizontal_alignment=CrossAxisAlignment.CENTER
+            )
+            
         )
-    
-    
-    
-    page.add(MainStack)
-    page.update()
+        page.update()
 
-ft.app(main, assets_dir="assets")    
+        #Store
+        if page.route == '/store':
+            page.views.append(
+            View(
+                route='/store',
+                controls=[
+                    AppBar(title=Text('Store'), bgcolor='blue'),
+                    ft.Text(value='Store', size=30),
+                    ft.ElevatedButton(text='Go back', on_click=lambda _: page.go('/'))
+                ],
+                vertical_alignment= MainAxisAlignment.CENTER,
+                horizontal_alignment=CrossAxisAlignment.CENTER,
+                spacing=26
+            )
+        )
+            page.update()
+
+    def view_pop(e: ViewPopEvent) -> None:      
+        page.views.pop()
+        top_view: View = page.views[-1]
+        page.go(top_view.route)
+        page.update()
+    
+    page.on_route_change = route_change
+    page.on_view_pop = view_pop
+    page.go(page.route)
+
+if __name__ == '__main__':
+    ft.app(target=main)
