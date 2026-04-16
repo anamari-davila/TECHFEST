@@ -2,6 +2,8 @@ import flet as ft
 from flet import View, Page, AppBar, ElevatedButton, Text
 from flet import RouteChangeEvent, ViewPopEvent, CrossAxisAlignment, MainAxisAlignment
 import asyncio
+import os
+import requests
 
 def main(page: Page) -> None:
     
