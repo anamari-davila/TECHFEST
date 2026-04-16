@@ -40,20 +40,21 @@ def main(page: Page) -> None:
         Ball.opacity=1
         Ball.update()
 
+        
     async def bola2():
 
         Ball.opacity=0
-        Ball.update()
+        MainWhite.opacity=0
+        MainYellow.opacity=0
+        MiniText.opacity=0
+        PopCorn.opacity=0
+        MovieIcon1.opacity=0
+        MovieIcon2.opacity=0
+        Icon1Text.opacity=0
+        Icon2Text.opacity=0
+        page.update()
         
-        await asyncio.sleep(0.310)
-        Ball.left=-250.9
-        Ball.top = 200.6
-        Ball.scale=1
-        Ball.update() 
-
-        await asyncio.sleep(0.310)
-        Ball.opacity=1
-        Ball.update()
+     
 
     async def bola3():
 
@@ -70,8 +71,28 @@ def main(page: Page) -> None:
         Ball.opacity=1
         Ball.update()
 
+    async def changeview_2(e):
+        
+        await bola2()
+
+        page.update()
+        await asyncio.sleep(1)
+        page.go('/catalog')
+
+        
+        Ball.left=-250.9
+        Ball.top = 200.6
+        Ball.scale=1
+        page.update() 
+
+        await asyncio.sleep(0.310)
+        Ball.opacity=1
+        page.update()
+
     def testfunc(e):
         print("hello World")
+
+    
 
     # Background and ball
     Background= ft.Image(
@@ -94,7 +115,8 @@ def main(page: Page) -> None:
         top=100, 
         left=300, 
         size=87.5,
-        style=ft.TextStyle(letter_spacing=0)
+        style=ft.TextStyle(letter_spacing=0),
+        animate_opacity=300 
         )
     
     MainWhite= ft.Text(
@@ -104,7 +126,8 @@ def main(page: Page) -> None:
         top= 80, 
         left= 55, 
         size=365,
-        style=ft.TextStyle(letter_spacing=-5)
+        style=ft.TextStyle(letter_spacing=-5),
+        animate_opacity=300
         )
     
     #MiniText
@@ -115,6 +138,7 @@ def main(page: Page) -> None:
         left=715    , 
         size=12,
         style=ft.TextStyle(letter_spacing=3),
+        animate_opacity=300
     )
 
     #Popcorn image and icons
@@ -125,13 +149,15 @@ def main(page: Page) -> None:
         left=-545,
         expand=False,
         scale=0.75,
+        animate_opacity=300
         )
     
     MovieIcon1=ft.Image(
         src="CameraV.png",
         scale=0.6,
         top=-420,
-        left= 100
+        left= 100,
+        animate_opacity=300
         )
     
     Icon1Text = ft.Container(
@@ -142,7 +168,9 @@ def main(page: Page) -> None:
     ),
     left=1100,
     top=70,
-    on_click=lambda _: page.go('/store'))
+    on_click= changeview_2,
+    animate_opacity=300
+    )
     
    
 
@@ -150,7 +178,8 @@ def main(page: Page) -> None:
         src="CameraV.png",
         scale=0.6,
         top=-330,
-        left= 100
+        left= 100,
+        animate_opacity=300
         )
     
     Icon2Text= ft.Container(
@@ -162,17 +191,10 @@ def main(page: Page) -> None:
         ),
         top= 160,
         left=1100,
-        on_click=lambda e: testfunc(e)
+        on_click=lambda e: testfunc(e),
+        animate_opacity=300
     
     )
-
-
-
-    # l1= ft.Button(content="1st", on_click=bola1, top=100)
-    # l2= ft.Button(content="2nd", on_click=bola2,top=200)
-    # l3= ft.Button(content="3rd", on_click=bola3, top= 300)
-
-
 
     #Main Page
 
@@ -206,6 +228,29 @@ def main(page: Page) -> None:
 
             ]
         )   
+    
+
+
+    # 2nd Page
+
+    
+    ndStack= ft.Stack(
+        expand=True,
+        controls=[
+
+            #Generals
+            ft.Container(
+            expand=True,
+            image=ft.DecorationImage(
+                src="lBG.png",
+                fit=ft.ImageFit.COVER,
+                scale=1.2
+            )
+        ),
+            Ball,]
+
+    )
+    
     def route_change (e: RouteChangeEvent) -> None:
         page.views.clear()
         
@@ -222,14 +267,14 @@ def main(page: Page) -> None:
         page.update()
 
         #Store
-        if page.route == '/store':
+        if page.route == '/catalog':
             page.views.append(
             View(
-                route='/store',
+                route='/catalog',
                 controls=[
-                    AppBar(title=Text('Store'), bgcolor='blue'),
-                    ft.Text(value='Store', size=30),
-                    ft.ElevatedButton(text='Go back', on_click=lambda _: page.go('/'))
+                    
+                    ndStack,
+
                 ],
                 vertical_alignment= MainAxisAlignment.CENTER,
                 horizontal_alignment=CrossAxisAlignment.CENTER,
