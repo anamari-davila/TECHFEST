@@ -83,10 +83,12 @@ def main(page: Page) -> None:
         Ball.left=-250.9
         Ball.top = 200.6
         Ball.scale=1
+        buttonchoose.opacity=0
         page.update() 
 
         await asyncio.sleep(0.310)
         Ball.opacity=1
+        buttonchoose.opacity=1
         page.update()
 
     def testfunc(e):
@@ -232,8 +234,21 @@ def main(page: Page) -> None:
 
 
     # 2nd Page
+    buttonchoose = ft.Container(
+                        content=ft.Image(src='ChooseButton.jpg'),
+                        on_click= lambda e: testfunc(e),
+                        scale=0.145,
+                        border_radius=215,
+                        top=525,
+                        left=-570,
+                        animate_opacity=310
 
-    
+        
+        
+        
+        )
+
+
     ndStack= ft.Stack(
         expand=True,
         controls=[
@@ -247,7 +262,8 @@ def main(page: Page) -> None:
                 scale=1.2
             )
         ),
-            Ball,]
+            Ball,
+            buttonchoose]
 
     )
     
