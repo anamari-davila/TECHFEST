@@ -34,5 +34,7 @@ Considerations and steps to follow for the program
 
 
 
-## Disclaimer
-This project uses the TMDB API but is not endorsed or certified by TMDB. This repository is intended for educational and non-commercial use only. Users are responsible for complying with TMDB’s Terms of Use and attribution requirements.
+## Disclaimers
+> This project uses the TMDB API but is not endorsed or certified by TMDB. This repository is intended for educational and non-commercial use only. Users are responsible for complying with TMDB’s Terms of Use and attribution requirements.
+
+> "World of Cinema" is a purely fictional project name used for educational and non-commercial purposes. This project is not affiliated with, endorsed by, or associated with any real company, product, or service of the same or similar name.
