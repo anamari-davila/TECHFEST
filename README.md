@@ -19,7 +19,7 @@ This project was created for **Techfest**, a school technology festival. Techfes
 Before running the project, make sure you have:
 
 - Python 3.10 or newer installed.
-- `flet` version 0.26. x or 0.27.x installed.
+- `flet` version 0.26.x or 0.27.x installed.
 - `python-dotenv` installed.
 - A TMDB account and API Read Access Token.
 
