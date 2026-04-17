@@ -236,6 +236,35 @@ def main(page: Page) -> None:
 
 
     # 2nd Page
+
+    from dotenv import load_dotenv
+
+    load_dotenv()
+    API_KEY= os.getenv("TMDB_API_KEY")
+
+
+    if not API_KEY:
+        raise ValueError("TMDB_API_KEY not found, if you do not have a key read the README file from github: ")
+    
+
+
+    url = "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1"
+
+    headers = {
+        "accept": "application/json",
+        "Authorization": f"Bearer {API_KEY}"
+        
+    }
+
+    response = requests.get(url, headers=headers)
+
+    data = response.json()
+
+    imgsurls= [(f"https://image.tmdb.org/t/p/original{data["results"][x]["poster_path"]}") for x in range(len(data["results"]))]
+   
+
+
+    
     buttonchoose = ft.Container(
                         content=ft.Image(src='ChooseButton.jpg'),
                         on_click= lambda e: testfunc(e),
@@ -243,13 +272,23 @@ def main(page: Page) -> None:
                         border_radius=215,
                         top=525,
                         left=-570,
-                        animate_opacity=310
-
-        
-        
-        
+                        animate_opacity=310 
         )
+    
+    ImageSlide = ft.Row(controls=[
+                            ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_LEFT_ROUNDED, color= ft.Colors.WHITE,scale=10)),
+                            ft.Image(src=imgsurls[0], scale=0.3),
+                            ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_RIGHT_ROUNDED, color= ft.Colors.WHITE,scale=10)),
+                            
+                        ], 
+                        left= 185,
+                        top = -1000,
+                        scale=0.4, 
+                        spacing= -500,
+                        wrap=False
+                    )
 
+    
 
     ndStack= ft.Stack(
         expand=True,
@@ -265,7 +304,8 @@ def main(page: Page) -> None:
             )
         ),
             Ball,
-            buttonchoose]
+            buttonchoose,
+            ImageSlide]
 
     )
     

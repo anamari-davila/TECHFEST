@@ -25,4 +25,12 @@ response = requests.get(url, headers=headers)
 
 data = response.json()
 
-print(data["results"][0]["title"]) #1st movie
+
+# for f in range(len(data["results"])):
+#     print(data["results"][f]["title"]) #1st movie
+
+
+print(data["results"][2])
+
+print(    [(f"https://image.tmdb.org/t/p/original{data["results"][x]["poster_path"]}") for x in range(len(data["results"]))]
+)
