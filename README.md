@@ -1,5 +1,3 @@
-
-
 # About this program
 This is a Python-based program that simulates a cinema and shows the latest movies currently in theatres—it uses flet for the GUI. You can select the movies, seats, dates, and times for screenings with prices shown based on **not decided yet
 **.
@@ -26,7 +24,7 @@ Considerations and steps to follow for the program
 - Get an API Key by going to your profile: https://www.themoviedb.org/settings/api
 
 **2nd Step**: Setting up the API-Program
-- Put the API Read Access Token in a .env file in the same folder as the main .py executable
+- Put the API Read Access Token in a `.env` file in the same folder where the main `.py` executable is
 
 **Last Step**
 -Execute it and enjoy!
