@@ -1,6 +1,4 @@
-# This project uses the TMDB API but is not endorsed or certified by TMDB. 
-# This repository is intended for educational and non-commercial use only. 
-# Users are responsible for complying with TMDB’s Terms of Use and attribution requirements.
+# This project uses the TMDB API but is not endorsed or certified by TMDB. This repository is intended for educational and non-commercial use only. Users are responsible for complying with TMDB’s Terms of Use and attribution requirements.
 
 # How this code works:
 
