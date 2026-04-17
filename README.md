@@ -66,11 +66,13 @@ PD: For now it has a different name but the main file will be changed to main.py
 
 - This app uses Flet for the graphical user interface.
 - Use Flet `0.26.x` or `0.27.x`, since newer versions or older might introduce compatibility changes regarding controls.
-- The cinema, branding, and project scenario are fictional and created for educational purposes.
 - Ticket pricing is currently a work in progress and will be updated in the future.
 
 
 ## Disclaimers
+
 This project uses the TMDB API but is not endorsed or certified by TMDB. This repository is intended for educational and non-commercial use only. Users are responsible for complying with TMDB’s Terms of Use and attribution requirements.
 
-"World of Cinema" is a purely fictional project name used for educational and non-commercial purposes. This project is not affiliated with, endorsed by, or associated with any real company, product, or service of the same or similar name.
+<img width="200" height="150" alt="image" src="https://github.com/user-attachments/assets/cd495b7b-5ce7-4f9b-829c-8a32ce8db984" />  
+
+
