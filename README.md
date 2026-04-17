@@ -1,16 +1,14 @@
+
+
 # About this program
 This is a Python-based program that simulates a cinema and shows the latest movies currently in theatres—it uses flet for the GUI. You can select the movies, seats, dates, and times for screenings with prices shown based on **not decided yet
 **.
 
 **Techfest** is not the program; it is a school festival regarding technology that contextualizes the creation and development of this program.
 
-# Important Instructions
+
+## Important Instructions
 Considerations and steps to follow for the program
-
-## Disclaimer
-This project uses the TMDB API but is not endorsed or certified by TMDB. This repository is intended for educational and non-commercial use only. Users are responsible for complying with TMDB’s Terms of Use and attribution requirements.
-
-## How to use the code:
 
 ### Prerequisites 
 - Make sure you have Flet installed (0.26.x or 0.27.x,  versions from 2026 and on have different names for variables)
@@ -21,7 +19,6 @@ This project uses the TMDB API but is not endorsed or certified by TMDB. This re
   ```
   pip install python-dotenv
   ```
-  
 
 ### Main steps
 **1st Step**: Get the API
@@ -33,3 +30,9 @@ This project uses the TMDB API but is not endorsed or certified by TMDB. This re
 
 **Last Step**
 -Execute it and enjoy!
+
+
+
+
+## Disclaimer
+This project uses the TMDB API but is not endorsed or certified by TMDB. This repository is intended for educational and non-commercial use only. Users are responsible for complying with TMDB’s Terms of Use and attribution requirements.
