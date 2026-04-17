@@ -1,40 +1,76 @@
 ![logo](/assets/Logo.png)
 
-# About this program
-This is a Python-based program that simulates a cinema (fictional cinema) and shows the latest movies currently in theatres—it uses flet for the GUI. You can select the movies, seats, dates, and times for screenings with prices shown based on **not decided yet
-**.
+# World of Cinema
 
-**Techfest** is not the program; it is a school festival regarding technology that contextualizes the creation and development of this program.
+World of Cinema is a Python desktop application built with **Flet** that simulates a fictional movie theater. The program displays movies currently playing in theaters using data from the TMDB API and allows users to browse films, choose screening dates and times, and select seats.
 
+This project was created for **Techfest**, a school technology festival. Techfest is the event where the project was developed and presented; it is not the name of the program.
 
-## Important Instructions
-Considerations and steps to follow for the program
+## Features
 
-### Prerequisites 
-- Make sure you have Flet installed (0.26.x or 0.27.x,  versions from 2026 and on have different names for variables)
-  ```
-  pip install flet
-  ```
-- Install dotenv for the key-reading
-  ```
-  pip install python-dotenv
-  ```
+- Browse currently playing movies from TMDB.
+- View movie information in a graphical interface.
+- Select screening dates and times.
+- Choose seats for a screening.
+- Display ticket pricing information, with pricing logic still in development.
+  
+## Requirements 
 
-### Main steps
-**1st Step**: Get the API
-- Create a TMDB account https://www.themoviedb.org
-- Get an API Key by going to your profile: https://www.themoviedb.org/settings/api
+Before running the project, make sure you have:
 
-**2nd Step**: Setting up the API-Program
-- Put the API Read Access Token in a `.env` file in the same folder where the main `.py` executable is
+- Python 3.10 or newer installed.
+- `flet` version 0.26. x or 0.27.x installed.
+- `python-dotenv` installed.
+- A TMDB account and API Read Access Token.
 
-**Last Step**
--Execute it and enjoy!
+## Installation
 
+Install the required dependencies:
 
+```bash
+pip install flet
+pip install python-dotenv
+```
+
+## TMDB API setup
+
+### 1. Create a TMDB account
+Create an account at [TMDB](https://www.themoviedb.org)
+
+### 2. Get your API token
+Go to your account API settings page:
+
+https://www.themoviedb.org/settings/api
+
+and keep following the steps shown there till you get your "API Read Access Token" generated
+
+### 3. Create a `.env` file
+In the same folder as your main Python file, create a file named `.env.`.
+
+Example:
+
+```env
+TMDB_API_TOKEN = [here your read access token]
+```
+
+## Running the program
+
+After setting up the `.env` file, run the application from the project folder:
+
+```bash
+python main.py
+```
+PD: For now it has a different name but the main file will be changed to main.py
+
+## Notes
+
+- This app uses Flet for the graphical user interface.
+- Use Flet `0.26.x` or `0.27.x`, since newer versions or older might introduce compatibility changes regarding controls.
+- The cinema, branding, and project scenario are fictional and created for educational purposes.
+- Ticket pricing is currently a work in progress and will be updated in the future.
 
 
 ## Disclaimers
-> This project uses the TMDB API but is not endorsed or certified by TMDB. This repository is intended for educational and non-commercial use only. Users are responsible for complying with TMDB’s Terms of Use and attribution requirements.
+This project uses the TMDB API but is not endorsed or certified by TMDB. This repository is intended for educational and non-commercial use only. Users are responsible for complying with TMDB’s Terms of Use and attribution requirements.
 
-> "World of Cinema" is a purely fictional project name used for educational and non-commercial purposes. This project is not affiliated with, endorsed by, or associated with any real company, product, or service of the same or similar name.
+"World of Cinema" is a purely fictional project name used for educational and non-commercial purposes. This project is not affiliated with, endorsed by, or associated with any real company, product, or service of the same or similar name.
