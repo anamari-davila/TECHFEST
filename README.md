@@ -1,3 +1,5 @@
+![logo](/assets/logo.png)
+
 # About this program
 This is a Python-based program that simulates a cinema and shows the latest movies currently in theatres—it uses flet for the GUI. You can select the movies, seats, dates, and times for screenings with prices shown based on **not decided yet
 **.
