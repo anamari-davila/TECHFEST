@@ -1,7 +1,7 @@
 ![logo](/assets/Logo.png)
 
 # About this program
-This is a Python-based program that simulates a cinema and shows the latest movies currently in theatres—it uses flet for the GUI. You can select the movies, seats, dates, and times for screenings with prices shown based on **not decided yet
+This is a Python-based program that simulates a cinema (fictional cinema) and shows the latest movies currently in theatres—it uses flet for the GUI. You can select the movies, seats, dates, and times for screenings with prices shown based on **not decided yet
 **.
 
 **Techfest** is not the program; it is a school festival regarding technology that contextualizes the creation and development of this program.
