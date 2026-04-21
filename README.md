@@ -28,7 +28,7 @@ Before running the project, make sure you have:
 Install the required dependencies:
 
 ```bash
-pip install flet
+pip install flet==0.27.6
 pip install python-dotenv
 ```
 
@@ -38,7 +38,7 @@ pip install python-dotenv
 Create an account at [TMDB](https://www.themoviedb.org)
 
 ### 2. Get your API token
-Go to your account API settings page:
+Go to your account settings page and then select 'API':
 
 https://www.themoviedb.org/settings/api
 
@@ -50,8 +50,9 @@ In the same folder as your main Python file, create a file named `.env.`.
 Example:
 
 ```env
-TMDB_API_TOKEN = [here your read access token]
+TMDB_API_KEY = here your read access token
 ```
+Note: Make sure to have the option 'python.terminal.useEnvFile' enabled
 
 ## Running the program
 
