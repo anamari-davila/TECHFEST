@@ -28,7 +28,7 @@ Before running the project, make sure you have:
 Install the required dependencies:
 
 ```bash
-pip install flet
+pip install flet==0.27.6
 pip install python-dotenv
 ```
 
