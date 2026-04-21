@@ -5,6 +5,10 @@ import asyncio
 import os
 import requests
 
+x = 0
+y = -1
+z = 1
+
 def main(page: Page) -> None:
     
     page.fonts = {
@@ -14,9 +18,11 @@ def main(page: Page) -> None:
         "BricolageBold": "BricolageBoldened.ttf"
     }
 
+    
+
     #Page Setup
 
-    page.window.full_screen = False
+    page.window.full_screen = True
     # page.theme = ft.Theme(font_family="Main")
     page.title= "World Of Cinema"
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
@@ -95,8 +101,6 @@ def main(page: Page) -> None:
 
     def testfunc(e):
         print("hello World")
-
-    
 
     # Background and ball
     Background= ft.Image(
@@ -275,18 +279,36 @@ def main(page: Page) -> None:
                         animate_opacity=310 
         )
     
+    async def MCLeft(e):
+        global x
+        x-=1
+        ImageSlide.controls[1].src=imgsurls[x]
+        ImageSlide.controls[1].update()
+
+    async def MCRight(e):
+        global x
+        x+=1
+        ImageSlide.controls[1].src=imgsurls[x]
+        ImageSlide.controls[1].update()
+
+    DILeft = ft.Image(src=imgsurls[y], scale=0.3)
+
+    DIRight = ft.Image(src=imgsurls[y], scale=0.3)
+
     ImageSlide = ft.Row(controls=[
-                            ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_LEFT_ROUNDED, color= ft.Colors.WHITE,scale=10)),
-                            ft.Image(src=imgsurls[0], scale=0.3),
-                            ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_RIGHT_ROUNDED, color= ft.Colors.WHITE,scale=10)),
+                            ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_LEFT_ROUNDED, color= ft.Colors.WHITE,scale=10), on_click=MCRight),
+                            ft.Image(src=imgsurls[x], scale=0.3, width=300, height=500),
+                            ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_RIGHT_ROUNDED, color= ft.Colors.WHITE,scale=10), on_click=MCLeft),
                             
                         ], 
-                        left= 185,
-                        top = -1000,
+                        
                         scale=0.4, 
                         spacing= -500,
-                        wrap=False
+                        wrap=False,
+                        expand=True
                     )
+    
+
 
     
 
