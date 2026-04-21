@@ -52,6 +52,7 @@ Example:
 ```env
 TMDB_API_TOKEN = here your read access token
 ```
+Note: Make sure to have the option 'python.terminal.useEnvFile' enabled
 
 ## Running the program
 
