@@ -50,7 +50,7 @@ In the same folder as your main Python file, create a file named `.env.`.
 Example:
 
 ```env
-TMDB_API_TOKEN = here your read access token
+TMDB_API_KEY = here your read access token
 ```
 Note: Make sure to have the option 'python.terminal.useEnvFile' enabled
 
