@@ -38,7 +38,7 @@ pip install python-dotenv
 Create an account at [TMDB](https://www.themoviedb.org)
 
 ### 2. Get your API token
-Go to your account API settings page:
+Go to your account settings page and then select 'API':
 
 https://www.themoviedb.org/settings/api
 
