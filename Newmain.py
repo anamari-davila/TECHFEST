@@ -67,17 +67,15 @@ def main(page: Page) -> None:
     async def bola3():
 
         Ball.opacity=0
-        Ball.update()
-        
-        await asyncio.sleep(0.310)
-        Ball.left= 1600.9
-        Ball.top= -100
-        Ball.scale=2.5
-        Ball.update()
-
-        await asyncio.sleep(0.310)
-        Ball.opacity=1
-        Ball.update()
+        MainWhite.opacity=0
+        MainYellow.opacity=0
+        MiniText.opacity=0
+        PopCorn.opacity=0
+        MovieIcon1.opacity=0
+        MovieIcon2.opacity=0
+        Icon1Text.opacity=0
+        Icon2Text.opacity=0
+        page.update()
 
     async def changeview_2(e):
         
@@ -99,8 +97,25 @@ def main(page: Page) -> None:
         buttonchoose.opacity=1
         page.update()
 
-    def testfunc(e):
-        print("hello World")
+    async def changeview_3(e):
+        
+        await bola2()
+
+        page.update()
+        await asyncio.sleep(1)
+        page.go('/incoming')
+        
+        
+        Ball.left=-250.9
+        Ball.top = 200.6
+        Ball.scale=1
+        buttonchoose.opacity=0
+        page.update() 
+
+        await asyncio.sleep(0.310)
+        Ball.opacity=1
+        buttonchoose.opacity=1
+        page.update()
 
     # Background and ball
     Background= ft.Image(
@@ -199,7 +214,7 @@ def main(page: Page) -> None:
         ),
         top= 160,
         left=1100,
-        on_click=lambda e: testfunc(e),
+        on_click= changeview_3,
         animate_opacity=300
     
     )
@@ -271,7 +286,7 @@ def main(page: Page) -> None:
     
     buttonchoose = ft.Container(
                         content=ft.Image(src='ChooseButton.jpg'),
-                        on_click= lambda e: testfunc(e),
+                        on_click= lambda e: print("Hello"),
                         scale=0.145,
                         border_radius=215,
                         top=525,
@@ -333,6 +348,31 @@ def main(page: Page) -> None:
 
     )
     
+
+
+    #3rd page
+
+
+
+    rdStack= ft.Stack(
+        expand=True,
+        controls=[
+
+            #Generals
+            ft.Container(
+            expand=True,
+            image=ft.DecorationImage(
+                src="lBG.png",
+                fit=ft.ImageFit.COVER,
+                scale=1.2
+            )
+        ),
+            Ball,
+            ]
+
+    )
+
+
     def route_change (e: RouteChangeEvent) -> None:
         page.views.clear()
         
@@ -356,6 +396,22 @@ def main(page: Page) -> None:
                 controls=[
                     
                     ndStack,
+
+                ],
+                vertical_alignment= MainAxisAlignment.CENTER,
+                horizontal_alignment=CrossAxisAlignment.CENTER,
+                spacing=26
+            )
+        )
+            page.update()
+
+        if page.route == '/incoming':
+            page.views.append(
+            View(
+                route='/incoming',
+                controls=[
+                    
+                 rdStack
 
                 ],
                 vertical_alignment= MainAxisAlignment.CENTER,
