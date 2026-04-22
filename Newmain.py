@@ -275,37 +275,39 @@ def main(page: Page) -> None:
                         scale=0.145,
                         border_radius=215,
                         top=525,
-                        left=-570,
+                        left=-575,
                         animate_opacity=310 
         )
     
     async def MCLeft(e):
         global x
         x-=1
-        ImageSlide.controls[1].src=imgsurls[x]
-        ImageSlide.controls[1].update()
+        ImageSlide.controls[1].src=imgsurls[x%len(data["results"])]
+        page.update()
+        
 
     async def MCRight(e):
         global x
         x+=1
-        ImageSlide.controls[1].src=imgsurls[x]
-        ImageSlide.controls[1].update()
+        ImageSlide.controls[1].src=imgsurls[x%len(data["results"])]
+        page.update()
+       
 
     DILeft = ft.Image(src=imgsurls[y], scale=0.3)
 
     DIRight = ft.Image(src=imgsurls[y], scale=0.3)
 
     ImageSlide = ft.Row(controls=[
-                            ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_LEFT_ROUNDED, color= ft.Colors.WHITE,scale=10), on_click=MCRight),
-                            ft.Image(src=imgsurls[x], scale=0.3, width=300, height=500),
-                            ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_RIGHT_ROUNDED, color= ft.Colors.WHITE,scale=10), on_click=MCLeft),
+                            ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_LEFT_ROUNDED, color= ft.Colors.WHITE), on_click=MCRight, ink=True,scale= 4, border_radius=50),
+                            ft.Image(src=imgsurls[x], scale=0.87, width=300, height=500),
+                            ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_RIGHT_ROUNDED, color= ft.Colors.WHITE), on_click=MCLeft, ink=True, scale=4, border_radius=50),
                             
                         ], 
-                        
-                        scale=0.4, 
-                        spacing= -500,
+                        top=220,
+                        left=510,
+                        scale=1, 
+                        spacing= 26,
                         wrap=False,
-                        expand=True
                     )
     
 
