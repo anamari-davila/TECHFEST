@@ -256,11 +256,10 @@ def main(page: Page) -> None:
 
     # 2nd Page
 
-    # from dotenv import load_dotenv
+    from dotenv import load_dotenv
 
-    # load_dotenv()
-    # API_KEY= os.getenv("TMDB_API_KEY")
-    API_KEY= "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiN2VkMjBiYjU3YjQ2ZGIwZjRiZTE2N2YwMTUxODZjNyIsIm5iZiI6MTc3NzA1MTQxMy43MDUsInN1YiI6IjY5ZWJhNzE1NTE4MDE0ZDIzMzE3Y2E5ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.axoiVnvxeIWJkbDqG-8flmsXezEY_8s8-t22cslDwsw"
+    load_dotenv()
+    API_KEY= os.getenv("TMDB_API_KEY")
 
     if not API_KEY:
         raise ValueError("TMDB_API_KEY not found, if you do not have a key read the README file from github: ")
