@@ -336,23 +336,55 @@ def main(page: Page) -> None:
     MovieIcon1PT2=ft.Image(
         src="CameraV.png",
         scale=0.6,
-        top=-420,
-        left= 100,
+        top=-460,
+        right=430,
         animate_opacity=300
         )
     
-    Icon1Text = ft.Container(
+    Icon1TextPT2 = ft.Container(
     content=ft.Text(
         value="ON SCREEN RIGHT NOW",
-        size=20,
+        size=15,
         style=ft.TextStyle(letter_spacing=2),
     ),
-    left=1100,
-    top=70,
+    left=30,
+    top=90,
     on_click= changeview_2,
     animate_opacity=300
     )
-    OSRN = ft.Container()
+
+    HomeIcon = ft.Image(src="Homeicon.png", 
+                        scale=0.170,
+                        top=-180,
+                        right=-220,
+                        animate_opacity=300
+                        )
+    
+    HomeText = ft.Container(
+    content=ft.Text(
+        value="HOME PAGE",
+        size=15,
+        style=ft.TextStyle(letter_spacing=2),
+    ),
+    right=25,
+    top=90,
+    on_click= changeview_2,
+    animate_opacity=300
+    )
+
+
+    HomePage = ft.Stack(
+        controls=[
+            HomeIcon,
+            HomeText]
+        )
+    
+    OnScreenRN = ft.Stack(
+        controls=[
+            MovieIcon1PT2,
+            Icon1TextPT2
+        ]
+        )
 
     ndStack= ft.Stack(
         expand=True,
@@ -367,6 +399,8 @@ def main(page: Page) -> None:
                 scale=1.2
             )
         ),
+            OnScreenRN,
+            HomePage,
             Ball,
             buttonchoose,
             ImageSlide,
