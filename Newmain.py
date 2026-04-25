@@ -329,39 +329,10 @@ def main(page: Page) -> None:
         Ball.opacity=1
         
         page.update()
-        
 
-
-
-
-    sub2nd= ft.Stack(
-        expand=True,
-        controls=[
-
-            #Generals
-            ft.Container(
-            expand=True,
-            image=ft.DecorationImage(
-                src="lBG.png",
-                fit=ft.ImageFit.COVER,
-                scale=1.2
-            )
-        ),
-            Ball,
-            ]
-
-    )
-
-
-
-
-
-    
     #2nd - MAIN
     imgsurls= [(f"https://image.tmdb.org/t/p/original{data["results"][x]["poster_path"]}") for x in range(len(data["results"]))]
     movieTitles = [data["results"][x]["title"] for x in range(len(data["results"]))]
-
-
 
     
     buttonchoose = ft.Container(
@@ -573,6 +544,24 @@ def main(page: Page) -> None:
     )
     
 
+    #Sub Second Page 
+    sub2nd= ft.Stack(
+        expand=True,
+        controls=[
+
+            #Generals
+            ft.Container(
+            expand=True,
+            image=ft.DecorationImage(
+                src="lBG.png",
+                fit=ft.ImageFit.COVER,
+                scale=1.2
+            )
+        ),
+            Ball,
+            ]
+
+    )
 
     #3rd page
 
