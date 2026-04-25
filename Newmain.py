@@ -77,6 +77,36 @@ def main(page: Page) -> None:
         Icon2Text.opacity=0
         page.update()
 
+    async def changeview(e):
+        
+        await bola2()
+
+        page.update()
+        await asyncio.sleep(1)
+        page.go('/')
+
+        
+        Ball.left=-630.9
+        Ball.top = 390.6
+        Ball.scale=1
+        Ball.update()
+        Ball.scale=1
+        buttonchoose.opacity=0
+        page.update() 
+
+        await asyncio.sleep(0.310)
+        MainWhite.opacity=1
+        MainYellow.opacity=1
+        MiniText.opacity=1
+        PopCorn.opacity=1
+        MovieIcon1.opacity=1
+        MovieIcon2.opacity=1
+        Icon1Text.opacity=1
+        Icon2Text.opacity=1
+        Ball.opacity=1
+        buttonchoose.opacity=1
+        page.update()
+        
     async def changeview_2(e):
         
         await bola2()
@@ -411,20 +441,20 @@ def main(page: Page) -> None:
     MovieIcon1PT2=ft.Image(
         src="CameraV.png",
         scale=0.6,
-        top=-460,
-        right=430,
+        top=-450,
+        right=410,
         animate_opacity=300
         )
     
     Icon1TextPT2 = ft.Container(
     content=ft.Text(
         value="ON SCREEN RIGHT NOW",
-        size=15,
+        size=16,
         style=ft.TextStyle(letter_spacing=2),
     ),
-    left=30,
-    top=90,
-    on_click= changeview_2,
+    left=90,
+    top=45,
+    
     animate_opacity=300
     )
 
@@ -443,7 +473,7 @@ def main(page: Page) -> None:
     ),
     right=25,
     top=90,
-    on_click= changeview_2,
+    on_click= changeview,
     animate_opacity=300
     )
 
