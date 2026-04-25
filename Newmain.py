@@ -8,7 +8,7 @@ import requests
 x = 0
 y = -1
 z = 1
-
+CurrentMovie= 0
 def main(page: Page) -> None:
     
     page.fonts = {
