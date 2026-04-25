@@ -279,14 +279,16 @@ def main(page: Page) -> None:
     data = response.json()
 
     imgsurls= [(f"https://image.tmdb.org/t/p/original{data["results"][x]["poster_path"]}") for x in range(len(data["results"]))]
-    movieTitles = [data["results"][x]["original_title"] for x in range(len(data["results"]))]
+    movieTitles = [data["results"][x]["title"] for x in range(len(data["results"]))]
     buttonchoose = ft.Container(
                         content=ft.Image(src='ChooseButton.jpg'),
                         on_click= lambda e: print("Hello"),
-                        scale=0.145,
+                        scale=0.25,
                         border_radius=215,
-                        top=525,
-                        left=-575,
+                        top=640,
+                        left=0,
+                        right=0,
+                        alignment=ft.alignment.center,
                         animate_opacity=310 
         )
     
@@ -294,6 +296,7 @@ def main(page: Page) -> None:
         global x
         x-=1
         ImageSlide.controls[1].src=imgsurls[x%len(data["results"])]
+        MovTitle.content.value=movieTitles[x%len(data["results"])]
         page.update()
         
 
@@ -301,9 +304,17 @@ def main(page: Page) -> None:
         global x
         x+=1
         ImageSlide.controls[1].src=imgsurls[x%len(data["results"])]
+        MovTitle.content.value=movieTitles[x%len(data["results"])]
         page.update()
 
-    MovTitle = ft.Text(value=movieTitles[x], top=240, left = 550, size=25)
+    MovTitle = ft.Container(content=ft.Text(value=movieTitles[x],
+        text_align=ft.TextAlign.CENTER,
+        size=25),
+            top=240,
+            left=0,
+            right=0,
+            alignment=ft.alignment.center
+            )
 
     DILeft = ft.Image(src=imgsurls[y], scale=0.3)
 
@@ -314,15 +325,34 @@ def main(page: Page) -> None:
                             ft.Image(src=imgsurls[x], scale=0.87, width=300, height=500),
                             ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_RIGHT_ROUNDED, color= ft.Colors.WHITE), on_click=MCLeft, ink=True, scale=4, border_radius=50),
                         ], 
-    
-                    #column attributes
-                        top=240,
-                        left=510,
+                        top=250,
+                        left=0,
+                        right=0,
+                        alignment=ft.MainAxisAlignment.CENTER,
                         scale=1, 
                         spacing= 5,
                         wrap=False,)
-
     
+    MovieIcon1PT2=ft.Image(
+        src="CameraV.png",
+        scale=0.6,
+        top=-420,
+        left= 100,
+        animate_opacity=300
+        )
+    
+    Icon1Text = ft.Container(
+    content=ft.Text(
+        value="ON SCREEN RIGHT NOW",
+        size=20,
+        style=ft.TextStyle(letter_spacing=2),
+    ),
+    left=1100,
+    top=70,
+    on_click= changeview_2,
+    animate_opacity=300
+    )
+    OSRN = ft.Container()
 
     ndStack= ft.Stack(
         expand=True,
