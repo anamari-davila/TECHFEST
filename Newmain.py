@@ -23,7 +23,7 @@ def main(page: Page) -> None:
     #Page Setup
 
     page.window.full_screen = True
-    # page.theme = ft.Theme(font_family="Main")
+    page.theme = ft.Theme(font_family="Main")
     page.title= "World Of Cinema"
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
 
@@ -280,7 +280,6 @@ def main(page: Page) -> None:
 
     imgsurls= [(f"https://image.tmdb.org/t/p/original{data["results"][x]["poster_path"]}") for x in range(len(data["results"]))]
     movieTitles = [data["results"][x]["original_title"] for x in range(len(data["results"]))]
-    
     buttonchoose = ft.Container(
                         content=ft.Image(src='ChooseButton.jpg'),
                         on_click= lambda e: print("Hello"),
@@ -303,7 +302,8 @@ def main(page: Page) -> None:
         x+=1
         ImageSlide.controls[1].src=imgsurls[x%len(data["results"])]
         page.update()
-       
+
+    MovTitle = ft.Text(value=movieTitles[x], top=240, left = 550, size=25)
 
     DILeft = ft.Image(src=imgsurls[y], scale=0.3)
 
@@ -314,11 +314,14 @@ def main(page: Page) -> None:
                             ft.Image(src=imgsurls[x], scale=0.87, width=300, height=500),
                             ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_RIGHT_ROUNDED, color= ft.Colors.WHITE), on_click=MCLeft, ink=True, scale=4, border_radius=50),
                         ], 
-                    ),ft.Text(value=movieTitles[x])],top=220,
+                    )],
+                    #column attributes
+                        top=240,
                         left=510,
                         scale=1, 
-                        spacing= 26,
+                        spacing= 5,
                         wrap=False,)
+
     
 
     ndStack= ft.Stack(
@@ -336,7 +339,8 @@ def main(page: Page) -> None:
         ),
             Ball,
             buttonchoose,
-            ImageSlide]
+            ImageSlide,
+            MovTitle]
 
     )
     
