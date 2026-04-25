@@ -261,7 +261,6 @@ def main(page: Page) -> None:
     load_dotenv()
     API_KEY= os.getenv("TMDB_API_KEY")
 
-
     if not API_KEY:
         raise ValueError("TMDB_API_KEY not found, if you do not have a key read the README file from github: ")
     
@@ -280,9 +279,7 @@ def main(page: Page) -> None:
     data = response.json()
 
     imgsurls= [(f"https://image.tmdb.org/t/p/original{data["results"][x]["poster_path"]}") for x in range(len(data["results"]))]
-   
-
-
+    movieTitles = [(f"https://image.tmdb.org/t/p/original{data["results"][x]["title"]}") for x in range(len(data["results"]))]
     
     buttonchoose = ft.Container(
                         content=ft.Image(src='ChooseButton.jpg'),
@@ -312,21 +309,28 @@ def main(page: Page) -> None:
 
     DIRight = ft.Image(src=imgsurls[y], scale=0.3)
 
-    ImageSlide = ft.Row(controls=[
+    ImageSlide = ft.Column(controls=[ft.Row(controls=[
                             ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_LEFT_ROUNDED, color= ft.Colors.WHITE), on_click=MCRight, ink=True,scale= 4, border_radius=50),
                             ft.Image(src=imgsurls[x], scale=0.87, width=300, height=500),
                             ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_RIGHT_ROUNDED, color= ft.Colors.WHITE), on_click=MCLeft, ink=True, scale=4, border_radius=50),
-                            
                         ], 
-                        top=220,
+                    ),ft.Text(value=movieTitles[x])],top=220,
                         left=510,
                         scale=1, 
                         spacing= 26,
-                        wrap=False,
-                    )
-    
-
-
+                        wrap=False,)
+    # ImageSlide = ft.Row(controls=[
+    #                         ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_LEFT_ROUNDED, color= ft.Colors.WHITE), on_click=MCRight, ink=True,scale= 4, border_radius=50),
+    #                         ft.Image(src=imgsurls[x], scale=0.87, width=300, height=500),
+    #                         ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_RIGHT_ROUNDED, color= ft.Colors.WHITE), on_click=MCLeft, ink=True, scale=4, border_radius=50),
+                            
+    #                     ], 
+    #                     top=220,
+    #                     left=510,
+    #                     scale=1, 
+    #                     spacing= 26,
+    #                     wrap=False,
+    #                 )
     
 
     ndStack= ft.Stack(
