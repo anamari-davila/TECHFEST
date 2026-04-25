@@ -322,16 +322,17 @@ def main(page: Page) -> None:
         Ball.left= 1600.9
         Ball.top= -100
         Ball.scale=2.5
-        
+        CurrentMovie = x
+        print(CurrentMovie)
         page.update() 
 
         await asyncio.sleep(0.310)
         Ball.opacity=1
-        
         page.update()
 
     #2nd - MAIN
     imgsurls= [(f"https://image.tmdb.org/t/p/original{data["results"][x]["poster_path"]}") for x in range(len(data["results"]))]
+    
     movieTitles = [data["results"][x]["title"] for x in range(len(data["results"]))]
 
     
@@ -360,6 +361,7 @@ def main(page: Page) -> None:
         DILeftText.value = movieTitles[y % len(movieTitles)]
         DIRight.src=imgsurls[z%len(data["results"])]
         DIRightText.value = movieTitles[z % len(movieTitles)]
+        print(x)
         page.update()
         
 
@@ -376,6 +378,7 @@ def main(page: Page) -> None:
         DILeftText.value = movieTitles[y % len(movieTitles)]
         DIRight.src=imgsurls[z%len(data["results"])]
         DIRightText.value = movieTitles[z % len(movieTitles)]
+        print(x)
         page.update()
 
     MovTitle = ft.Container(content=ft.Text(value=movieTitles[x],
@@ -545,6 +548,8 @@ def main(page: Page) -> None:
     
 
     #Sub Second Page 
+
+    ChosenMovie = ft.Image(src=(f"https://image.tmdb.org/t/p/original{data["results"][CurrentMovie]["poster_path"]}") )
     sub2nd= ft.Stack(
         expand=True,
         controls=[
@@ -624,7 +629,7 @@ def main(page: Page) -> None:
                 route='/incoming',
                 controls=[
                     
-                 rdStack
+                rdStack
 
                 ],
                 vertical_alignment= MainAxisAlignment.CENTER,
