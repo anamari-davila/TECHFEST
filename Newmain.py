@@ -310,7 +310,7 @@ def main(page: Page) -> None:
     MovTitle = ft.Container(content=ft.Text(value=movieTitles[x],
         text_align=ft.TextAlign.CENTER,
         size=25),
-            top=240,
+            top=250,
             left=0,
             right=0,
             alignment=ft.alignment.center
@@ -320,6 +320,31 @@ def main(page: Page) -> None:
 
     DIRight = ft.Image(src=imgsurls[y], scale=0.3)
 
+    MainYellow1 = ft.Text(
+        value="WORLD OF",
+        font_family="TtNormsExtra",
+        color="#d5b586",
+        top=20,
+        left=0,
+        right=0,
+        text_align=ft.TextAlign.CENTER,
+        size=35,
+        style=ft.TextStyle(letter_spacing=0),
+        animate_opacity=300
+    )
+
+    MainWhite1 = ft.Text(
+        value="CINEMA",
+        font_family="BricolageBold",
+        color=ft.Colors.WHITE,
+        top=5,
+        left=0,
+        right=0,
+        text_align=ft.TextAlign.CENTER,
+        size=170,
+        style=ft.TextStyle(letter_spacing=4),
+        animate_opacity=300
+    )
     ImageSlide = ft.Row(controls=[
                             ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_LEFT_ROUNDED, color= ft.Colors.WHITE), on_click=MCRight, ink=True,scale= 4, border_radius=50),
                             ft.Image(src=imgsurls[x], scale=0.87, width=300, height=500),
@@ -399,6 +424,8 @@ def main(page: Page) -> None:
                 scale=1.2
             )
         ),
+            MainYellow1,
+            MainWhite1,
             OnScreenRN,
             HomePage,
             Ball,
