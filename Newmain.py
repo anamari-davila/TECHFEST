@@ -309,12 +309,12 @@ def main(page: Page) -> None:
 
     DIRight = ft.Image(src=imgsurls[y], scale=0.3)
 
-    ImageSlide = ft.Column(controls=[ft.Row(controls=[
+    ImageSlide = ft.Row(controls=[
                             ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_LEFT_ROUNDED, color= ft.Colors.WHITE), on_click=MCRight, ink=True,scale= 4, border_radius=50),
                             ft.Image(src=imgsurls[x], scale=0.87, width=300, height=500),
                             ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_RIGHT_ROUNDED, color= ft.Colors.WHITE), on_click=MCLeft, ink=True, scale=4, border_radius=50),
                         ], 
-                    )],
+    
                     #column attributes
                         top=240,
                         left=510,
