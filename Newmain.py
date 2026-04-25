@@ -309,11 +309,55 @@ def main(page: Page) -> None:
     data = response.json()
 
 
-    def ChooseMovie(e):
+    #SUBPAGE
+    async def ChooseMovie(e):
+        buttonchoose.opacity=0
+        await bola3()
+
+        page.update()
+        await asyncio.sleep(1)
         page.go('/catalog/ChooseMoviePage')
+        
+        
+        Ball.left= 1600.9
+        Ball.top= -100
+        Ball.scale=2.5
+        
+        page.update() 
+
+        await asyncio.sleep(0.310)
+        Ball.opacity=1
+        
+        page.update()
+        
 
 
 
+
+    sub2nd= ft.Stack(
+        expand=True,
+        controls=[
+
+            #Generals
+            ft.Container(
+            expand=True,
+            image=ft.DecorationImage(
+                src="lBG.png",
+                fit=ft.ImageFit.COVER,
+                scale=1.2
+            )
+        ),
+            Ball,
+            ]
+
+    )
+
+
+
+
+
+    
+    #2nd - MAIN
     imgsurls= [(f"https://image.tmdb.org/t/p/original{data["results"][x]["poster_path"]}") for x in range(len(data["results"]))]
     movieTitles = [data["results"][x]["title"] for x in range(len(data["results"]))]
 
@@ -603,8 +647,8 @@ def main(page: Page) -> None:
         if page.route == '/catalog/ChooseMoviePage':
             page.views.append(
             View(
-                route='/incoming',
-                controls=[
+                route='/catalog/ChooseMoviePage',
+                controls=[sub2nd
                     
                  
 
