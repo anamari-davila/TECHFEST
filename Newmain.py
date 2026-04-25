@@ -294,17 +294,33 @@ def main(page: Page) -> None:
     
     async def MCLeft(e):
         global x
+        global y
+        global z
         x-=1
+        y-=1
+        z-=1
         ImageSlide.controls[1].src=imgsurls[x%len(data["results"])]
         MovTitle.content.value=movieTitles[x%len(data["results"])]
+        DILeft.src=imgsurls[y%len(data["results"])]
+        DILeftText.value = movieTitles[y % len(movieTitles)]
+        DIRight.src=imgsurls[z%len(data["results"])]
+        DIRightText.value = movieTitles[z % len(movieTitles)]
         page.update()
         
 
     async def MCRight(e):
         global x
+        global y
+        global z
         x+=1
+        y+=1
+        z+=1
         ImageSlide.controls[1].src=imgsurls[x%len(data["results"])]
         MovTitle.content.value=movieTitles[x%len(data["results"])]
+        DILeft.src=imgsurls[y%len(data["results"])]
+        DILeftText.value = movieTitles[y % len(movieTitles)]
+        DIRight.src=imgsurls[z%len(data["results"])]
+        DIRightText.value = movieTitles[z % len(movieTitles)]
         page.update()
 
     MovTitle = ft.Container(content=ft.Text(value=movieTitles[x],
@@ -316,10 +332,44 @@ def main(page: Page) -> None:
             alignment=ft.alignment.center
             )
 
-    DILeft = ft.Image(src=imgsurls[y], scale=0.3)
+    DILeft = ft.Image(
+        src=imgsurls[y],
+        width=200,
+        height=300,
+    )
+    DILeftText = ft.Text(
+        value=movieTitles[y],
+        size=20,
+        color=ft.Colors.WHITE,
+        text_align=ft.TextAlign.CENTER,
+        width=260,
+    )
+    
+    DILeftColumn = ft.Container(content=ft.Column(controls=[DILeftText,DILeft], horizontal_alignment=ft.CrossAxisAlignment.CENTER), 
+                                width=260, 
+                                top=350, 
+                                left=170,
+                                )
 
-    DIRight = ft.Image(src=imgsurls[y], scale=0.3)
 
+    DIRight = ft.Image(
+        src=imgsurls[z], 
+        width=200,
+        height=300,
+    )
+
+    DIRightText = ft.Text(
+        value=movieTitles[z],
+        size=20,
+        color=ft.Colors.WHITE,
+        text_align=ft.TextAlign.CENTER,
+        width=260,
+            )
+    
+    DIRightColumn = ft.Container(content=ft.Column(controls=[DIRightText,DIRight], horizontal_alignment=ft.CrossAxisAlignment.CENTER), 
+                                width=260, 
+                                top=350, 
+                                right=170, )
     MainYellow1 = ft.Text(
         value="WORLD OF",
         font_family="TtNormsExtra",
@@ -346,9 +396,9 @@ def main(page: Page) -> None:
         animate_opacity=300
     )
     ImageSlide = ft.Row(controls=[
-                            ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_LEFT_ROUNDED, color= ft.Colors.WHITE), on_click=MCRight, ink=True,scale= 4, border_radius=50),
+                            ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_LEFT_ROUNDED, color= ft.Colors.WHITE), on_click=MCLeft, ink=True,scale= 4, border_radius=50),
                             ft.Image(src=imgsurls[x], scale=0.87, width=300, height=500),
-                            ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_RIGHT_ROUNDED, color= ft.Colors.WHITE), on_click=MCLeft, ink=True, scale=4, border_radius=50),
+                            ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_RIGHT_ROUNDED, color= ft.Colors.WHITE), on_click=MCRight, ink=True, scale=4, border_radius=50),
                         ], 
                         top=250,
                         left=0,
@@ -431,7 +481,10 @@ def main(page: Page) -> None:
             Ball,
             buttonchoose,
             ImageSlide,
-            MovTitle]
+            MovTitle,
+            DILeftColumn,
+            DIRightColumn
+        ]
 
     )
     
