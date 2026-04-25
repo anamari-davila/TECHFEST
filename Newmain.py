@@ -308,11 +308,21 @@ def main(page: Page) -> None:
 
     data = response.json()
 
+
+    def ChooseMovie(e):
+        page.go('/catalog/ChooseMoviePage')
+
+
+
     imgsurls= [(f"https://image.tmdb.org/t/p/original{data["results"][x]["poster_path"]}") for x in range(len(data["results"]))]
     movieTitles = [data["results"][x]["title"] for x in range(len(data["results"]))]
+
+
+
+    
     buttonchoose = ft.Container(
                         content=ft.Image(src='ChooseButton.jpg'),
-                        on_click= lambda e: print("Hello"),
+                        on_click= ChooseMovie,
                         scale=0.25,
                         border_radius=215,
                         top=640,
@@ -582,6 +592,21 @@ def main(page: Page) -> None:
                 controls=[
                     
                  rdStack
+
+                ],
+                vertical_alignment= MainAxisAlignment.CENTER,
+                horizontal_alignment=CrossAxisAlignment.CENTER,
+                spacing=26
+            )
+        )
+            
+        if page.route == '/catalog/ChooseMoviePage':
+            page.views.append(
+            View(
+                route='/incoming',
+                controls=[
+                    
+                 
 
                 ],
                 vertical_alignment= MainAxisAlignment.CENTER,
