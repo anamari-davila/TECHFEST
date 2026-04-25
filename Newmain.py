@@ -571,7 +571,6 @@ def main(page: Page) -> None:
     #3rd page
 
 
-
     rdStack= ft.Stack(
         expand=True,
         controls=[
@@ -585,11 +584,20 @@ def main(page: Page) -> None:
                 scale=1.2
             )
         ),
+            MainYellow1,
+            MainWhite1,
+            HomePage,
             Ball,
-            ]
+        
+            
+        ]
 
     )
 
+
+
+
+    #Page View Controls
 
     def route_change (e: RouteChangeEvent) -> None:
         page.views.clear()
