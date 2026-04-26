@@ -602,6 +602,7 @@ def main(page: Page) -> None:
                                             left=525)
     test = ft.Text(value="Min 1. Max 72", color=ft.Colors.BLACK)
 
+    ChooseSeats = ft.Container(content=ft.Image(src="ChooseSeats.png", height=70),top=450, left=515)
 
     async def TotalMoney(e):
         try:
@@ -611,7 +612,7 @@ def main(page: Page) -> None:
                 TotalPrice = TicketPrice*UserInput
                 print(TotalPrice)
                 TotalBox.content.value = f"Total Price: {TotalPrice}$RD"
-
+                sub2nd.controls.append(ChooseSeats)
                 page.update()
             else:
                 TotalBox.content.value = "Number of seats range from 1 to 72"
