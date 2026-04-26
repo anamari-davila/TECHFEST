@@ -556,6 +556,7 @@ def main(page: Page) -> None:
     
 
     #Sub Second Page 
+
     
     ChosenMovieTitle = ft.Container(content=ft.Text(value=movieTitles[CurrentMovie],
         text_align=ft.TextAlign.CENTER,
@@ -593,34 +594,109 @@ def main(page: Page) -> None:
                                                     left=525)
     
     ScreeningTimes = ["3:00PM", "4:15PM","6:00PM", "7:45PM", "8:10PM"]
+
+
+    Question1 = ft.Container(content=ft.Text(value="How many seats would you like?", size=30, 
+                                            font_family="BricolageBold"), 
+                                            top=300, 
+                                            left=525)
+    test = ft.Text(value="Min 1. Max 72", color=ft.Colors.BLACK)
+
+
+    async def TotalMoney(e):
+        try:
+            UserInput = int(TextBox.value)
+            print(UserInput)
+            if 0 < UserInput < 73:
+                TotalPrice = TicketPrice*UserInput
+                print(TotalPrice)
+                TotalBox.content.value = f"Total Price: {TotalPrice}$RD"
+
+                page.update()
+            else:
+                TotalBox.content.value = "Number of seats range from 1 to 72"
+                page.update()
+        except:
+            TotalBox.content.value = "Number of seats range from 1 to 72 and must a number."
+            page.update()
+
+    TextBox = ft.TextField(
+                        label=test,
+                        width=400,
+                        height=60,
+                        border_radius=15,
+                        bgcolor=ft.colors.WHITE,
+                        border_color=ft.colors.BLACK,
+                        border_width=2,
+                        on_change=TotalMoney,
+                        value = None
+                    )
+    TextBoxContainer = ft.Container(content=TextBox, top=350,
+                        left = 525)
+    TotalBox = ft.Container(content=ft.Text(value="",size = 15), top= 420, left=525)
     
+    TicketPrice = 450
+
+    async def chooseScreening(e):
+        if  Screening3:
+            ScreenTime = ScreeningTimes[0]
+        elif  Screening4:
+            ScreenTime = ScreeningTimes[1]
+        elif  Screening6:
+            ScreenTime = ScreeningTimes[2]
+        elif  Screening7:
+            ScreenTime = ScreeningTimes[3]
+        elif  Screening8:
+            ScreenTime = ScreeningTimes[4]
+        print(ScreenTime)
+
+        for item in [
+            DescriptionText,
+            MovieDescription,
+            MovLanguageText,
+            MovLanguage,
+            AvailableScreenings,
+            Screenings1,
+            Screenings2
+        ]:
+            if item in sub2nd.controls:
+                sub2nd.controls.remove(item)
+                page.update()
+            else:
+                None
+
+        sub2nd.controls.append(Question1)
+        sub2nd.controls.append(TextBoxContainer)
+        sub2nd.controls.append(TotalBox)
+        page.update()
+
     Screening3 = ft.Container(
                         content=ft.Image(src='3PM.png'),
-                        on_click= None,
+                        on_click= chooseScreening,
                         scale=0.3,
                         animate_opacity=310 
         )
     Screening4 = ft.Container(
                         content=ft.Image(src='4PM.png'),
-                        on_click= None,
+                        on_click= chooseScreening,
                         scale=0.32,
                         animate_opacity=310 
         )
     Screening6 = ft.Container(
                         content=ft.Image(src='6PM.png'),
-                        on_click= None,
+                        on_click= chooseScreening,
                         scale=0.3,
                         animate_opacity=310 
         )
     Screening7 = ft.Container(
                         content=ft.Image(src='7PM.png'),
-                        on_click= None,
+                        on_click= chooseScreening,
                         scale=0.3,
                         animate_opacity=310 
         )
     Screening8 = ft.Container(
                         content=ft.Image(src='8PM.png'),
-                        on_click= None,
+                        on_click= chooseScreening,
                         scale=0.28,
                         animate_opacity=310 
         )
