@@ -643,15 +643,15 @@ def main(page: Page) -> None:
     TicketPrice = 450
 
     async def chooseScreening(e):
-        if  Screening3:
+        if  e.control == Screening3:
             ScreenTime = ScreeningTimes[0]
-        elif  Screening4:
+        elif e.control == Screening4:
             ScreenTime = ScreeningTimes[1]
-        elif  Screening6:
+        elif e.control == Screening6:
             ScreenTime = ScreeningTimes[2]
-        elif  Screening7:
+        elif e.control == Screening7:
             ScreenTime = ScreeningTimes[3]
-        elif  Screening8:
+        elif  e.control == Screening8:
             ScreenTime = ScreeningTimes[4]
         print(ScreenTime)
 
@@ -676,42 +676,48 @@ def main(page: Page) -> None:
         page.update()
 
     Screening3 = ft.Container(
-                        content=ft.Image(src='3PM.png'),
-                        on_click= chooseScreening,
-                        scale=0.3,
-                        animate_opacity=310 
-        )
-    Screening4 = ft.Container(
-                        content=ft.Image(src='4PM.png'),
-                        on_click= chooseScreening,
-                        scale=0.32,
-                        animate_opacity=310 
-        )
-    Screening6 = ft.Container(
-                        content=ft.Image(src='6PM.png'),
-                        on_click= chooseScreening,
-                        scale=0.3,
-                        animate_opacity=310 
-        )
-    Screening7 = ft.Container(
-                        content=ft.Image(src='7PM.png'),
-                        on_click= chooseScreening,
-                        scale=0.3,
-                        animate_opacity=310 
-        )
-    Screening8 = ft.Container(
-                        content=ft.Image(src='8PM.png'),
-                        on_click= chooseScreening,
-                        scale=0.28,
-                        animate_opacity=310 
+                        content=ft.Image(src="3PM.png", width=170, height=90, fit=ft.ImageFit.CONTAIN),
+                        width=170,
+                        height=60,
+                        on_click=chooseScreening,
+                        ink=True,
         )
 
-    Screenings1 = ft.Container(content=ft.Row(controls=[Screening3,Screening4,Screening6],spacing=-580),
-                                top =450,
-                                left=180)
-    Screenings2 = ft.Container(content=ft.Row(controls=[Screening7,Screening8],spacing=-610),
+    Screening4 = ft.Container(
+                        content=ft.Image(src="4PM.png", width=200, height=90, fit=ft.ImageFit.CONTAIN),
+                        width=170,
+                        height=60,
+                        on_click=chooseScreening,
+                        ink=True,
+        )
+    Screening6 = ft.Container(
+                        content=ft.Image(src="6PM.png", width=200, height=90, fit=ft.ImageFit.CONTAIN),
+                        width=170,
+                        height=60,
+                        on_click=chooseScreening,
+                        ink=True,
+        )
+    Screening7 = ft.Container(
+                        content=ft.Image(src="7PM.png", width=200, height=90, fit=ft.ImageFit.CONTAIN),
+                        width=170,
+                        height=60,
+                        on_click=chooseScreening,
+                        ink=True,
+        )
+    Screening8 = ft.Container(
+                        content=ft.Image(src="8PM.png", width=200, height=90, fit=ft.ImageFit.CONTAIN),
+                        width=170,
+                        height=60,
+                        on_click=chooseScreening,
+                        ink=True,
+        )
+
+    Screenings1 = ft.Container(content=ft.Row(controls=[Screening3,Screening4,Screening6],spacing=25),
                                 top =550,
-                                left=180)
+                                left=525)
+    Screenings2 = ft.Container(content=ft.Row(controls=[Screening7,Screening8],spacing=25),
+                                top =600,
+                                left=525)
 
     
     sub2nd= ft.Stack(
