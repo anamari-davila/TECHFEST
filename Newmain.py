@@ -330,11 +330,18 @@ def main(page: Page) -> None:
         Ball.opacity=1
         page.update()
 
-    #2nd - MAIN
+    #API Callings
     imgsurls= [(f"https://image.tmdb.org/t/p/original{data["results"][x]["poster_path"]}") for x in range(len(data["results"]))]
     
     movieTitles = [data["results"][x]["title"] for x in range(len(data["results"]))]
 
+    MovieDescriptions = [data["results"][x]["overview"] for x in range(len(data["results"]))]
+    
+    MovieLang = [data["results"][x]["original_language"] for x in range(len(data["results"]))]
+
+
+
+    #2nd - MAIN
     
     buttonchoose = ft.Container(
                         content=ft.Image(src='ChooseButton.jpg'),
@@ -389,6 +396,7 @@ def main(page: Page) -> None:
             right=0,
             alignment=ft.alignment.center
             )
+            
 
     DILeft = ft.Image(
         src=imgsurls[y],
@@ -548,8 +556,80 @@ def main(page: Page) -> None:
     
 
     #Sub Second Page 
+    
+    ChosenMovieTitle = ft.Container(content=ft.Text(value=movieTitles[CurrentMovie],
+        text_align=ft.TextAlign.CENTER,
+        size=80, font_family= "BricolageBold"),
+            top=40,
+            left=525,
+            )
+    ChosenMovie = ft.Image(src=(f"https://image.tmdb.org/t/p/original{data["results"][CurrentMovie]["poster_path"]}"), height =600, top=150, left = 50
+                            )
+    DescriptionText = ft.Container(content= ft.Text(value="Description", 
+                                                    text_align=ft.TextAlign.CENTER, 
+                                                    size = 35, 
+                                                    font_family="BricolageBold"), top =200,
+                                                    left=525)
+    MovieDescription = ft.Container(content=ft.Text(value=MovieDescriptions[CurrentMovie], size =15), 
+                                    top=260,
+                                    left=525, 
+                                    width=800)
+    
+    MovLanguageText = ft.Container(content= ft.Text(value="Language", 
+                                                    text_align=ft.TextAlign.CENTER, 
+                                                    size = 35, 
+                                                    font_family="BricolageBold"), top =380,
+                                                    left=525)
+    
+    MovLanguage = ft.Container(content=ft.Text(value=MovieLang[CurrentMovie], size =20), 
+                                    top=425,
+                                    left=525, 
+                                    width=800)
+    
+    AvailableScreenings = ft.Container(content= ft.Text(value="Available Screenings", 
+                                                    text_align=ft.TextAlign.CENTER, 
+                                                    size = 35, 
+                                                    font_family="BricolageBold"), top =500,
+                                                    left=525)
+    
+    ScreeningTimes = ["3:00PM", "4:15PM","6:00PM", "7:45PM", "8:10PM"]
+    
+    Screening3 = ft.Container(
+                        content=ft.Image(src='3PM.png'),
+                        on_click= None,
+                        scale=0.25,
+                        animate_opacity=310 
+        )
+    Screening4 = ft.Container(
+                        content=ft.Image(src='4PM.png'),
+                        on_click= None,
+                        scale=0.25,
+                        animate_opacity=310 
+        )
+    Screening6 = ft.Container(
+                        content=ft.Image(src='6PM.png'),
+                        on_click= None,
+                        scale=0.25,
+                        animate_opacity=310 
+        )
+    Screening7 = ft.Container(
+                        content=ft.Image(src='7PM.png'),
+                        on_click= None,
+                        scale=0.25,
+                        animate_opacity=310 
+        )
+    Screening8 = ft.Container(
+                        content=ft.Image(src='8PM.png'),
+                        on_click= None,
+                        scale=0.25,
+                        animate_opacity=310 
+        )
 
-    #ChosenMovie = ft.Image(src=(f"https://image.tmdb.org/t/p/original{data["results"][CurrentMovie]["poster_path"]}") )
+    Screenings1 = ft.Container(content=ft.Row(controls=[Screening3,Screening4,Screening6], spacing=5),
+                                top =500,
+                                left=300)
+
+    
     sub2nd= ft.Stack(
         expand=True,
         controls=[
@@ -564,6 +644,14 @@ def main(page: Page) -> None:
             )
         ),
             Ball,
+            ChosenMovie,
+            ChosenMovieTitle,
+            DescriptionText,
+            MovieDescription,
+            MovLanguageText,
+            MovLanguage,
+            AvailableScreenings,
+            Screenings1
             ]
 
     )
