@@ -597,37 +597,40 @@ def main(page: Page) -> None:
     Screening3 = ft.Container(
                         content=ft.Image(src='3PM.png'),
                         on_click= None,
-                        scale=0.25,
+                        scale=0.3,
                         animate_opacity=310 
         )
     Screening4 = ft.Container(
                         content=ft.Image(src='4PM.png'),
                         on_click= None,
-                        scale=0.25,
+                        scale=0.32,
                         animate_opacity=310 
         )
     Screening6 = ft.Container(
                         content=ft.Image(src='6PM.png'),
                         on_click= None,
-                        scale=0.25,
+                        scale=0.3,
                         animate_opacity=310 
         )
     Screening7 = ft.Container(
                         content=ft.Image(src='7PM.png'),
                         on_click= None,
-                        scale=0.25,
+                        scale=0.3,
                         animate_opacity=310 
         )
     Screening8 = ft.Container(
                         content=ft.Image(src='8PM.png'),
                         on_click= None,
-                        scale=0.25,
+                        scale=0.28,
                         animate_opacity=310 
         )
 
-    Screenings1 = ft.Container(content=ft.Row(controls=[Screening3,Screening4,Screening6], spacing=5),
-                                top =500,
-                                left=300)
+    Screenings1 = ft.Container(content=ft.Row(controls=[Screening3,Screening4,Screening6],spacing=-580),
+                                top =450,
+                                left=180)
+    Screenings2 = ft.Container(content=ft.Row(controls=[Screening7,Screening8],spacing=-610),
+                                top =550,
+                                left=180)
 
     
     sub2nd= ft.Stack(
@@ -651,7 +654,8 @@ def main(page: Page) -> None:
             MovLanguageText,
             MovLanguage,
             AvailableScreenings,
-            Screenings1
+            Screenings1,
+            Screenings2
             ]
 
     )
