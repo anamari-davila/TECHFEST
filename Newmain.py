@@ -549,7 +549,7 @@ def main(page: Page) -> None:
 
     #Sub Second Page 
 
-    ChosenMovie = ft.Image(src=(f"https://image.tmdb.org/t/p/original{data["results"][CurrentMovie]["poster_path"]}") )
+    #ChosenMovie = ft.Image(src=(f"https://image.tmdb.org/t/p/original{data["results"][CurrentMovie]["poster_path"]}") )
     sub2nd= ft.Stack(
         expand=True,
         controls=[
