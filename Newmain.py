@@ -614,8 +614,39 @@ def main(page: Page) -> None:
     ChooseSeats = ft.Container(content=ft.Image(src="ChooseSeats.png", height=70),top=450, left=515)
 
     #Complete Idea Later
-    BackButton = ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_LEFT_ROUNDED, color= ft.Colors.WHITE), on_click=MCLeft, ink=True,scale= 4, border_radius=50)
+    async def BackToScreenTimes(e):
+        print("back clicked")
 
+        for item in [
+            Question1,
+            TextBoxContainer,
+            TotalBox,
+            ChooseSeats,
+            BackButton
+        ]:
+            if item in sub2nd.controls:
+                sub2nd.controls.remove(item)
+
+        for item in [
+            DescriptionText,
+            MovieDescription,
+            MovLanguageText,
+            MovLanguage,
+            AvailableScreenings,
+            Screenings1,
+            Screenings2
+        ]:
+            if item not in sub2nd.controls:
+                sub2nd.controls.append(item)
+
+        page.update()
+
+    BackButton = ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_LEFT_ROUNDED, color= ft.Colors.WHITE), 
+                            on_click=BackToScreenTimes, 
+                            ink=True,
+                            scale= 3, 
+                            border_radius=50, 
+                            left=50, top=50)
 
     async def TotalMoney(e):
         try:
@@ -682,6 +713,7 @@ def main(page: Page) -> None:
         sub2nd.controls.append(Question1)
         sub2nd.controls.append(TextBoxContainer)
         sub2nd.controls.append(TotalBox)
+        sub2nd.controls.append(BackButton)
         page.update()
 
     Screening3 = ft.Container(
@@ -751,7 +783,7 @@ def main(page: Page) -> None:
             MovLanguage,
             AvailableScreenings,
             Screenings1,
-            Screenings2
+            Screenings2,
             ]
 
     )
