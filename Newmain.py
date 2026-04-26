@@ -311,19 +311,24 @@ def main(page: Page) -> None:
 
     #SUBPAGE
     async def ChooseMovie(e):
+        global CurrentMovie
+
         buttonchoose.opacity=0
         await bola3()
-
+        
         page.update()
         await asyncio.sleep(1)
+
+        CurrentMovie = x % len(data["results"])
+        ChosenMovieTitle.content.value = movieTitles[CurrentMovie]
+        ChosenMovie.src = imgsurls[CurrentMovie]
+        MovieDescription.content.value = MovieDescriptions[CurrentMovie]
+        MovLanguage.content.value = MovieLang[CurrentMovie]
         page.go('/catalog/ChooseMoviePage')
-        
         
         Ball.left= 1600.9
         Ball.top= -100
         Ball.scale=2.5
-        CurrentMovie = x
-        print(CurrentMovie)
         page.update() 
 
         await asyncio.sleep(0.310)
@@ -488,8 +493,8 @@ def main(page: Page) -> None:
         size=16,
         style=ft.TextStyle(letter_spacing=2),
     ),
-    left=90,
-    top=45,
+    left=40,
+    top=90,
     
     animate_opacity=300
     )
@@ -564,8 +569,12 @@ def main(page: Page) -> None:
             top=40,
             left=525,
             )
-    ChosenMovie = ft.Image(src=(f"https://image.tmdb.org/t/p/original{data["results"][CurrentMovie]["poster_path"]}"), height =600, top=150, left = 50
-                            )
+    ChosenMovie = ft.Image(
+                        src=imgsurls[CurrentMovie],
+                        height=600,
+                        top=150,
+                        left=50
+                )
     DescriptionText = ft.Container(content= ft.Text(value="Description", 
                                                     text_align=ft.TextAlign.CENTER, 
                                                     size = 35, 
