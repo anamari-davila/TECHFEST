@@ -613,7 +613,6 @@ def main(page: Page) -> None:
 
     ChooseSeats = ft.Container(content=ft.Image(src="ChooseSeats.png", height=70),top=450, left=515)
 
-    #Complete Idea Later
     async def BackToScreenTimes(e):
         print("back clicked")
 
@@ -638,7 +637,6 @@ def main(page: Page) -> None:
         ]:
             if item not in sub2nd.controls:
                 sub2nd.controls.append(item)
-
         page.update()
 
     BackButton = ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_LEFT_ROUNDED, color= ft.Colors.WHITE), 
@@ -752,7 +750,6 @@ def main(page: Page) -> None:
                         on_click=chooseScreening,
                         ink=True,
         )
-
     Screenings1 = ft.Container(content=ft.Row(controls=[Screening3,Screening4,Screening6],spacing=25),
                                 top =550,
                                 left=525)
@@ -760,7 +757,28 @@ def main(page: Page) -> None:
                                 top =600,
                                 left=525)
 
-    
+    indSeats = ft.Container(content="A1", height=20)
+
+    async def ChoseSeats(e):
+        print("Choosing seats")
+
+        for item in [
+            Question1,
+            TextBoxContainer,
+            TotalBox,
+            ChooseSeats,
+            BackButton
+        ]:
+            if item in sub2nd.controls:
+                sub2nd.controls.remove(item)
+
+        for item in [
+            
+        ]:
+            if item not in sub2nd.controls:
+                sub2nd.controls.append(item)
+        page.update()
+
     sub2nd= ft.Stack(
         expand=True,
         controls=[
