@@ -5,12 +5,42 @@ import asyncio
 import os
 import requests
 
+
+
 x = 0
 y = -1
 z = 1
 CurrentMovie= 0
 def main(page: Page) -> None:
-    
+
+    times = ["03:00 PM", "03:45 PM", "04:15 PM", "05:00 PM", "05:30 PM", "06:15 PM", 
+             "06:45 PM", "07:30 PM", "08:00 PM", "08:45 PM", "09:15 PM", "10:00 PM", "10:30 PM"]
+
+
+
+    assigns = {
+        'movie0': [0, 4, 8, 11],
+        'movie1': [2, 6, 9, 12],
+        'movie2': [1, 5, 7, 10],
+        'movie3': [0, 3, 7, 10],
+        'movie4': [1, 4, 8, 11],
+        'movie5': [2, 6, 9],
+        'movie6': [0, 4, 8],
+        'movie7': [1, 5, 9, 12],
+        'movie8': [2, 6, 10],
+        'movie9': [0, 3, 7, 11],
+        'movie10': [1, 5, 8],
+        'movie11': [2, 6, 9, 12],
+        'movie12': [0, 4, 7, 10],
+        'movie13': [1, 5, 8, 11],
+        'movie14': [2, 6, 9],
+        'movie15': [0, 3, 8, 11],
+        'movie16': [1, 4, 7, 10],
+        'movie17': [2, 6, 9, 12],
+        'movie18': [0, 4, 8],
+        'movie19': [1, 5, 9, 11]
+    }
+
     page.fonts = {
         "Main": "Comucan_PERSONAL_USE_ONLY.otf",
         "TtNormsExtra": "TtNormsExtraBlack.otf",
@@ -19,10 +49,10 @@ def main(page: Page) -> None:
     }
 
     
-
+    
     #Page Setup
 
-    page.window.full_screen = True
+    page.window.full_screen = False
     page.theme = ft.Theme(font_family="Main")
     page.title= "World Of Cinema"
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
@@ -329,6 +359,13 @@ def main(page: Page) -> None:
         Ball.left= 1600.9
         Ball.top= -100
         Ball.scale=2.5
+        Screening3.content.controls[1].content.value=f"{times[assigns[f"movie{CurrentMovie}"][0]]}"
+        Screening4.content.controls[1].content.value=f"{times[assigns[f"movie{CurrentMovie}"][1]]}"
+        Screening5.content.controls[1].content.value=f"{times[assigns[f"movie{CurrentMovie}"][2]]}"
+        if len(assigns[f"movie{CurrentMovie}"]) < 4:
+            Screening6.opacity= 0
+        else:
+            Screening6.content.controls[1].content.value=f"{times[assigns[f"movie{CurrentMovie}"][3]]}"
         page.update() 
 
         await asyncio.sleep(0.310)
@@ -602,7 +639,6 @@ def main(page: Page) -> None:
                                                     font_family="BricolageBold"), top =500,
                                                     left=525)
     
-    ScreeningTimes = ["3:00PM", "4:15PM","6:00PM", "7:45PM", "8:10PM"]
 
 
     Question1 = ft.Container(content=ft.Text(value="How many seats would you like?", size=30, 
@@ -681,17 +717,7 @@ def main(page: Page) -> None:
     TicketPrice = 450
 
     async def chooseScreening(e):
-        if  e.control == Screening3:
-            ScreenTime = ScreeningTimes[0]
-        elif e.control == Screening4:
-            ScreenTime = ScreeningTimes[1]
-        elif e.control == Screening6:
-            ScreenTime = ScreeningTimes[2]
-        elif e.control == Screening7:
-            ScreenTime = ScreeningTimes[3]
-        elif  e.control == Screening8:
-            ScreenTime = ScreeningTimes[4]
-        print(ScreenTime)
+        print(e.control.content.controls[1].content.value)
 
         for item in [
             DescriptionText,
@@ -714,48 +740,114 @@ def main(page: Page) -> None:
         sub2nd.controls.append(BackButton)
         page.update()
 
-    Screening3 = ft.Container(
-                        content=ft.Image(src="3PM.png", width=170, height=90, fit=ft.ImageFit.CONTAIN),
-                        width=170,
-                        height=60,
-                        on_click=chooseScreening,
-                        ink=True,
-        )
+    Screening3 = ft.Container(content=ft.Stack(controls=[
+                            ft.Container(
+                                content=ft.Image(src="Redbuttonbg.png"),
+                                    
+                                    ink=True,
+                                    width=372,
+                                    height=90,
+                                    scale=0.65,
+                                    border_radius=100
+                        ),
+                            ft.Container(
+                                content=ft.Text(f"{times[assigns[f"movie{CurrentMovie}"][0]]}",
+                                                text_align=ft.TextAlign.CENTER),
+                                                
+                                width=372,
+                                height=90,
+                                alignment=ft.alignment.center
+                                
+                            
+                            )
+                            
+        
+        ]
+    ) ,  on_click=chooseScreening)
 
-    Screening4 = ft.Container(
-                        content=ft.Image(src="4PM.png", width=200, height=90, fit=ft.ImageFit.CONTAIN),
-                        width=170,
-                        height=60,
-                        on_click=chooseScreening,
-                        ink=True,
-        )
-    Screening6 = ft.Container(
-                        content=ft.Image(src="6PM.png", width=200, height=90, fit=ft.ImageFit.CONTAIN),
-                        width=170,
-                        height=60,
-                        on_click=chooseScreening,
-                        ink=True,
-        )
-    Screening7 = ft.Container(
-                        content=ft.Image(src="7PM.png", width=200, height=90, fit=ft.ImageFit.CONTAIN),
-                        width=170,
-                        height=60,
-                        on_click=chooseScreening,
-                        ink=True,
-        )
-    Screening8 = ft.Container(
-                        content=ft.Image(src="8PM.png", width=200, height=90, fit=ft.ImageFit.CONTAIN),
-                        width=170,
-                        height=60,
-                        on_click=chooseScreening,
-                        ink=True,
-        )
-    Screenings1 = ft.Container(content=ft.Row(controls=[Screening3,Screening4,Screening6],spacing=25),
+    Screening4 = ft.Container(content=ft.Stack(controls=[
+                            ft.Container(
+                                content=ft.Image(src="Redbuttonbg.png"),
+                                    
+                                    ink=True,
+                                    width=372,
+                                    height=90,
+                                    scale=0.65,
+                                    border_radius=100
+                        ),
+                            ft.Container(
+                                content=ft.Text(f"{times[assigns[f"movie{CurrentMovie}"][1]]}",
+                                                text_align=ft.TextAlign.CENTER),
+                                                
+                                width=372,
+                                height=90,
+                                alignment=ft.alignment.center
+                                
+                            
+                            )
+                            
+        
+        ]
+    ) ,  on_click=chooseScreening)
+
+
+    Screening5 = ft.Container(content=ft.Stack(controls=[
+                            ft.Container(
+                                content=ft.Image(src="Redbuttonbg.png"),
+                                    
+                                    ink=True,
+                                    width=372,
+                                    height=90,
+                                    scale=0.65,
+                                    border_radius=100
+                        ),
+                            ft.Container(
+                                content=ft.Text(f"{times[assigns[f"movie{CurrentMovie}"][2]]}",
+                                                text_align=ft.TextAlign.CENTER),
+                                                
+                                width=372,
+                                height=90,
+                                alignment=ft.alignment.center
+                                
+                            
+                            )
+                            
+        
+        ]
+    ) ,  on_click=chooseScreening)
+    
+    Screening6 = ft.Container(content=ft.Stack(controls=[
+                            ft.Container(
+                                content=ft.Image(src="Redbuttonbg.png"),
+                                    
+                                    ink=True,
+                                    width=372,
+                                    height=90,
+                                    scale=0.65,
+                                    border_radius=100
+                        ),
+                            ft.Container(
+                                content=ft.Text("3:00PM",
+                                                text_align=ft.TextAlign.CENTER),
+                                                
+                                width=372,
+                                height=90,
+                                alignment=ft.alignment.center
+                                
+                            
+                            )
+                            
+        
+        ]
+    ) ,  on_click=chooseScreening)
+
+    
+    Screenings1 = ft.Container(content=ft.Row(controls=[Screening3,Screening4,Screening5],spacing=-100),
                                 top =550,
-                                left=525)
-    Screenings2 = ft.Container(content=ft.Row(controls=[Screening7,Screening8],spacing=25),
-                                top =600,
-                                left=525)
+                                left=455)
+    Screenings2 = ft.Container(content=ft.Row(controls=[Screening6],spacing=-100),
+                                top =640,
+                                left=455)
 
     indSeats = ft.Container(content="A1", height=20)
 
