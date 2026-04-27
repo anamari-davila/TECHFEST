@@ -377,7 +377,7 @@ def main(page: Page) -> None:
         Ball.top= -100
         Ball.scale=2.5
         MovLanguage.content.value=f"{language[MovieLang[CurrentMovie]]}"
-
+        
         Screening3.content.controls[1].content.value=f"{times[assigns[f"movie{CurrentMovie}"][0]]}"
         Screening4.content.controls[1].content.value=f"{times[assigns[f"movie{CurrentMovie}"][1]]}"
         Screening5.content.controls[1].content.value=f"{times[assigns[f"movie{CurrentMovie}"][2]]}"
@@ -666,7 +666,35 @@ def main(page: Page) -> None:
                                             left=525)
     test = ft.Text(value="Min 1. Max 72", color=ft.Colors.BLACK)
 
-    ChooseSeats = ft.Container(content=ft.Image(src="ChooseSeats.png", height=70),top=450, left=515)
+    ChooseSeats = ft.Container(content=ft.Stack(controls=[
+                            ft.Container(
+                                content=ft.Image(src="Redbuttonbg.png"),
+                                    
+                                    ink=True,
+                                    width=372,
+                                    height=90,
+                                    scale=0.65,
+                                    border_radius=100
+                        ),
+                        ft.Container(
+                                content=ft.Text(f"CHOOSE SEATS",
+                                                text_align=ft.TextAlign.CENTER,
+                                                size=16,
+                                                style=ft.TextStyle(letter_spacing=2),
+                                                font_family="TtNormsExtra"),
+                                                
+                                width=372,
+                                height=90,
+                                alignment=ft.alignment.center,
+                                
+                            
+                        )
+                ]
+            ),
+            top=450,
+            left=460
+            
+        )
 
     async def BackToScreenTimes(e):
         print("back clicked")
@@ -731,7 +759,7 @@ def main(page: Page) -> None:
                     )
     TextBoxContainer = ft.Container(content=TextBox, top=350,
                         left = 525)
-    TotalBox = ft.Container(content=ft.Text(value="",size = 15), top= 420, left=525)
+    TotalBox = ft.Container(content=ft.Text(value="",size = 20 ), top= 420, left=525)
     
     TicketPrice = 450
 
@@ -772,7 +800,8 @@ def main(page: Page) -> None:
                             ft.Container(
                                 content=ft.Text(f"{times[assigns[f"movie{CurrentMovie}"][0]]}",
                                                 text_align=ft.TextAlign.CENTER,
-                                                size=20),
+                                                size=16,
+                                                font_family="TtNormsExtra"),
                                                 
 
                                 width=372,
@@ -799,7 +828,8 @@ def main(page: Page) -> None:
                             ft.Container(
                                 content=ft.Text(f"{times[assigns[f"movie{CurrentMovie}"][1]]}",
                                                 text_align=ft.TextAlign.CENTER,
-                                                size=20),
+                                                size=16,
+                                                font_family="TtNormsExtra"),
                                                 
                                 width=372,
                                 height=90,
@@ -826,7 +856,8 @@ def main(page: Page) -> None:
                             ft.Container(
                                 content=ft.Text(f"{times[assigns[f"movie{CurrentMovie}"][2]]}",
                                                 text_align=ft.TextAlign.CENTER,
-                                                size=20),
+                                                size=16,
+                                                font_family="TtNormsExtra"),
                                                 
                                 width=372,
                                 height=90,
@@ -852,7 +883,8 @@ def main(page: Page) -> None:
                             ft.Container(
                                 content=ft.Text("",
                                                 text_align=ft.TextAlign.CENTER,
-                                                size=20),
+                                                size=16,
+                                                font_family="TtNormsExtra"),
                                                 
                                 width=372,
                                 height=90,
