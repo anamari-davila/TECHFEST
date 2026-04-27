@@ -16,9 +16,26 @@ def main(page: Page) -> None:
     times = ["03:00 PM", "03:45 PM", "04:15 PM", "05:00 PM", "05:30 PM", "06:15 PM", 
              "06:45 PM", "07:30 PM", "08:00 PM", "08:45 PM", "09:15 PM", "10:00 PM", "10:30 PM"]
 
+    language = {
+    "en": "English", "es": "Spanish", "fr": "French", "de": "German", 
+    "it": "Italian", "pt": "Portuguese", "ru": "Russian", "zh": "Chinese",
+    "ja": "Japanese", "ko": "Korean", "hi": "Hindi", "ar": "Arabic",
+    
+    "pl": "Polish", "tr": "Turkish", "nl": "Dutch", "sv": "Swedish",
+    "el": "Greek", "cs": "Czech", "hu": "Hungarian", "ro": "Romanian",
+    "da": "Danish", "fi": "Finnish", "no": "Norwegian", "bg": "Bulgarian",
+    "hr": "Croatian", "sk": "Slovak", "uk": "Ukrainian", "sr": "Serbian",
+    
+    "th": "Thai", "vi": "Vietnamese", "id": "Indonesian", "ms": "Malay",
+    "he": "Hebrew", "fa": "Persian", "bn": "Bengali", "ur": "Urdu",
+    "ta": "Tamil", "te": "Telugu", "mr": "Marathi", "gu": "Gujarati",
+    
+    "ca": "Catalan", "eu": "Basque", "gl": "Galician", "af": "Afrikaans",
+    "sw": "Swahili", "is": "Icelandic", "et": "Estonian", "lv": "Latvian",
+    "lt": "Lithuanian"
+}
 
-
-    assigns = {
+    assigns = {    #THIS WAS MADE WITH AI, but the Idea not, randomnized and with AI, and the one from above
         'movie0': [0, 4, 8, 11],
         'movie1': [2, 6, 9, 12],
         'movie2': [1, 5, 7, 10],
@@ -359,6 +376,8 @@ def main(page: Page) -> None:
         Ball.left= 1600.9
         Ball.top= -100
         Ball.scale=2.5
+        MovLanguage.content.value=f"{language[MovieLang[CurrentMovie]]}"
+
         Screening3.content.controls[1].content.value=f"{times[assigns[f"movie{CurrentMovie}"][0]]}"
         Screening4.content.controls[1].content.value=f"{times[assigns[f"movie{CurrentMovie}"][1]]}"
         Screening5.content.controls[1].content.value=f"{times[assigns[f"movie{CurrentMovie}"][2]]}"
@@ -622,15 +641,15 @@ def main(page: Page) -> None:
                                     left=525, 
                                     width=800)
     
-    MovLanguageText = ft.Container(content= ft.Text(value="Language", 
+    MovLanguageText = ft.Container(content= ft.Text(value="Original Language", 
                                                     text_align=ft.TextAlign.CENTER, 
                                                     size = 35, 
                                                     font_family="BricolageBold"), top =380,
                                                     left=525)
     
-    MovLanguage = ft.Container(content=ft.Text(value=MovieLang[CurrentMovie], size =20), 
-                                    top=425,
-                                    left=525, 
+    MovLanguage = ft.Container(content=ft.Text(value=f"{language[MovieLang[CurrentMovie]]}", size =20), 
+                                    top=430,
+                                    left=528, 
                                     width=800)
     
     AvailableScreenings = ft.Container(content= ft.Text(value="Available Screenings", 
@@ -752,8 +771,10 @@ def main(page: Page) -> None:
                         ),
                             ft.Container(
                                 content=ft.Text(f"{times[assigns[f"movie{CurrentMovie}"][0]]}",
-                                                text_align=ft.TextAlign.CENTER),
+                                                text_align=ft.TextAlign.CENTER,
+                                                size=20),
                                                 
+
                                 width=372,
                                 height=90,
                                 alignment=ft.alignment.center
@@ -777,7 +798,8 @@ def main(page: Page) -> None:
                         ),
                             ft.Container(
                                 content=ft.Text(f"{times[assigns[f"movie{CurrentMovie}"][1]]}",
-                                                text_align=ft.TextAlign.CENTER),
+                                                text_align=ft.TextAlign.CENTER,
+                                                size=20),
                                                 
                                 width=372,
                                 height=90,
@@ -803,7 +825,8 @@ def main(page: Page) -> None:
                         ),
                             ft.Container(
                                 content=ft.Text(f"{times[assigns[f"movie{CurrentMovie}"][2]]}",
-                                                text_align=ft.TextAlign.CENTER),
+                                                text_align=ft.TextAlign.CENTER,
+                                                size=20),
                                                 
                                 width=372,
                                 height=90,
@@ -827,8 +850,9 @@ def main(page: Page) -> None:
                                     border_radius=100
                         ),
                             ft.Container(
-                                content=ft.Text("3:00PM",
-                                                text_align=ft.TextAlign.CENTER),
+                                content=ft.Text("",
+                                                text_align=ft.TextAlign.CENTER,
+                                                size=20),
                                                 
                                 width=372,
                                 height=90,
