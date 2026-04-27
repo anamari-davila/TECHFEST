@@ -1,5 +1,6 @@
 import flet as ft
 
+SelectedSeats = []
 def main(page: ft.Page):
     page.title = "Flet App Template"
     page.theme_mode = ft.ThemeMode.LIGHT
@@ -9,32 +10,38 @@ def main(page: ft.Page):
                             height = 30, 
                             width = 30, 
                             bgcolor=ft.colors.GREY_400,
-                            border_radius= 3)
+                            border_radius= 3, 
+                            on_click=SelectSeats)
     indSeatsB1 = ft.Container(content=(ft.Text(value="B1", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
                             bgcolor=ft.colors.GREY_400,
-                            border_radius= 3)
+                            border_radius= 3,
+                            on_click=SelectSeats)
     indSeatsC1 = ft.Container(content=(ft.Text(value="C1", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
                             bgcolor=ft.colors.GREY_400,
-                            border_radius= 3)
+                            border_radius= 3,
+                            on_click=SelectSeats)
     indSeatsD1 = ft.Container(content=(ft.Text(value="D1", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
                             bgcolor=ft.colors.GREY_400,
-                            border_radius= 3)
+                            border_radius= 3,
+                            on_click=SelectSeats)
     indSeatsE1 = ft.Container(content=(ft.Text(value="E1", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
                             bgcolor=ft.colors.GREY_400,
-                            border_radius= 3)
+                            border_radius= 3,
+                            on_click=SelectSeats)
     indSeatsF1 = ft.Container(content=(ft.Text(value="F1", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
                             bgcolor=ft.colors.GREY_400,
-                            border_radius= 3)
+                            border_radius= 3,
+                            on_click=SelectSeats)
     
     ColumnOne = ft.Container(content=ft.Column(controls=[indSeatsA1, indSeatsB1, indSeatsC1, indSeatsD1, indSeatsE1, indSeatsF1]))
 
@@ -43,32 +50,38 @@ def main(page: ft.Page):
                             height = 30, 
                             width = 30, 
                             bgcolor=ft.colors.GREY_400,
-                            border_radius= 3)
+                            border_radius= 3,
+                            on_click=SelectSeats)
     indSeatsB2 = ft.Container(content=(ft.Text(value="B2", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
                             bgcolor=ft.colors.GREY_400,
-                            border_radius= 3)
+                            border_radius= 3,
+                            on_click=SelectSeats)
     indSeatsC2 = ft.Container(content=(ft.Text(value="C2", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
                             bgcolor=ft.colors.GREY_400,
-                            border_radius= 3)
+                            border_radius= 3,
+                            on_click=SelectSeats)
     indSeatsD2 = ft.Container(content=(ft.Text(value="D2", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
                             bgcolor=ft.colors.GREY_400,
-                            border_radius= 3)
+                            border_radius= 3,
+                            on_click=SelectSeats)
     indSeatsE2 = ft.Container(content=(ft.Text(value="E2", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
                             bgcolor=ft.colors.GREY_400,
-                            border_radius= 3)
+                            border_radius= 3,
+                            on_click=SelectSeats)
     indSeatsF2 = ft.Container(content=(ft.Text(value="F2", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
                             bgcolor=ft.colors.GREY_400,
-                            border_radius= 3)
+                            border_radius= 3,
+                            on_click=SelectSeats)
     
     ColumnTwo = ft.Container(content=ft.Column(controls=[indSeatsA2, indSeatsB2, indSeatsC2, indSeatsD2, indSeatsE2, indSeatsF2]))
 
@@ -77,32 +90,38 @@ def main(page: ft.Page):
                             height = 30, 
                             width = 30, 
                             bgcolor=ft.colors.GREY_400,
-                            border_radius= 3)
+                            border_radius= 3,
+                            on_click=SelectSeats)
     indSeatsB3 = ft.Container(content=(ft.Text(value="B3", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
                             bgcolor=ft.colors.GREY_400,
-                            border_radius= 3)
+                            border_radius= 3,
+                            on_click=SelectSeats)
     indSeatsC3 = ft.Container(content=(ft.Text(value="C3", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
                             bgcolor=ft.colors.GREY_400,
-                            border_radius= 3)
+                            border_radius= 3,
+                            on_click=SelectSeats)
     indSeatsD3 = ft.Container(content=(ft.Text(value="D3", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
                             bgcolor=ft.colors.GREY_400,
-                            border_radius= 3)
+                            border_radius= 3,
+                            on_click=SelectSeats)
     indSeatsE3 = ft.Container(content=(ft.Text(value="E3", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
                             bgcolor=ft.colors.GREY_400,
-                            border_radius= 3)
+                            border_radius= 3,
+                            on_click=SelectSeats)
     indSeatsF3 = ft.Container(content=(ft.Text(value="F3", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
                             bgcolor=ft.colors.GREY_400,
-                            border_radius= 3)
+                            border_radius= 3,
+                            on_click=SelectSeats)
     
     ColumnThree = ft.Container(content=ft.Column(controls=[indSeatsA3, indSeatsB3, indSeatsC3, indSeatsD3, indSeatsE3, indSeatsF3]))
 
@@ -111,32 +130,38 @@ def main(page: ft.Page):
                             height = 30, 
                             width = 30, 
                             bgcolor=ft.colors.GREY_400,
-                            border_radius= 3)
+                            border_radius= 3,
+                            on_click=SelectSeats)
     indSeatsB4 = ft.Container(content=(ft.Text(value="B4", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
                             bgcolor=ft.colors.GREY_400,
-                            border_radius= 3)
+                            border_radius= 3,
+                            on_click=SelectSeats)
     indSeatsC4 = ft.Container(content=(ft.Text(value="C4", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
                             bgcolor=ft.colors.GREY_400,
-                            border_radius= 3)
+                            border_radius= 3,
+                            on_click=SelectSeats)
     indSeatsD4 = ft.Container(content=(ft.Text(value="D4", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
                             bgcolor=ft.colors.GREY_400,
-                            border_radius= 3)
+                            border_radius= 3,
+                            on_click=SelectSeats)
     indSeatsE4 = ft.Container(content=(ft.Text(value="E4", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
                             bgcolor=ft.colors.GREY_400,
-                            border_radius= 3)
+                            border_radius= 3,
+                            on_click=SelectSeats)
     indSeatsF4 = ft.Container(content=(ft.Text(value="F4", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
                             bgcolor=ft.colors.GREY_400,
-                            border_radius= 3)
+                            border_radius= 3,
+                            on_click=SelectSeats)
     
     ColumnFour = ft.Container(content=ft.Column(controls=[indSeatsA4, indSeatsB4, indSeatsC4, indSeatsD4, indSeatsE4, indSeatsF4]))
 
@@ -442,8 +467,24 @@ def main(page: ft.Page):
                             height= 300, 
                             border_radius= 7)
     
-    
+    SelectedSeats = []
 
-    page.add(WholeThing)
+    def SelectSeats(e):
+        global SelectedSeats
+        seat = e.control
+
+        seat_name = seat.content.value
+
+        if seat_name not in SelectedSeats:
+            SelectedSeats.append(seat_name)
+            seat.bgcolor = ft.Colors.GREEN
+        else:
+            SelectedSeats.remove(seat_name)
+            seat.bgcolor = ft.Colors.GREY_400
+
+        print(SelectedSeats)
+        page.update()
+
+        page.add(WholeThing)
 # Run the app
 ft.app(target=main)
