@@ -207,7 +207,7 @@ def main(page: Page) -> None:
         left=-630.9, animate_opacity=300
         )
 
-    #MainPageTextFields
+    #MainPageTextArea
     MainYellow= ft.Text(
         value="WORLD OF",
         font_family="TtNormsExtra", 
@@ -389,6 +389,17 @@ def main(page: Page) -> None:
 
         await asyncio.sleep(0.310)
         Ball.opacity=1
+        Ball.opacity = 1
+        ChosenMovie.opacity = 1
+        ChosenMovieTitle.opacity = 1
+        DescriptionText.opacity = 1
+        MovieDescription.opacity = 1
+        MovLanguageText.opacity = 1
+        MovLanguage.opacity = 1
+        AvailableScreenings.opacity = 1
+        Screenings1.opacity = 1
+        Screenings2.opacity = 1
+        BackButton0.opacity = 1
         page.update()
 
     #API Callings
@@ -696,6 +707,40 @@ def main(page: Page) -> None:
             
         )
 
+    async def BackToCatalog(e):
+
+        Ball.opacity = 0
+        ChosenMovie.opacity = 0
+        ChosenMovieTitle.opacity = 0
+        DescriptionText.opacity = 0
+        MovieDescription.opacity = 0
+        MovLanguageText.opacity = 0
+        MovLanguage.opacity = 0
+        AvailableScreenings.opacity = 0
+        Screenings1.opacity = 0
+        Screenings2.opacity = 0
+        BackButton0.opacity = 0
+        
+        page.update()
+
+        await bola2()
+
+        page.update()
+        await asyncio.sleep(1)
+        page.go('/catalog')
+
+        
+        Ball.left=-250.9
+        Ball.top = 200.6
+        Ball.scale=1
+        buttonchoose.opacity=0
+        page.update() 
+
+        await asyncio.sleep(0.310)
+        Ball.opacity=1
+        buttonchoose.opacity=1
+        page.update()
+
     async def BackToScreenTimes(e):
         print("back clicked")
 
@@ -722,6 +767,13 @@ def main(page: Page) -> None:
                 sub2nd.controls.append(item)
         page.update()
 
+    BackButton0 = ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_LEFT_ROUNDED, color= ft.Colors.WHITE), 
+                            on_click=BackToCatalog, 
+                            ink=True,
+                            scale= 3, 
+                            border_radius=50, 
+                            left=50, top=50)
+    
     BackButton = ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_LEFT_ROUNDED, color= ft.Colors.WHITE), 
                             on_click=BackToScreenTimes, 
                             ink=True,
@@ -753,13 +805,14 @@ def main(page: Page) -> None:
                         border_radius=15,
                         bgcolor=ft.colors.WHITE,
                         border_color=ft.colors.BLACK,
+                        
                         border_width=2,
                         on_change=TotalMoney,
                         value = None
                     )
     TextBoxContainer = ft.Container(content=TextBox, top=350,
                         left = 525)
-    TotalBox = ft.Container(content=ft.Text(value="",size = 20 ), top= 420, left=525)
+    TotalBox = ft.Container(content=ft.Text(value="",size = 20), top= 420, left=525)
     
     TicketPrice = 450
 
@@ -950,6 +1003,7 @@ def main(page: Page) -> None:
             AvailableScreenings,
             Screenings1,
             Screenings2,
+            BackButton0
             ]
 
     )
