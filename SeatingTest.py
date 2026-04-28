@@ -1,35 +1,27 @@
 import flet as ft
 
 SelectedSeats = []
-def pepito(page: ft.Page):
+def Wholething(page: ft.Page):
 
     SelectedSeats = []
-
-    def closeseats(e):
-        SelectedSeats.clear()
-        page.update()
-        
-        page.close(Everything)
-        
-
-    def save_and_close(e):
-        pass
-
-
+    limit = 5
     def SelectSeats(e):
         global SelectedSeats
+
         seat = e.control
 
         seat_name = seat.content.value
 
-        if seat_name not in SelectedSeats:
+        if seat_name not in SelectedSeats and len(SelectedSeats) !=limit:
             SelectedSeats.append(seat_name)
             seat.bgcolor = ft.Colors.GREEN
         else:
             SelectedSeats.remove(seat_name)
             seat.bgcolor = ft.Colors.GREY_400
 
-        print(SelectedSeats)
+            print(SelectedSeats)
+
+            
         page.update()
 
 #Individual Seats 1st Column
@@ -543,19 +535,4 @@ def pepito(page: ft.Page):
                             height= 360, 
                             border_radius= 7,padding=0)
 
-
-    Everything= ft.AlertDialog(
-            modal=True,
-            title=ft.Text("Choose your seats"),
-            content=WholeThing,
-            actions=[
-                ft.TextButton("Cancel", on_click=closeseats),
-                ft.TextButton("Save and close", on_click=save_and_close)
-            ],
-            bgcolor="#c2241f",
-            actions_alignment=ft.MainAxisAlignment.END)
-
-    return Everything
-
-
-
+    return WholeThing

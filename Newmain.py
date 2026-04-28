@@ -4,7 +4,7 @@ from flet import RouteChangeEvent, ViewPopEvent, CrossAxisAlignment, MainAxisAli
 import asyncio
 import os
 import requests
-from SeatingTest import pepito
+from SeatingTest import Wholething
 
 
 x = 0
@@ -82,10 +82,7 @@ def main(page: Page) -> None:
     page.update()
 
 
-    def Seating(e):
-        Cabra= pepito(page)
-
-        page.open(Cabra)
+    
     #1st view
     async def bola1():
 
@@ -431,7 +428,7 @@ def main(page: Page) -> None:
                         left=0,
                         right=0,
                         alignment=ft.alignment.center,
-                        animate_opacity=310 
+                        animate_opacity=310, opacity=0
         )
     
     async def MCLeft(e):
@@ -473,34 +470,34 @@ def main(page: Page) -> None:
             top=250,
             left=0,
             right=0,
-            alignment=ft.alignment.center
+            alignment=ft.alignment.center, animate_opacity=350 , opacity=0
             )
             
 
     DILeft = ft.Image(
         src=imgsurls[y],
         width=200,
-        height=300,
+        height=300,animate_opacity= 350, opacity=0
     )
     DILeftText = ft.Text(
         value=movieTitles[y],
         size=20,
         color=ft.Colors.WHITE,
         text_align=ft.TextAlign.CENTER,
-        width=260,
+        width=260, animate_opacity= 350, opacity=0
     )
     
     DILeftColumn = ft.Container(content=ft.Column(controls=[DILeftText,DILeft], horizontal_alignment=ft.CrossAxisAlignment.CENTER), 
                                 width=260, 
                                 top=350, 
-                                left=170,
+                                left=170
                                 )
 
 
     DIRight = ft.Image(
         src=imgsurls[z], 
         width=200,
-        height=300,
+        height=300, animate_opacity= 350, opacity=0
     )
 
     DIRightText = ft.Text(
@@ -508,13 +505,13 @@ def main(page: Page) -> None:
         size=20,
         color=ft.Colors.WHITE,
         text_align=ft.TextAlign.CENTER,
-        width=260,
+        width=260, animate_opacity= 350, opacity=0
             )
     
     DIRightColumn = ft.Container(content=ft.Column(controls=[DIRightText,DIRight], horizontal_alignment=ft.CrossAxisAlignment.CENTER), 
                                 width=260, 
                                 top=350, 
-                                right=170, )
+                                right=170)
     MainYellow1 = ft.Text(
         value="WORLD OF",
         font_family="TtNormsExtra",
@@ -525,7 +522,7 @@ def main(page: Page) -> None:
         text_align=ft.TextAlign.CENTER,
         size=35,
         style=ft.TextStyle(letter_spacing=0),
-        animate_opacity=300
+        animate_opacity=300, opacity=0
     )
 
     MainWhite1 = ft.Text(
@@ -538,7 +535,7 @@ def main(page: Page) -> None:
         text_align=ft.TextAlign.CENTER,
         size=170,
         style=ft.TextStyle(letter_spacing=4),
-        animate_opacity=300
+        animate_opacity=300, opacity=0
     )
     ImageSlide = ft.Row(controls=[
                             ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_LEFT_ROUNDED, color= ft.Colors.WHITE), on_click=MCLeft, ink=True,scale= 4, border_radius=50),
@@ -551,7 +548,7 @@ def main(page: Page) -> None:
                         alignment=ft.MainAxisAlignment.CENTER,
                         scale=1, 
                         spacing= 5,
-                        wrap=False,)
+                        wrap=False, opacity=0, animate_opacity= 350)
     
     MovieIcon1PT2=ft.Image(
         src="CameraV.png",
@@ -633,10 +630,34 @@ def main(page: Page) -> None:
 
     )
     
-
+    Wholething1 =Wholething(page)
     #Sub Second Page 
 
-    
+    async def ChoosingSeats(e):
+        Question1.content.value = "Choose Available Seats"
+ 
+        for item in [
+            TextBoxContainer,
+            TotalBox,
+            ChooseSeats
+        ]:
+            if item in sub2nd.controls:
+                sub2nd.controls.remove(item)
+        
+        page.update()
+        if Wholething1 not in sub2nd.controls:
+            sub2nd.controls.append(Wholething1)
+        Wholething1.animate_opacity=350
+        Wholething1.opacity=0
+        page.update()
+        Wholething1.top =350
+        Wholething1.left=525
+        page.update()
+        Wholething1.opacity=1
+        
+        page.update()
+  
+
     ChosenMovieTitle = ft.Container(content=ft.Text(value=movieTitles[CurrentMovie],
         text_align=ft.TextAlign.CENTER,
         size=80, font_family= "BricolageBold"),
@@ -653,36 +674,43 @@ def main(page: Page) -> None:
                                                     text_align=ft.TextAlign.CENTER, 
                                                     size = 35, 
                                                     font_family="BricolageBold"), top =200,
-                                                    left=525)
+                                                    left=525,
+                                                    animate_opacity=350)
     MovieDescription = ft.Container(content=ft.Text(value=MovieDescriptions[CurrentMovie], size =15), 
                                     top=260,
                                     left=525, 
-                                    width=800)
+                                    width=800,
+                                    animate_opacity=350)
     
     MovLanguageText = ft.Container(content= ft.Text(value="Original Language", 
                                                     text_align=ft.TextAlign.CENTER, 
                                                     size = 35, 
                                                     font_family="BricolageBold"), top =380,
-                                                    left=525)
+                                                    left=525,
+                                                    animate_opacity=350)
     
     MovLanguage = ft.Container(content=ft.Text(value=f"{language[MovieLang[CurrentMovie]]}", size =20), 
                                     top=430,
                                     left=528, 
-                                    width=800)
+                                    width=800,
+                                    animate_opacity=350, opacity=0)
     
     AvailableScreenings = ft.Container(content= ft.Text(value="Available Screenings", 
                                                     text_align=ft.TextAlign.CENTER, 
                                                     size = 35, 
                                                     font_family="BricolageBold"), top =500,
-                                                    left=525)
+                                                    left=525,
+                                                    animate_opacity=350, opacity=0)
     
 
 
     Question1 = ft.Container(content=ft.Text(value="How many seats would you like?", size=30, 
                                             font_family="BricolageBold"), 
                                             top=300, 
-                                            left=525)
-    test = ft.Text(value="Min 1. Max 72", color=ft.Colors.BLACK)
+                                            left=525,
+                                            animate_opacity = 350, opacity=0)
+    test = ft.Text(value="Min 1. Max 72", color=ft.Colors.BLACK,
+                                            animate_opacity = 350, opacity=0)
 
     
     
@@ -714,10 +742,15 @@ def main(page: Page) -> None:
             ),
             top=450,
             left=460,
-            on_click= Seating
+            on_click= ChoosingSeats,
+            opacity=0,
+            
+            animate_offset=350,
+            
             
         )
 
+    
     async def BackToCatalog(e):
 
         Ball.opacity = 0
@@ -806,14 +839,14 @@ def main(page: Page) -> None:
                             ink=True,
                             scale= 3, 
                             border_radius=50, 
-                            left=50, top=50)
+                            left=50, top=50,animate_opacity = 350, opacity=0)
     
     BackButton = ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_LEFT_ROUNDED, color= ft.Colors.WHITE), 
                             on_click=BackToScreenTimes, 
                             ink=True,
                             scale= 3, 
                             border_radius=50, 
-                            left=50, top=50)
+                            left=50, top=50,animate_opacity = 350, opacity=0)
 
     async def TotalMoney(e):
         try:
@@ -842,17 +875,29 @@ def main(page: Page) -> None:
                         
                         border_width=2,
                         on_change=TotalMoney,
-                        value = None
+                        value = None,animate_opacity = 350, opacity=0
                     )
     TextBoxContainer = ft.Container(content=TextBox, top=350,
-                        left = 525)
-    TotalBox = ft.Container(content=ft.Text(value="",size = 20), top= 420, left=525)
+                        left = 525,
+            animate_offset=350,animate_opacity = 350, opacity=0)
+    TotalBox = ft.Container(content=ft.Text(value="",size = 20), top= 420, left=525,
+            animate_offset=350,animate_opacity = 350, opacity=0)
     
     TicketPrice = 450
 
     async def chooseScreening(e):
         print(e.control.content.controls[1].content.value)
+        
+        DescriptionText.opacity=0
+        MovieDescription.opacity=0
+        MovLanguageText.opacity=0
+        MovLanguage.opacity=0
+        AvailableScreenings.opacity=0
+        Screenings1.opacity=0
+        Screenings2.opacity=0
+        page.update()
 
+        await asyncio.sleep(0.350)
         for item in [
             DescriptionText,
             MovieDescription,
@@ -863,11 +908,12 @@ def main(page: Page) -> None:
             Screenings2
         ]:
             if item in sub2nd.controls:
+                
                 sub2nd.controls.remove(item)
                 page.update()
             else:
                 None
-
+        
         sub2nd.controls.append(Question1)
         sub2nd.controls.append(TextBoxContainer)
         sub2nd.controls.append(TotalBox)
@@ -900,7 +946,7 @@ def main(page: Page) -> None:
                             
         
         ]
-    ) ,  on_click=chooseScreening)
+    ) ,  on_click=chooseScreening,animate_opacity = 350, opacity=0)
 
     Screening4 = ft.Container(content=ft.Stack(controls=[
                             ft.Container(
@@ -927,7 +973,7 @@ def main(page: Page) -> None:
                             
         
         ]
-    ) ,  on_click=chooseScreening)
+    ) ,  on_click=chooseScreening,animate_opacity = 350, opacity=0)
 
 
     Screening5 = ft.Container(content=ft.Stack(controls=[
@@ -955,7 +1001,7 @@ def main(page: Page) -> None:
                             
         
         ]
-    ) ,  on_click=chooseScreening)
+    ) ,  on_click=chooseScreening,animate_opacity = 350, opacity=0)
     
     Screening6 = ft.Container(content=ft.Stack(controls=[
                             ft.Container(
@@ -982,15 +1028,15 @@ def main(page: Page) -> None:
                             
         
         ]
-    ) ,  on_click=chooseScreening)
+    ) ,  on_click=chooseScreening,animate_opacity = 350, opacity=0)
 
     
     Screenings1 = ft.Container(content=ft.Row(controls=[Screening3,Screening4,Screening5],spacing=-100),
                                 top =550,
-                                left=455)
+                                left=455,animate_opacity = 350, opacity=0)
     Screenings2 = ft.Container(content=ft.Row(controls=[Screening6],spacing=-100),
                                 top =640,
-                                left=455)
+                                left=455,animate_opacity = 350, opacity=0)
 
     indSeats = ft.Container(content="A1", height=20)
 
