@@ -1,11 +1,20 @@
 import flet as ft
 
 SelectedSeats = []
-def main(page: ft.Page):
-    page.title = "Flet App Template"
-    page.theme_mode = ft.ThemeMode.LIGHT
+def pepito(page: ft.Page):
 
     SelectedSeats = []
+
+    def closeseats(e):
+        SelectedSeats.clear()
+        page.update()
+        
+        page.close(Everything)
+        
+
+    def save_and_close(e):
+        pass
+
 
     def SelectSeats(e):
         global SelectedSeats
@@ -61,7 +70,7 @@ def main(page: ft.Page):
                             border_radius= 3,
                             on_click=SelectSeats)
     
-    ColumnOne = ft.Container(content=ft.Column(controls=[indSeatsA1, indSeatsB1, indSeatsC1, indSeatsD1, indSeatsE1, indSeatsF1]))
+    ColumnOne = ft.Container(content=ft.Column(controls=[indSeatsA1, indSeatsB1, indSeatsC1, indSeatsD1, indSeatsE1, indSeatsF1], spacing=15))
 
 #Column of Seats 2
     indSeatsA2 = ft.Container(content=(ft.Text(value="A2", text_align=ft.TextAlign.CENTER, weight=5)), 
@@ -101,7 +110,7 @@ def main(page: ft.Page):
                             border_radius= 3,
                             on_click=SelectSeats)
     
-    ColumnTwo = ft.Container(content=ft.Column(controls=[indSeatsA2, indSeatsB2, indSeatsC2, indSeatsD2, indSeatsE2, indSeatsF2]))
+    ColumnTwo = ft.Container(content=ft.Column(controls=[indSeatsA2, indSeatsB2, indSeatsC2, indSeatsD2, indSeatsE2, indSeatsF2], spacing=15))
 
 #Column of seats 3
     indSeatsA3 = ft.Container(content=(ft.Text(value="A3", text_align=ft.TextAlign.CENTER, weight=5)), 
@@ -141,7 +150,7 @@ def main(page: ft.Page):
                             border_radius= 3,
                             on_click=SelectSeats)
     
-    ColumnThree = ft.Container(content=ft.Column(controls=[indSeatsA3, indSeatsB3, indSeatsC3, indSeatsD3, indSeatsE3, indSeatsF3]))
+    ColumnThree = ft.Container(content=ft.Column(controls=[indSeatsA3, indSeatsB3, indSeatsC3, indSeatsD3, indSeatsE3, indSeatsF3], spacing=15))
 
 #Column of seats 4
     indSeatsA4 = ft.Container(content=(ft.Text(value="A4", text_align=ft.TextAlign.CENTER, weight=5)), 
@@ -181,9 +190,9 @@ def main(page: ft.Page):
                             border_radius= 3,
                             on_click=SelectSeats)
     
-    ColumnFour = ft.Container(content=ft.Column(controls=[indSeatsA4, indSeatsB4, indSeatsC4, indSeatsD4, indSeatsE4, indSeatsF4]))
+    ColumnFour = ft.Container(content=ft.Column(controls=[indSeatsA4, indSeatsB4, indSeatsC4, indSeatsD4, indSeatsE4, indSeatsF4], spacing=15))
 
-    BlockOneRow = ft.Container(content=ft.Row(controls=[ColumnOne, ColumnTwo, ColumnThree, ColumnFour], spacing = 4))
+    BlockOneRow = ft.Container(content=ft.Row(controls=[ColumnOne, ColumnTwo, ColumnThree, ColumnFour], spacing = 6))
 
 #Seats Column 5
     indSeatsA5 = ft.Container(content=(ft.Text(value="A5", text_align=ft.TextAlign.CENTER, weight=5)), 
@@ -223,7 +232,7 @@ def main(page: ft.Page):
                             border_radius= 3,
                             on_click=SelectSeats)
     
-    ColumnFive = ft.Container(content=ft.Column(controls=[indSeatsA5, indSeatsB5, indSeatsC5, indSeatsD5, indSeatsE5, indSeatsF5]))
+    ColumnFive = ft.Container(content=ft.Column(controls=[indSeatsA5, indSeatsB5, indSeatsC5, indSeatsD5, indSeatsE5, indSeatsF5], spacing=15))
 
 #Column of Seats 2
     indSeatsA6 = ft.Container(content=(ft.Text(value="A6", text_align=ft.TextAlign.CENTER, weight=5)), 
@@ -263,7 +272,7 @@ def main(page: ft.Page):
                             border_radius= 3,
                             on_click=SelectSeats)
     
-    ColumnSix = ft.Container(content=ft.Column(controls=[indSeatsA6, indSeatsB6, indSeatsC6, indSeatsD6, indSeatsE6, indSeatsF6]))
+    ColumnSix = ft.Container(content=ft.Column(controls=[indSeatsA6, indSeatsB6, indSeatsC6, indSeatsD6, indSeatsE6, indSeatsF6], spacing=15))
 
 #Column of seats 7
     indSeatsA7 = ft.Container(content=(ft.Text(value="A7", text_align=ft.TextAlign.CENTER, weight=5)), 
@@ -303,7 +312,7 @@ def main(page: ft.Page):
                             border_radius= 3,
                             on_click=SelectSeats)
     
-    ColumnSeven = ft.Container(content=ft.Column(controls=[indSeatsA7, indSeatsB7, indSeatsC7, indSeatsD7, indSeatsE7, indSeatsF7]))
+    ColumnSeven = ft.Container(content=ft.Column(controls=[indSeatsA7, indSeatsB7, indSeatsC7, indSeatsD7, indSeatsE7, indSeatsF7], spacing=15))
 
 #Column of seats 8
     indSeatsA8 = ft.Container(content=(ft.Text(value="A8", text_align=ft.TextAlign.CENTER, weight=5)), 
@@ -343,9 +352,9 @@ def main(page: ft.Page):
                             border_radius= 3,
                             on_click=SelectSeats)
     
-    ColumnEight = ft.Container(content=ft.Column(controls=[indSeatsA8, indSeatsB8, indSeatsC8, indSeatsD8, indSeatsE8, indSeatsF8]))
+    ColumnEight = ft.Container(content=ft.Column(controls=[indSeatsA8, indSeatsB8, indSeatsC8, indSeatsD8, indSeatsE8, indSeatsF8], spacing=15))
 
-    BlockTwoRow = ft.Container(content=ft.Row(controls=[ColumnFive, ColumnSix, ColumnSeven, ColumnEight], spacing = 4))
+    BlockTwoRow = ft.Container(content=ft.Row(controls=[ColumnFive, ColumnSix, ColumnSeven, ColumnEight], spacing = 6))
 
 #Block Three
 
@@ -387,7 +396,7 @@ def main(page: ft.Page):
                             border_radius= 3,
                             on_click=SelectSeats)
     
-    ColumnNine = ft.Container(content=ft.Column(controls=[indSeatsA9, indSeatsB9, indSeatsC9, indSeatsD9, indSeatsE9, indSeatsF9]))
+    ColumnNine = ft.Container(content=ft.Column(controls=[indSeatsA9, indSeatsB9, indSeatsC9, indSeatsD9, indSeatsE9, indSeatsF9], spacing=15))
 
 #Column of Seats 1010
     indSeatsA10 = ft.Container(content=(ft.Text(value="A10", text_align=ft.TextAlign.CENTER, weight=5)), 
@@ -427,7 +436,7 @@ def main(page: ft.Page):
                             border_radius= 3,
                             on_click=SelectSeats)
     
-    ColumnTen = ft.Container(content=ft.Column(controls=[indSeatsA10, indSeatsB10, indSeatsC10, indSeatsD10, indSeatsE10, indSeatsF10]))
+    ColumnTen = ft.Container(content=ft.Column(controls=[indSeatsA10, indSeatsB10, indSeatsC10, indSeatsD10, indSeatsE10, indSeatsF10], spacing=15))
 
 #Column of seats 1111
     indSeatsA11 = ft.Container(content=(ft.Text(value="A11", text_align=ft.TextAlign.CENTER, weight=5)), 
@@ -467,7 +476,7 @@ def main(page: ft.Page):
                             border_radius= 3,
                             on_click=SelectSeats)
     
-    ColumnEleven = ft.Container(content=ft.Column(controls=[indSeatsA11,indSeatsB11, indSeatsC11, indSeatsD11, indSeatsE11, indSeatsF11]))
+    ColumnEleven = ft.Container(content=ft.Column(controls=[indSeatsA11,indSeatsB11, indSeatsC11, indSeatsD11, indSeatsE11, indSeatsF11], spacing=15))
 
 #Column of seats 1212,
     indSeatsA12 = ft.Container(content=(ft.Text(value="A12", text_align=ft.TextAlign.CENTER, weight=5)), 
@@ -507,9 +516,9 @@ def main(page: ft.Page):
                             border_radius= 3,
                             on_click=SelectSeats)
     
-    ColumnTwelve = ft.Container(content=ft.Column(controls=[indSeatsA12, indSeatsB12, indSeatsC12, indSeatsD12, indSeatsE12, indSeatsF12,]))
+    ColumnTwelve = ft.Container(content=ft.Column(controls=[indSeatsA12, indSeatsB12, indSeatsC12, indSeatsD12, indSeatsE12, indSeatsF12,], spacing=15))
 
-    BlockThreeRow = ft.Container(content=ft.Row(controls=[ColumnNine, ColumnTen, ColumnEleven, ColumnTwelve], spacing = 4))
+    BlockThreeRow = ft.Container(content=ft.Row(controls=[ColumnNine, ColumnTen, ColumnEleven, ColumnTwelve], spacing = 6))
 
     MainSeatingRow = ft.Container(content=ft.Row(controls=[BlockOneRow,BlockTwoRow, BlockThreeRow], 
                                                 spacing=30, 
@@ -518,20 +527,35 @@ def main(page: ft.Page):
     space = ft.Container(content=None, height = 10)
 
     ScreenContainer = ft.Container(content=ft.Text(value="SCREEN", 
-                                                size=20, 
+                                                size=16, 
                                                 text_align=ft.TextAlign.CENTER, 
-                                                color=ft.Colors.WHITE), 
-                                height=30, 
-                                width= 200, 
-                                bgcolor=ft.Colors.GREY_800, 
-                                border_radius=5, )
+                                                color=ft.Colors.WHITE,), 
+                                height=25, 
+                                width= 375,
+                                
+                                bgcolor=ft.Colors.GREY_700, 
+                                border_radius=2, )
 
-    WholeThing = ft.Container(content=ft.Column([space,ScreenContainer, MainSeatingRow],
+    WholeThing = ft.Container(content=ft.Column([ScreenContainer, MainSeatingRow],
                                             horizontal_alignment=ft.CrossAxisAlignment.CENTER
-                            ),bgcolor="#c2241f", 
-                            width= 490, 
-                            height= 300, 
-                            border_radius= 7)
+                            , spacing=40),bgcolor="#c2241f", 
+                            width= 560, 
+                            height= 360, 
+                            border_radius= 7,padding=0)
 
-    page.add(WholeThing)
-ft.app(target=main)
+
+    Everything= ft.AlertDialog(
+            modal=True,
+            title=ft.Text("Choose your seats"),
+            content=WholeThing,
+            actions=[
+                ft.TextButton("Cancel", on_click=closeseats),
+                ft.TextButton("Save and close", on_click=save_and_close)
+            ],
+            bgcolor="#c2241f",
+            actions_alignment=ft.MainAxisAlignment.END)
+
+    return Everything
+
+
+
