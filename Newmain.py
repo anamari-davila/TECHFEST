@@ -4,7 +4,7 @@ from flet import RouteChangeEvent, ViewPopEvent, CrossAxisAlignment, MainAxisAli
 import asyncio
 import os
 import requests
-
+from SeatingTest import pepito
 
 
 x = 0
@@ -12,6 +12,8 @@ y = -1
 z = 1
 CurrentMovie= 0
 def main(page: Page) -> None:
+
+   
 
     times = ["03:00 PM", "03:45 PM", "04:15 PM", "05:00 PM", "05:30 PM", "06:15 PM", 
              "06:45 PM", "07:30 PM", "08:00 PM", "08:45 PM", "09:15 PM", "10:00 PM", "10:30 PM"]
@@ -79,6 +81,11 @@ def main(page: Page) -> None:
     page.theme= ft.Theme(font_family="TtNormsReg")
     page.update()
 
+
+    def Seating(e):
+        Cabra= pepito(page)
+
+        page.open(Cabra)
     #1st view
     async def bola1():
 
@@ -677,6 +684,9 @@ def main(page: Page) -> None:
                                             left=525)
     test = ft.Text(value="Min 1. Max 72", color=ft.Colors.BLACK)
 
+    
+    
+
     ChooseSeats = ft.Container(content=ft.Stack(controls=[
                             ft.Container(
                                 content=ft.Image(src="Redbuttonbg.png"),
@@ -703,7 +713,8 @@ def main(page: Page) -> None:
                 ]
             ),
             top=450,
-            left=460
+            left=460,
+            on_click= Seating
             
         )
 
@@ -744,27 +755,50 @@ def main(page: Page) -> None:
     async def BackToScreenTimes(e):
         print("back clicked")
 
-        for item in [
-            Question1,
-            TextBoxContainer,
-            TotalBox,
-            ChooseSeats,
-            BackButton
-        ]:
-            if item in sub2nd.controls:
-                sub2nd.controls.remove(item)
+        
 
-        for item in [
-            DescriptionText,
-            MovieDescription,
-            MovLanguageText,
-            MovLanguage,
-            AvailableScreenings,
-            Screenings1,
-            Screenings2
-        ]:
-            if item not in sub2nd.controls:
-                sub2nd.controls.append(item)
+        global CurrentMovie
+
+        buttonchoose.opacity=0
+        await bola3()
+        
+        page.update()
+        await asyncio.sleep(1)
+
+        CurrentMovie = x % len(data["results"])
+        ChosenMovieTitle.content.value = movieTitles[CurrentMovie]
+        ChosenMovie.src = imgsurls[CurrentMovie]
+        MovieDescription.content.value = MovieDescriptions[CurrentMovie]
+        MovLanguage.content.value = MovieLang[CurrentMovie]
+        
+        
+        Ball.left= 1600.9
+        Ball.top= -100
+        Ball.scale=2.5
+        MovLanguage.content.value=f"{language[MovieLang[CurrentMovie]]}"
+        
+        Screening3.content.controls[1].content.value=f"{times[assigns[f"movie{CurrentMovie}"][0]]}"
+        Screening4.content.controls[1].content.value=f"{times[assigns[f"movie{CurrentMovie}"][1]]}"
+        Screening5.content.controls[1].content.value=f"{times[assigns[f"movie{CurrentMovie}"][2]]}"
+        if len(assigns[f"movie{CurrentMovie}"]) < 4:
+            Screening6.opacity= 0
+        else:
+            Screening6.content.controls[1].content.value=f"{times[assigns[f"movie{CurrentMovie}"][3]]}"
+        page.update() 
+
+        await asyncio.sleep(0.310)
+        Ball.opacity=1
+        Ball.opacity = 1
+        ChosenMovie.opacity = 1
+        ChosenMovieTitle.opacity = 1
+        DescriptionText.opacity = 1
+        MovieDescription.opacity = 1
+        MovLanguageText.opacity = 1
+        MovLanguage.opacity = 1
+        AvailableScreenings.opacity = 1
+        Screenings1.opacity = 1
+        Screenings2.opacity = 1
+        BackButton0.opacity = 1
         page.update()
 
     BackButton0 = ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_LEFT_ROUNDED, color= ft.Colors.WHITE), 
