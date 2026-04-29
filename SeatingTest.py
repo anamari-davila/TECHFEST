@@ -1,5 +1,6 @@
 import flet as ft
 import random
+import cinemadb
 SelectedSeats = []
 limit=5
 ident= "55023323-233"
@@ -17,16 +18,25 @@ def Wholething(page: ft.Page):
     
     
     def saveseats(e):
-
-
         
+        if cinemadb.currentuserid and cinemadb.currentscreeningid:
+            order_id = cinemadb.createreservation(
+                user_id      = cinemadb.currentuserid,
+                screening_id = cinemadb.currentscreeningid,
+                seat_names   = SelectedSeats
+            )
+        else:
+            order_id = f"{ident}-D{random.randint(1000000,9999999)}B"
+        
+        Done.value = (
+            f"ALL SET!\nYour order ID is {order_id}\nMAKE SURE TO WRITE IT DOWN"
+        )
         for item in [
             WholeThing2,
             Confirmaciones
         ]:
             WholeThing.controls.remove(item)
         page.update()
-        print(f"SEATS: {", ".join(SelectedSeats)}")
 
         WholeThing.controls.append(Done)
         page.update()
@@ -629,6 +639,15 @@ def Wholething(page: ft.Page):
                             height= 350, 
                             border_radius= 25,padding=0)
 
+    if cinemadb.currentscreeningid:
+        taken= cinemadb.gettakenseats(cinemadb.currentscreeningid)
+        allblocks= [BlockOneRow, BlockTwoRow, BlockThreeRow]
+        for block in allblocks:
+            for column in block.content.controls:
+                for seat in column.content.controls:
+                    if seat.content.value in taken:
+                        seat.bgcolor="#d5b586"
+                        seat.on_click=None
 
     WholeThing= ft.Column(controls=[WholeThing2],spacing=0)           
     

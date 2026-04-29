@@ -4,6 +4,7 @@ from flet import RouteChangeEvent, ViewPopEvent, CrossAxisAlignment, MainAxisAli
 import asyncio
 import os
 import requests
+import cinemadb
 from SeatingTest import Wholething
 import SeatingTest
 import random
@@ -89,6 +90,9 @@ def main(page: Page) -> None:
     def logsave(e):
 
         if len(user_id.value) >=7 and name.value != "":
+            crepe = cinemadb.createuser(user_id.value, name.value)
+            cinemadb.currentuserid = crepe
+
             registrations.append(user_id.value)
             registrations.append(name.value)
             name.value = ""
@@ -409,6 +413,7 @@ def main(page: Page) -> None:
 
 
     #SUBPAGE
+    
     async def ChooseMovie(e):
         global CurrentMovie
 
@@ -430,12 +435,18 @@ def main(page: Page) -> None:
         await asyncio.sleep(1)
 
         CurrentMovie = x % len(data["results"])
+        tmdb_id = data["results"][CurrentMovie]["id"]
+        db_row  = cinemadb.getmoviebytmdb(tmdb_id)
+        if db_row:
+            cinemadb.currentmovieid = db_row[0]  
         ChosenMovieTitle.content.value = movieTitles[CurrentMovie]
         ChosenMovie.src = imgsurls[CurrentMovie]
         MovieDescription.content.value = MovieDescriptions[CurrentMovie]
         MovLanguage.content.value = MovieLang[CurrentMovie]
         page.go('/catalog/ChooseMoviePage')
         
+        
+
         Ball.left= 1600.9
         Ball.top= -100
         Ball.scale=2.5
@@ -474,8 +485,23 @@ def main(page: Page) -> None:
     
     MovieLang = [data["results"][x]["original_language"] for x in range(len(data["results"]))]
 
-
-
+    for movie in data["results"]:
+        cinemadb.savemovie(
+            tmdb_id     = movie["id"],
+            title       = movie["title"],
+            description = movie["overview"],
+            language    = movie["original_language"],
+            poster_path = movie["poster_path"],
+            genre       = "NULL"         
+    )
+    for moviei, timei in enumerate(assigns.values()):
+        tmdb_id  = data["results"][moviei]["id"]
+        dbmovie = cinemadb.getmoviebytmdb(tmdb_id)
+        if dbmovie:
+            dbmovieid = dbmovie[0]           
+            for ti in timei:
+                cinemadb.savescreening(dbmovieid, times[ti])
+    
     #2nd - MAIN
     
     buttonchoose = ft.Container(
@@ -1127,6 +1153,15 @@ def main(page: Page) -> None:
         ChosenMovieTitle.opacity = 1
         
         BackButton.opacity = 1
+
+
+        chosenhour = e.control.content.controls[1].content.value   # e.g. "07:30 PM"
+        if cinemadb.currentmovieid:
+            screenings = cinemadb.getscreeningsformovie(cinemadb.currentmovieid)
+            for sid, hour in screenings:
+                if hour == chosenhour:
+                    cinemadb.currentscreeningid = sid
+                    break
         page.update()
 
     Screening3 = ft.Container(content=ft.Stack(controls=[
