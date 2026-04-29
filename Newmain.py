@@ -6,6 +6,8 @@ import os
 import requests
 from SeatingTest import Wholething
 import SeatingTest
+import random
+registrations = []
 
 x = 0
 y = -1
@@ -83,6 +85,18 @@ def main(page: Page) -> None:
     page.theme= ft.Theme(font_family="TtNormsReg")
     page.update()
 
+    def logsave(e):
+
+        if len(user_id.value) >=7 and name.value != "":
+            registrations.append(user_id.value)
+            registrations.append(name.value)
+            name.value = ""
+            user_id.value = ""
+            print(registrations)
+            SeatingTest.ident= registrations[0]
+            page.go("/main")
+            page.update() 
+
 
     
     #1st view
@@ -136,7 +150,7 @@ def main(page: Page) -> None:
 
         page.update()
         await asyncio.sleep(1)
-        page.go('/')
+        page.go('/main')
 
         
         Ball.left=-630.9
@@ -714,8 +728,7 @@ def main(page: Page) -> None:
     
     #Sub Second Page 
 
-    async def saveseats(e):
-        print(SeatingTest.SelectedSeats)
+    
 
 
     async def ChoosingSeats(e):
@@ -733,8 +746,7 @@ def main(page: Page) -> None:
         if where[0] is not None and where[0] in sub2nd.controls:
             sub2nd.controls.remove(where)
         
-        # confseats.opacity=0
-        # Confirmation.opacity=0
+
         MiniInstr.opacity = 0
         Wholething1 = Wholething(page)
         Wholething1.animate_opacity = 350
@@ -745,49 +757,15 @@ def main(page: Page) -> None:
 
         sub2nd.controls.append(Wholething1)
         sub2nd.controls.append(MiniInstr)
-        # sub2nd.controls.append(Confirmation)
-        # sub2nd.controls.append(confseats)
+   
         page.update()
         await asyncio.sleep(0.15)
         MiniInstr.opacity=1
         Wholething1.opacity=1
-        # Confirmation.opacity=1
-        # confseats.opacity=1
+
         page.update()
 
-    Confirmation = ft.Container(content=ft.Stack(controls=[
-                            ft.Container(
-                                content=ft.Image(src="Redbuttonbg.png"),
-                                    
-                                    ink=True,
-                                    width=372,
-                                    height=90,
-                                    scale=0.65,
-                                    border_radius=100
-                        ),
-                        ft.Container(
-                                content=ft.Text(f"CONFIRM SELECTION",
-                                                text_align=ft.TextAlign.CENTER,
-                                                size=15,
-                                                style=ft.TextStyle(letter_spacing=2),
-                                                font_family="TtNormsExtra"),
-                                                
-                                width=372,
-                                height=90,
-                                alignment=ft.alignment.center,
-                                
-                            
-                        )
-                ]
-            ),
-            top=700,
-            left=460,
-            on_click= saveseats,
-            
-            animate_opacity=350,
-            
-            
-        )
+
 
     confseats= ft.Text(value=f"SEATS:",
                        size=20  , 
@@ -854,7 +832,7 @@ def main(page: Page) -> None:
                                             top=300, 
                                             left=525,
                                             animate_opacity = 350)
-    test = ft.Text(value="Min 1. Max 10", color=ft.Colors.BLACK,
+    test = ft.Text(value="Min 1. Max 15", color=ft.Colors.BLACK,
                                             animate_opacity = 350)
 
     
@@ -1050,13 +1028,13 @@ def main(page: Page) -> None:
             print(UserInput)
         
         except:
-            TotalBox.content.value = "Number of seats range from 1 to 10 and must be a number."
+            TotalBox.content.value = "Number of seats range from 1 to 15 and must be a number."
             if ChooseSeats in sub2nd.controls:
                 sub2nd.controls.remove(ChooseSeats)
             page.update()
             return
     
-        if 0 < UserInput <= 10:
+        if 0 < UserInput <= 15:
             SeatingTest.limit = int(TextBox.value)
             TotalPrice = TicketPrice*UserInput
             print(TotalPrice)
@@ -1069,7 +1047,7 @@ def main(page: Page) -> None:
     
 
         else :
-            TotalBox.content.value = "Number of seats range from 1 to 10"
+            TotalBox.content.value = "Number of seats range from 1 to 15"
             
             if ChooseSeats in sub2nd.controls:
                 sub2nd.controls.remove(ChooseSeats)
@@ -1344,8 +1322,9 @@ def main(page: Page) -> None:
         ]
 
     )
-
-
+    advise= ft.Text(value="Id has to be at least 7 digits, do not try to fool the system")
+    name = ft.TextField(label="Name", width=300)
+    user_id = ft.TextField(label="ID", width=300)
 
 
     #Page View Controls
@@ -1356,7 +1335,7 @@ def main(page: Page) -> None:
         page.views.append(
             View(
                 route='/',
-                controls=[MainStack
+                controls=[advise,name, user_id, ft.ElevatedButton("Save", on_click=logsave)
                 ],
                 vertical_alignment= MainAxisAlignment.CENTER,
                 horizontal_alignment=CrossAxisAlignment.CENTER
@@ -1364,7 +1343,21 @@ def main(page: Page) -> None:
             
         )
         page.update()
+        if page.route == '/main':
+            page.views.append(
+            View(
+                route='/main',
+                controls=[
+                    
+                MainStack,
 
+                ],
+                vertical_alignment= MainAxisAlignment.CENTER,
+                horizontal_alignment=CrossAxisAlignment.CENTER,
+                spacing=26
+            )
+        )
+            page.update()
         #Store
         if page.route == '/catalog':
             page.views.append(

@@ -1,8 +1,8 @@
 import flet as ft
-
+import random
 SelectedSeats = []
 limit=5
-
+ident= "55023323-233"
 
 def Wholething(page: ft.Page):
     global SelectedSeats
@@ -15,6 +15,23 @@ def Wholething(page: ft.Page):
         "TtNormsReg": "TT Norms Pro Regular.otf",
         "BricolageBold": "BricolageBoldened.ttf"}
     
+    
+    def saveseats(e):
+
+
+        
+        for item in [
+            WholeThing2,
+            Confirmaciones
+        ]:
+            WholeThing.controls.remove(item)
+        page.update()
+        print(f"SEATS: {", ".join(SelectedSeats)}")
+
+        WholeThing.controls.append(Done)
+        page.update()
+        
+
     def reseteverything(e=None):
         
         allblocks= [BlockOneRow,BlockTwoRow,BlockThreeRow]
@@ -40,9 +57,16 @@ def Wholething(page: ft.Page):
         else:
             SelectedSeats.remove(seat_name)
             seat.bgcolor = "#BAB6B6"
+      
+        if len(SelectedSeats) == limit:
+            WholeThing.controls.append(Confirmaciones)
 
 
-        confseats.value= f"SEATS: {", ".join(SelectedSeats)}"
+        elif len(SelectedSeats)!= limit and len(WholeThing.controls) == 2:
+            WholeThing.controls.remove(Confirmaciones)
+        
+
+        confseats.value= f"All {limit} SEATS SELECTED:\n {", ".join(SelectedSeats)}"
         page.update()
         print(SelectedSeats)
 
@@ -555,7 +579,7 @@ def Wholething(page: ft.Page):
 
 
     confseats= ft.Text(value=f"SEATS:",
-                       size=18  , 
+                       size=18, 
                        font_family="TtNormsExtra", 
                        animate_opacity=350, 
                     )
@@ -585,13 +609,15 @@ def Wholething(page: ft.Page):
                         )
                 ]
             ),
-            on_click= None,
+            on_click= saveseats,
             
             animate_opacity=350,
             
             
         )
     
+    Done= ft.Text(value=f"ALL SET! \nyour order id is {ident}-D{random.randint(1000000,9999999)}B\n MAKE SURE TO WRITE IT DOWN", size=30)
+
     Confirmaciones= ft.Container(content=ft.Row(controls=[Confirmation,confseats], spacing=7),
                                  bgcolor="#5b0a08",
                                   width= 700)
@@ -604,11 +630,11 @@ def Wholething(page: ft.Page):
                             border_radius= 25,padding=0)
 
 
-    WholeThing= ft.Column(controls=[WholeThing2,Confirmaciones],spacing=0)           
+    WholeThing= ft.Column(controls=[WholeThing2],spacing=0)           
     
     WholeThing.reset = reseteverything
     
     return WholeThing
-#     page.add(WholeThing)
+    # page.add(WholeThing)
 
 # ft.app(target=Wholething)
