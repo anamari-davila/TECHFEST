@@ -243,7 +243,7 @@ def main(page: Page) -> None:
         top=390.6, 
         left=-630.9, animate_opacity=300
         )
-
+    
     #MainPageTextArea
     MainYellow= ft.Text(
         value="WORLD OF",
@@ -733,7 +733,8 @@ def main(page: Page) -> None:
         if where[0] is not None and where[0] in sub2nd.controls:
             sub2nd.controls.remove(where)
         
-        Confirmation.opacity=0
+        # confseats.opacity=0
+        # Confirmation.opacity=0
         MiniInstr.opacity = 0
         Wholething1 = Wholething(page)
         Wholething1.animate_opacity = 350
@@ -744,12 +745,14 @@ def main(page: Page) -> None:
 
         sub2nd.controls.append(Wholething1)
         sub2nd.controls.append(MiniInstr)
-        sub2nd.controls.append(Confirmation)
+        # sub2nd.controls.append(Confirmation)
+        # sub2nd.controls.append(confseats)
         page.update()
         await asyncio.sleep(0.15)
         MiniInstr.opacity=1
         Wholething1.opacity=1
-        Confirmation.opacity=1
+        # Confirmation.opacity=1
+        # confseats.opacity=1
         page.update()
 
     Confirmation = ft.Container(content=ft.Stack(controls=[
@@ -778,7 +781,7 @@ def main(page: Page) -> None:
                 ]
             ),
             top=700,
-            left=610,
+            left=460,
             on_click= saveseats,
             
             animate_opacity=350,
@@ -786,7 +789,19 @@ def main(page: Page) -> None:
             
         )
 
-    MiniInstr= ft.Text(value="Choose available seats: (Yellow are Taken, Grey are free)",size=18, font_family="TtNormsExtra", animate_opacity=350, top=260, left=525)
+    confseats= ft.Text(value=f"SEATS:",
+                       size=20  , 
+                       font_family="TtNormsExtra", 
+                       animate_opacity=350, 
+                       top=730, 
+                       left=800)
+
+    MiniInstr= ft.Text(value="Choose available seats: (Yellow are Taken, Grey are free)",
+                       size=18, 
+                       font_family="TtNormsExtra", 
+                       animate_opacity=350, 
+                       top=260, 
+                       left=525)
 
     ChosenMovieTitle = ft.Container(content=ft.Text(value=movieTitles[CurrentMovie],
         text_align=ft.TextAlign.CENTER,
@@ -839,7 +854,7 @@ def main(page: Page) -> None:
                                             top=300, 
                                             left=525,
                                             animate_opacity = 350)
-    test = ft.Text(value="Min 1. Max 72", color=ft.Colors.BLACK,
+    test = ft.Text(value="Min 1. Max 10", color=ft.Colors.BLACK,
                                             animate_opacity = 350)
 
     
@@ -964,7 +979,8 @@ def main(page: Page) -> None:
             ChooseSeats,
             BackButton,
             MiniInstr,
-            Confirmation
+            # Confirmation,
+            # confseats
         ]:
             if item in sub2nd.controls:
                 sub2nd.controls.remove(item)
@@ -1034,13 +1050,13 @@ def main(page: Page) -> None:
             print(UserInput)
         
         except:
-            TotalBox.content.value = "Number of seats range from 1 to 72 and must be a number."
+            TotalBox.content.value = "Number of seats range from 1 to 10 and must be a number."
             if ChooseSeats in sub2nd.controls:
                 sub2nd.controls.remove(ChooseSeats)
             page.update()
             return
     
-        if 0 < UserInput <= 72:
+        if 0 < UserInput <= 10:
             SeatingTest.limit = int(TextBox.value)
             TotalPrice = TicketPrice*UserInput
             print(TotalPrice)
@@ -1053,7 +1069,7 @@ def main(page: Page) -> None:
     
 
         else :
-            TotalBox.content.value = "Number of seats range from 1 to 72"
+            TotalBox.content.value = "Number of seats range from 1 to 10"
             
             if ChooseSeats in sub2nd.controls:
                 sub2nd.controls.remove(ChooseSeats)
