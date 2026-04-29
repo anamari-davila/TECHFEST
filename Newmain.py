@@ -124,9 +124,9 @@ def main(page: Page) -> None:
         MiniText.opacity=0
         PopCorn.opacity=0
         MovieIcon1.opacity=0
-        MovieIcon2.opacity=0
+        # MovieIcon2.opacity=0
         Icon1Text.opacity=0
-        Icon2Text.opacity=0
+        # Icon2Text.opacity=0
         page.update()
         
      
@@ -139,9 +139,9 @@ def main(page: Page) -> None:
         MiniText.opacity=0
         PopCorn.opacity=0
         MovieIcon1.opacity=0
-        MovieIcon2.opacity=0
+        # MovieIcon2.opacity=0
         Icon1Text.opacity=0
-        Icon2Text.opacity=0
+        # Icon2Text.opacity=0
         page.update()
 
     async def changeview(e):
@@ -167,9 +167,9 @@ def main(page: Page) -> None:
         MiniText.opacity=1
         PopCorn.opacity=1
         MovieIcon1.opacity=1
-        MovieIcon2.opacity=1
+        # MovieIcon2.opacity=1
         Icon1Text.opacity=1
-        Icon2Text.opacity=1
+        # Icon2Text.opacity=1
         Ball.opacity=1
         buttonchoose.opacity=1
         page.update()
@@ -333,19 +333,19 @@ def main(page: Page) -> None:
         animate_opacity=300
         )
     
-    Icon2Text= ft.Container(
-    content= ft.Text(
-        value="UPCOMING MOVIES",
-        size=20,
-        style=ft.TextStyle(letter_spacing=2) 
+    # Icon2Text= ft.Container(
+    # content= ft.Text(
+    #     value="UPCOMING MOVIES",
+    #     size=20,
+    #     style=ft.TextStyle(letter_spacing=2) 
     
-        ),
-        top= 160,
-        left=1100,
-        on_click= changeview_3,
-        animate_opacity=300
+    #     ),
+    #     top= 160,
+    #     left=1100,
+    #     on_click= changeview_3,
+    #     animate_opacity=300
     
-    )
+    # )
 
     #Main Page
 
@@ -371,9 +371,9 @@ def main(page: Page) -> None:
 
             MovieIcon1,
             
-            MovieIcon2,
+            # MovieIcon2,
             Icon1Text,
-            Icon2Text
+            # Icon2Text
 
             
 
