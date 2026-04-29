@@ -4,17 +4,21 @@ from flet import RouteChangeEvent, ViewPopEvent, CrossAxisAlignment, MainAxisAli
 import asyncio
 import os
 import requests
-from SeatingTest import pepito
-
+from SeatingTest import Wholething
+import SeatingTest
+import random
+registrations = []
 
 x = 0
 y = -1
+
 z = 1
 CurrentMovie= 0
 SelectedSeats = []
 def main(page: Page) -> None:
 
-   
+
+    where= [None]
 
     times = ["03:00 PM", "03:45 PM", "04:15 PM", "05:00 PM", "05:30 PM", "06:15 PM", 
             "06:45 PM", "07:30 PM", "08:00 PM", "08:45 PM", "09:15 PM", "10:00 PM", "10:30 PM"]
@@ -82,11 +86,20 @@ def main(page: Page) -> None:
     page.theme= ft.Theme(font_family="TtNormsReg")
     page.update()
 
+    def logsave(e):
 
-    def Seating(e):
-        Cabra= pepito(page)
+        if len(user_id.value) >=7 and name.value != "":
+            registrations.append(user_id.value)
+            registrations.append(name.value)
+            name.value = ""
+            user_id.value = ""
+            print(registrations)
+            SeatingTest.ident= registrations[0]
+            page.go("/main")
+            page.update() 
 
-        page.open(Cabra)
+
+    
     #1st view
     async def bola1():
 
@@ -112,9 +125,9 @@ def main(page: Page) -> None:
         MiniText.opacity=0
         PopCorn.opacity=0
         MovieIcon1.opacity=0
-        MovieIcon2.opacity=0
+        # MovieIcon2.opacity=0
         Icon1Text.opacity=0
-        Icon2Text.opacity=0
+        # Icon2Text.opacity=0
         page.update()
         
      
@@ -127,9 +140,9 @@ def main(page: Page) -> None:
         MiniText.opacity=0
         PopCorn.opacity=0
         MovieIcon1.opacity=0
-        MovieIcon2.opacity=0
+        # MovieIcon2.opacity=0
         Icon1Text.opacity=0
-        Icon2Text.opacity=0
+        # Icon2Text.opacity=0
         page.update()
 
     async def changeview(e):
@@ -138,7 +151,7 @@ def main(page: Page) -> None:
 
         page.update()
         await asyncio.sleep(1)
-        page.go('/')
+        page.go('/main')
 
         
         Ball.left=-630.9
@@ -155,9 +168,9 @@ def main(page: Page) -> None:
         MiniText.opacity=1
         PopCorn.opacity=1
         MovieIcon1.opacity=1
-        MovieIcon2.opacity=1
+        # MovieIcon2.opacity=1
         Icon1Text.opacity=1
-        Icon2Text.opacity=1
+        # Icon2Text.opacity=1
         Ball.opacity=1
         buttonchoose.opacity=1
         page.update()
@@ -175,11 +188,42 @@ def main(page: Page) -> None:
         Ball.top = 200.6
         Ball.scale=1
         buttonchoose.opacity=0
-        page.update() 
 
-        await asyncio.sleep(0.310)
-        Ball.opacity=1
-        buttonchoose.opacity=1
+        MainYellow1.opacity = 0
+        MainWhite1.opacity = 0
+        HomeIcon.opacity = 0
+        HomeText.opacity = 0
+        MovieIcon1PT2.opacity = 0
+        Icon1TextPT2.opacity = 0
+      
+        ImageSlide.controls[0].opacity = 0
+        ImageSlide.controls[1].opacity = 0
+        ImageSlide.controls[2].opacity = 0
+        MovTitle.opacity = 0
+        DILeftColumn.opacity = 0
+        DIRightColumn.opacity = 0
+  
+        page.update()
+
+        await asyncio.sleep(0.350)
+
+        MainYellow1.opacity = 1
+        MainWhite1.opacity = 1
+        HomeIcon.opacity = 1
+        HomeText.opacity = 1
+        MovieIcon1PT2.opacity = 1
+        Icon1TextPT2.opacity = 1
+        
+        ImageSlide.controls[0].opacity = 1
+        ImageSlide.controls[1].opacity = 1
+        ImageSlide.controls[2].opacity = 1
+        MovTitle.opacity = 1
+        DILeftColumn.opacity = 1
+        DIRightColumn.opacity = 1
+        Ball.opacity = 1
+        buttonchoose.opacity = 1
+        page.update()
+
         page.update()
 
     async def changeview_3(e):
@@ -214,7 +258,7 @@ def main(page: Page) -> None:
         top=390.6, 
         left=-630.9, animate_opacity=300
         )
-
+    
     #MainPageTextArea
     MainYellow= ft.Text(
         value="WORLD OF",
@@ -290,19 +334,19 @@ def main(page: Page) -> None:
         animate_opacity=300
         )
     
-    Icon2Text= ft.Container(
-    content= ft.Text(
-        value="UPCOMING MOVIES",
-        size=20,
-        style=ft.TextStyle(letter_spacing=2) 
+    # Icon2Text= ft.Container(
+    # content= ft.Text(
+    #     value="UPCOMING MOVIES",
+    #     size=20,
+    #     style=ft.TextStyle(letter_spacing=2) 
     
-        ),
-        top= 160,
-        left=1100,
-        on_click= changeview_3,
-        animate_opacity=300
+    #     ),
+    #     top= 160,
+    #     left=1100,
+    #     on_click= changeview_3,
+    #     animate_opacity=300
     
-    )
+    # )
 
     #Main Page
 
@@ -328,9 +372,9 @@ def main(page: Page) -> None:
 
             MovieIcon1,
             
-            MovieIcon2,
+            # MovieIcon2,
             Icon1Text,
-            Icon2Text
+            # Icon2Text
 
             
 
@@ -369,8 +413,19 @@ def main(page: Page) -> None:
         global CurrentMovie
 
         buttonchoose.opacity=0
+       
+        HomeIcon.opacity = 0
+        HomeText.opacity = 0
+        MovieIcon1PT2.opacity = 0
+        Icon1TextPT2.opacity = 0
+      
+        ImageSlide.controls[0].opacity = 0
+        ImageSlide.controls[2].opacity = 0
+        DILeftColumn.opacity = 0
+        DIRightColumn.opacity = 0
+        page.update()
         await bola3()
-        
+        await asyncio.sleep(0.2)
         page.update()
         await asyncio.sleep(1)
 
@@ -432,7 +487,7 @@ def main(page: Page) -> None:
                         left=0,
                         right=0,
                         alignment=ft.alignment.center,
-                        animate_opacity=310 
+                        animate_opacity=310
         )
     
     async def MCLeft(e):
@@ -442,6 +497,16 @@ def main(page: Page) -> None:
         x-=1
         y-=1
         z-=1
+
+
+        ImageSlide.controls[1].opacity = 0
+        MovTitle.opacity = 0
+        DILeftColumn.opacity = 0
+        DIRightColumn.opacity = 0
+        page.update()
+        await asyncio.sleep(0.150)
+
+
         ImageSlide.controls[1].src=imgsurls[x%len(data["results"])]
         MovTitle.content.value=movieTitles[x%len(data["results"])]
         DILeft.src=imgsurls[y%len(data["results"])]
@@ -450,6 +515,15 @@ def main(page: Page) -> None:
         DIRightText.value = movieTitles[z % len(movieTitles)]
         print(x)
         page.update()
+
+        await asyncio.sleep(0.350)
+
+        ImageSlide.controls[1].opacity = 1
+        MovTitle.opacity = 1
+        DILeftColumn.opacity = 1
+        DIRightColumn.opacity = 1
+        page.update()
+
         
 
     async def MCRight(e):
@@ -459,6 +533,14 @@ def main(page: Page) -> None:
         x+=1
         y+=1
         z+=1
+
+        ImageSlide.controls[1].opacity = 0
+        MovTitle.opacity = 0
+        DILeftColumn.opacity = 0
+        DIRightColumn.opacity = 0
+        page.update()
+        await asyncio.sleep(0.350)
+
         ImageSlide.controls[1].src=imgsurls[x%len(data["results"])]
         MovTitle.content.value=movieTitles[x%len(data["results"])]
         DILeft.src=imgsurls[y%len(data["results"])]
@@ -468,40 +550,50 @@ def main(page: Page) -> None:
         print(x)
         page.update()
 
+        await asyncio.sleep(0.300)
+
+        ImageSlide.controls[1].opacity = 1
+        MovTitle.opacity = 1
+        DILeftColumn.opacity = 1
+        DIRightColumn.opacity = 1
+        page.update()
+
+        
+
     MovTitle = ft.Container(content=ft.Text(value=movieTitles[x],
         text_align=ft.TextAlign.CENTER,
         size=25),
             top=250,
             left=0,
             right=0,
-            alignment=ft.alignment.center
+            alignment=ft.alignment.center, animate_opacity=350 
             )
             
 
     DILeft = ft.Image(
         src=imgsurls[y],
         width=200,
-        height=300,
+        height=300,animate_opacity= 350
     )
     DILeftText = ft.Text(
         value=movieTitles[y],
         size=20,
         color=ft.Colors.WHITE,
         text_align=ft.TextAlign.CENTER,
-        width=260,
+        width=260, animate_opacity= 350
     )
     
     DILeftColumn = ft.Container(content=ft.Column(controls=[DILeftText,DILeft], horizontal_alignment=ft.CrossAxisAlignment.CENTER), 
                                 width=260, 
                                 top=350, 
-                                left=170,
+                                left=170, animate_opacity=350
                                 )
 
 
     DIRight = ft.Image(
         src=imgsurls[z], 
         width=200,
-        height=300,
+        height=300, animate_opacity= 350
     )
 
     DIRightText = ft.Text(
@@ -509,13 +601,13 @@ def main(page: Page) -> None:
         size=20,
         color=ft.Colors.WHITE,
         text_align=ft.TextAlign.CENTER,
-        width=260,
+        width=260, animate_opacity= 350
             )
     
     DIRightColumn = ft.Container(content=ft.Column(controls=[DIRightText,DIRight], horizontal_alignment=ft.CrossAxisAlignment.CENTER), 
                                 width=260, 
                                 top=350, 
-                                right=170, )
+                                right=170, animate_opacity=350)
     MainYellow1 = ft.Text(
         value="WORLD OF",
         font_family="TtNormsExtra",
@@ -542,9 +634,9 @@ def main(page: Page) -> None:
         animate_opacity=300
     )
     ImageSlide = ft.Row(controls=[
-                            ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_LEFT_ROUNDED, color= ft.Colors.WHITE), on_click=MCLeft, ink=True,scale= 4, border_radius=50),
+                            ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_LEFT_ROUNDED, color= ft.Colors.WHITE,size=100), on_click=MCLeft, ink=True, border_radius=50),
                             ft.Image(src=imgsurls[x], scale=0.87, width=300, height=500),
-                            ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_RIGHT_ROUNDED, color= ft.Colors.WHITE), on_click=MCRight, ink=True, scale=4, border_radius=50),
+                            ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_RIGHT_ROUNDED, color= ft.Colors.WHITE, size=100), on_click=MCRight, ink=True, border_radius=50),
                         ], 
                         top=250,
                         left=0,
@@ -552,7 +644,7 @@ def main(page: Page) -> None:
                         alignment=ft.MainAxisAlignment.CENTER,
                         scale=1, 
                         spacing= 5,
-                        wrap=False,)
+                        wrap=False, animate_opacity= 350)
     
     MovieIcon1PT2=ft.Image(
         src="CameraV.png",
@@ -583,7 +675,7 @@ def main(page: Page) -> None:
     
     HomeText = ft.Container(
     content=ft.Text(
-        value="HOME PAGE",
+        value="RETURN TO HOME PAGE",
         size=15,
         style=ft.TextStyle(letter_spacing=2),
     ),
@@ -634,56 +726,115 @@ def main(page: Page) -> None:
 
     )
     
-
+    
     #Sub Second Page 
 
     
+
+
+    async def ChoosingSeats(e):
+        Question1.content.value = "Choose Available Seats"
+
+        for item in [
+            TextBoxContainer,
+            TotalBox,
+            ChooseSeats
+        ]:
+            if item in sub2nd.controls:
+                sub2nd.controls.remove(item)
+        
+        page.update()
+        if where[0] is not None and where[0] in sub2nd.controls:
+            sub2nd.controls.remove(where)
+        
+
+        MiniInstr.opacity = 0
+        Wholething1 = Wholething(page)
+        Wholething1.animate_opacity = 350
+        Wholething1.opacity = 0
+        Wholething1.top = 350
+        Wholething1.left = 525
+        where[0] = Wholething1
+
+        sub2nd.controls.append(Wholething1)
+        sub2nd.controls.append(MiniInstr)
+   
+        page.update()
+        await asyncio.sleep(0.15)
+        MiniInstr.opacity=1
+        Wholething1.opacity=1
+
+        page.update()
+
+
+
+    confseats= ft.Text(value=f"SEATS:",
+                       size=20  , 
+                       font_family="TtNormsExtra", 
+                       animate_opacity=350, 
+                       top=730, 
+                       left=800)
+
+    MiniInstr= ft.Text(value="Choose available seats: (Yellow are Taken, Grey are free)",
+                       size=18, 
+                       font_family="TtNormsExtra", 
+                       animate_opacity=350, 
+                       top=260, 
+                       left=525)
+
     ChosenMovieTitle = ft.Container(content=ft.Text(value=movieTitles[CurrentMovie],
         text_align=ft.TextAlign.CENTER,
         size=80, font_family= "BricolageBold"),
             top=40,
-            left=525,
+            left=525, animate_opacity=350
             )
     ChosenMovie = ft.Image(
                         src=imgsurls[CurrentMovie],
                         height=600,
                         top=150,
-                        left=50
+                        left=50, animate_opacity= 350
                 )
     DescriptionText = ft.Container(content= ft.Text(value="Description", 
                                                     text_align=ft.TextAlign.CENTER, 
                                                     size = 35, 
                                                     font_family="BricolageBold"), top =200,
-                                                    left=525)
+                                                    left=525,
+                                                    animate_opacity=350)
     MovieDescription = ft.Container(content=ft.Text(value=MovieDescriptions[CurrentMovie], size =15), 
                                     top=260,
                                     left=525, 
-                                    width=800)
+                                    width=800,
+                                    animate_opacity=350)
     
     MovLanguageText = ft.Container(content= ft.Text(value="Original Language", 
                                                     text_align=ft.TextAlign.CENTER, 
                                                     size = 35, 
                                                     font_family="BricolageBold"), top =380,
-                                                    left=525)
+                                                    left=525,
+                                                    animate_opacity=350)
     
     MovLanguage = ft.Container(content=ft.Text(value=f"{language[MovieLang[CurrentMovie]]}", size =20), 
                                     top=430,
                                     left=528, 
-                                    width=800)
+                                    width=800,
+                                    animate_opacity=350)
     
     AvailableScreenings = ft.Container(content= ft.Text(value="Available Screenings", 
                                                     text_align=ft.TextAlign.CENTER, 
                                                     size = 35, 
                                                     font_family="BricolageBold"), top =500,
-                                                    left=525)
+                                                    left=525,
+                                                    animate_opacity=350)
     
 
 
     Question1 = ft.Container(content=ft.Text(value="How many seats would you like?", size=30, 
                                             font_family="BricolageBold"), 
                                             top=300, 
-                                            left=525)
-    test = ft.Text(value="Min 1. Max 72", color=ft.Colors.BLACK)
+                                            left=525,
+                                            animate_opacity = 350)
+    test = ft.Text(value="Min 1. Max 15", color=ft.Colors.BLACK,
+                                            animate_opacity = 350)
 
     
     
@@ -715,10 +866,14 @@ def main(page: Page) -> None:
             ),
             top=450,
             left=460,
-            on_click= Seating
+            on_click= ChoosingSeats,
+            
+            animate_opacity=350,
+            
             
         )
 
+    
     async def BackToCatalog(e):
 
         Ball.opacity = 0
@@ -732,7 +887,6 @@ def main(page: Page) -> None:
         Screenings1.opacity = 0
         Screenings2.opacity = 0
         BackButton0.opacity = 0
-        
         page.update()
 
         await bola2()
@@ -748,90 +902,158 @@ def main(page: Page) -> None:
         buttonchoose.opacity=0
         page.update() 
 
-        await asyncio.sleep(0.310)
-        Ball.opacity=1
-        buttonchoose.opacity=1
+        MainYellow1.opacity = 0
+        MainWhite1.opacity = 0
+        HomeIcon.opacity = 0
+        HomeText.opacity = 0
+        MovieIcon1PT2.opacity = 0
+        Icon1TextPT2.opacity = 0
+        
+        ImageSlide.controls[0].opacity = 0
+        ImageSlide.controls[1].opacity = 0
+        ImageSlide.controls[2].opacity = 0
+        MovTitle.opacity = 0
+        DILeftColumn.opacity = 0
+        DIRightColumn.opacity = 0
         page.update()
+       
+        await asyncio.sleep(0.350)
+        MainYellow1.opacity = 1
+        MainWhite1.opacity = 1
+        HomeIcon.opacity = 1
+        HomeText.opacity = 1
+        MovieIcon1PT2.opacity = 1
+        Icon1TextPT2.opacity = 1
+        
+        ImageSlide.controls[0].opacity = 1
+        ImageSlide.controls[1].opacity = 1
+        ImageSlide.controls[2].opacity = 1
+        MovTitle.opacity = 1
+        DILeftColumn.opacity = 1
+        DIRightColumn.opacity = 1
+        Ball.opacity = 1
+        buttonchoose.opacity = 1
+        page.update()
+  
 
     async def BackToScreenTimes(e):
         print("back clicked")
 
-        
-
-        global CurrentMovie
-
-        buttonchoose.opacity=0
-        await bola3()
-        
+        ChosenMovieTitle.opacity=0
         page.update()
-        await asyncio.sleep(1)
-
-        CurrentMovie = x % len(data["results"])
-        ChosenMovieTitle.content.value = movieTitles[CurrentMovie]
-        ChosenMovie.src = imgsurls[CurrentMovie]
-        MovieDescription.content.value = MovieDescriptions[CurrentMovie]
-        MovLanguage.content.value = MovieLang[CurrentMovie]
-        
-        
-        Ball.left= 1600.9
-        Ball.top= -100
-        Ball.scale=2.5
-        MovLanguage.content.value=f"{language[MovieLang[CurrentMovie]]}"
-        
-        Screening3.content.controls[1].content.value=f"{times[assigns[f"movie{CurrentMovie}"][0]]}"
-        Screening4.content.controls[1].content.value=f"{times[assigns[f"movie{CurrentMovie}"][1]]}"
-        Screening5.content.controls[1].content.value=f"{times[assigns[f"movie{CurrentMovie}"][2]]}"
-        if len(assigns[f"movie{CurrentMovie}"]) < 4:
-            Screening6.opacity= 0
-        else:
-            Screening6.content.controls[1].content.value=f"{times[assigns[f"movie{CurrentMovie}"][3]]}"
-        page.update() 
-
-        await asyncio.sleep(0.310)
-        Ball.opacity=1
-        Ball.opacity = 1
-        ChosenMovie.opacity = 1
-        ChosenMovieTitle.opacity = 1
-        DescriptionText.opacity = 1
-        MovieDescription.opacity = 1
-        MovLanguageText.opacity = 1
-        MovLanguage.opacity = 1
-        AvailableScreenings.opacity = 1
-        Screenings1.opacity = 1
-        Screenings2.opacity = 1
-        BackButton0.opacity = 1
+        await asyncio.sleep(0.35)
+        ChosenMovieTitle.top = 40
         page.update()
+
+        TotalBox.content.value=''
+        now = where[0]
+        if now is not None and now in sub2nd.controls:
+            sub2nd.controls.remove(now)
+
+
+        for item in [ 
+            Question1, 
+            TextBoxContainer, 
+            TotalBox,
+            ChooseSeats,
+            BackButton,
+            MiniInstr,
+            # Confirmation,
+            # confseats
+        ]:
+            if item in sub2nd.controls:
+                sub2nd.controls.remove(item)
+        page.update()
+        
+        Question1.content.value= "How many seats would you like?"
+        
+        
+        await asyncio.sleep(0.40)
+        ChosenMovieTitle.opacity=1
+        page.update()
+        for item in [DescriptionText, 
+                     MovieDescription, 
+                     MovLanguageText, 
+                     MovLanguage,
+                     AvailableScreenings, 
+                     Screenings1, 
+                     Screenings2
+                ]:
+            if item not in sub2nd.controls:
+                sub2nd.controls.append(item)
+            
+            item.opacity=0
+        page.update()
+
+        await asyncio.sleep(0.05)
+
+        for item in [DescriptionText, 
+                     MovieDescription, 
+                     MovLanguageText, 
+                     MovLanguage,
+                     AvailableScreenings, 
+                     Screenings1, 
+                     Screenings2
+                ]:
+            item.opacity=1
+        page.update()
+
+
+
 
     BackButton0 = ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_LEFT_ROUNDED, color= ft.Colors.WHITE), 
                             on_click=BackToCatalog, 
                             ink=True,
                             scale= 3, 
                             border_radius=50, 
-                            left=50, top=50)
+                            left=50, top=50,animate_opacity = 350)
     
     BackButton = ft.Container(content=ft.Icon(ft.Icons.KEYBOARD_ARROW_LEFT_ROUNDED, color= ft.Colors.WHITE), 
                             on_click=BackToScreenTimes, 
                             ink=True,
                             scale= 3, 
                             border_radius=50, 
-                            left=50, top=50)
+                            left=50, top=50,animate_opacity = 350)
 
     async def TotalMoney(e):
+        
+        if e.control.value == "":
+            TotalBox.content.value = ""
+            if ChooseSeats in sub2nd.controls:
+                sub2nd.controls.remove(ChooseSeats)
+            page.update()
+            return
         try:
+           
             UserInput = int(TextBox.value)
             print(UserInput)
-            if 0 < UserInput < 73:
-                TotalPrice = TicketPrice*UserInput
-                print(TotalPrice)
-                TotalBox.content.value = f"Total Price: {TotalPrice}$RD"
-                sub2nd.controls.append(ChooseSeats)
-                page.update()
-            else:
-                TotalBox.content.value = "Number of seats range from 1 to 72"
-                page.update()
+        
         except:
-            TotalBox.content.value = "Number of seats range from 1 to 72 and must a number."
+            TotalBox.content.value = "Number of seats range from 1 to 15 and must be a number."
+            if ChooseSeats in sub2nd.controls:
+                sub2nd.controls.remove(ChooseSeats)
             page.update()
+            return
+    
+        if 0 < UserInput <= 15:
+            SeatingTest.limit = int(TextBox.value)
+            TotalPrice = TicketPrice*UserInput
+            print(TotalPrice)
+            TotalBox.content.value = f"Total Price: {TotalPrice}$RD"
+            
+            if ChooseSeats not in sub2nd.controls:
+                sub2nd.controls.append(ChooseSeats)
+            page.update()
+    
+    
+
+        else :
+            TotalBox.content.value = "Number of seats range from 1 to 15"
+            
+            if ChooseSeats in sub2nd.controls:
+                sub2nd.controls.remove(ChooseSeats)
+            page.update()
+        
 
     TextBox = ft.TextField(
                         label=test,
@@ -843,17 +1065,31 @@ def main(page: Page) -> None:
                         
                         border_width=2,
                         on_change=TotalMoney,
-                        value = None
+                        value = None,animate_opacity = 350
                     )
     TextBoxContainer = ft.Container(content=TextBox, top=350,
-                        left = 525)
-    TotalBox = ft.Container(content=ft.Text(value="",size = 20), top= 420, left=525)
+                        left = 525,
+            animate_offset=350,animate_opacity = 350)
+    TotalBox = ft.Container(content=ft.Text(value="",size = 20), top= 420, left=525,
+            animate_offset=350,animate_opacity = 350)
     
     TicketPrice = 450
 
     async def chooseScreening(e):
         print(e.control.content.controls[1].content.value)
+        
+        DescriptionText.opacity = 0
+        MovieDescription.opacity = 0
+        MovLanguageText.opacity = 0
+        MovLanguage.opacity = 0
+        AvailableScreenings.opacity = 0
+        Screenings1.opacity = 0
+        Screenings2.opacity = 0
 
+        ChosenMovieTitle.opacity = 0
+        page.update()
+
+        await asyncio.sleep(0.350)
         for item in [
             DescriptionText,
             MovieDescription,
@@ -864,15 +1100,33 @@ def main(page: Page) -> None:
             Screenings2
         ]:
             if item in sub2nd.controls:
+                
                 sub2nd.controls.remove(item)
                 page.update()
             else:
                 None
 
+        ChosenMovieTitle.top = 130
+
+        Question1.opacity = 0
+        TextBoxContainer.opacity = 0
+        TotalBox.opacity = 0
+        BackButton.opacity = 0
+
         sub2nd.controls.append(Question1)
         sub2nd.controls.append(TextBoxContainer)
         sub2nd.controls.append(TotalBox)
         sub2nd.controls.append(BackButton)
+     
+        page.update()
+
+        await asyncio.sleep(0.350)
+        Question1.opacity = 1
+        TextBoxContainer.opacity = 1
+        TotalBox.opacity = 1
+        ChosenMovieTitle.opacity = 1
+        
+        BackButton.opacity = 1
         page.update()
 
     Screening3 = ft.Container(content=ft.Stack(controls=[
@@ -901,7 +1155,7 @@ def main(page: Page) -> None:
                             
         
         ]
-    ) ,  on_click=chooseScreening)
+    ) ,  on_click=chooseScreening,animate_opacity = 350)
 
     Screening4 = ft.Container(content=ft.Stack(controls=[
                             ft.Container(
@@ -928,7 +1182,7 @@ def main(page: Page) -> None:
                             
         
         ]
-    ) ,  on_click=chooseScreening)
+    ) ,  on_click=chooseScreening,animate_opacity = 350)
 
 
     Screening5 = ft.Container(content=ft.Stack(controls=[
@@ -956,7 +1210,7 @@ def main(page: Page) -> None:
                             
         
         ]
-    ) ,  on_click=chooseScreening)
+    ) ,  on_click=chooseScreening,animate_opacity = 350)
     
     Screening6 = ft.Container(content=ft.Stack(controls=[
                             ft.Container(
@@ -983,15 +1237,15 @@ def main(page: Page) -> None:
                             
         
         ]
-    ) ,  on_click=chooseScreening)
+    ) ,  on_click=chooseScreening,animate_opacity = 350)
 
     
     Screenings1 = ft.Container(content=ft.Row(controls=[Screening3,Screening4,Screening5],spacing=-100),
                                 top =550,
-                                left=455)
+                                left=455,animate_opacity = 350)
     Screenings2 = ft.Container(content=ft.Row(controls=[Screening6],spacing=-100),
                                 top =640,
-                                left=455)
+                                left=455,animate_opacity = 350)
 
     SelectedSeats = []
 
@@ -1540,7 +1794,8 @@ def main(page: Page) -> None:
             AvailableScreenings,
             Screenings1,
             Screenings2,
-            BackButton0
+            BackButton0,
+           
             ]
 
     )
@@ -1572,8 +1827,9 @@ def main(page: Page) -> None:
         ]
 
     )
-
-
+    advise= ft.Text(value="Id has to be at least 7 digits, do not try to fool the system")
+    name = ft.TextField(label="Name", width=300)
+    user_id = ft.TextField(label="ID", width=300)
 
 
     #Page View Controls
@@ -1584,7 +1840,7 @@ def main(page: Page) -> None:
         page.views.append(
             View(
                 route='/',
-                controls=[MainStack
+                controls=[advise,name, user_id, ft.ElevatedButton("Save", on_click=logsave)
                 ],
                 vertical_alignment= MainAxisAlignment.CENTER,
                 horizontal_alignment=CrossAxisAlignment.CENTER
@@ -1592,7 +1848,21 @@ def main(page: Page) -> None:
             
         )
         page.update()
+        if page.route == '/main':
+            page.views.append(
+            View(
+                route='/main',
+                controls=[
+                    
+                MainStack,
 
+                ],
+                vertical_alignment= MainAxisAlignment.CENTER,
+                horizontal_alignment=CrossAxisAlignment.CENTER,
+                spacing=26
+            )
+        )
+            page.update()
         #Store
         if page.route == '/catalog':
             page.views.append(
