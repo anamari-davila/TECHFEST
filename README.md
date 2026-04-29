@@ -12,7 +12,7 @@ This project was created for **Techfest**, a school technology festival. Techfes
 - View movie information in a graphical interface.
 - Select screening dates and times.
 - Choose seats for a screening.
-- Display ticket pricing information, with pricing logic still in development.
+- Display ticket pricing information, with standard pricing in DOP.
   
 ## Requirements 
 
