@@ -1,12 +1,26 @@
 import flet as ft
 
 SelectedSeats = []
+limit=0
 def Wholething(page: ft.Page):
+    global SelectedSeats
+    SelectedSeats.clear()
+    
+    def confirmseats(e=None):
+        pass
+    def reseteverything(e=None):
+        
+        allblocks= [BlockOneRow,BlockTwoRow,BlockThreeRow]
 
-    SelectedSeats = []
-    limit = 5
+        for block in allblocks:
+            for column in block.content.controls:
+                for seat in column.content.controls:
+                    seat.bgcolor= ft.Colors.GREY_400
+        SelectedSeats.clear()        
+        page.update()
+    
     def SelectSeats(e):
-        global SelectedSeats
+        
 
         seat = e.control
 
@@ -15,11 +29,12 @@ def Wholething(page: ft.Page):
         if seat_name not in SelectedSeats and len(SelectedSeats) !=limit:
             SelectedSeats.append(seat_name)
             seat.bgcolor = ft.Colors.GREEN
+            
         else:
             SelectedSeats.remove(seat_name)
             seat.bgcolor = ft.Colors.GREY_400
 
-            print(SelectedSeats)
+        print(SelectedSeats)
 
             
         page.update()
@@ -534,5 +549,8 @@ def Wholething(page: ft.Page):
                             width= 560, 
                             height= 360, 
                             border_radius= 7,padding=0)
+    
+    WholeThing.reset = reseteverything
 
     return WholeThing
+
