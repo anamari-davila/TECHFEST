@@ -542,7 +542,7 @@ def main(page: Page) -> None:
         DILeftColumn.opacity = 1
         DIRightColumn.opacity = 1
         page.update()
-        
+
         
 
     MovTitle = ft.Container(content=ft.Text(value=movieTitles[x],
@@ -714,6 +714,10 @@ def main(page: Page) -> None:
     
     #Sub Second Page 
 
+    async def saveseats(e):
+        print(SeatingTest.SelectedSeats)
+
+
     async def ChoosingSeats(e):
         Question1.content.value = "Choose Available Seats"
 
@@ -728,8 +732,9 @@ def main(page: Page) -> None:
         page.update()
         if where[0] is not None and where[0] in sub2nd.controls:
             sub2nd.controls.remove(where)
-
-
+        
+        Confirmation.opacity=0
+        MiniInstr.opacity = 0
         Wholething1 = Wholething(page)
         Wholething1.animate_opacity = 350
         Wholething1.opacity = 0
@@ -738,10 +743,50 @@ def main(page: Page) -> None:
         where[0] = Wholething1
 
         sub2nd.controls.append(Wholething1)
+        sub2nd.controls.append(MiniInstr)
+        sub2nd.controls.append(Confirmation)
         page.update()
-  
+        await asyncio.sleep(0.15)
+        MiniInstr.opacity=1
         Wholething1.opacity=1
+        Confirmation.opacity=1
         page.update()
+
+    Confirmation = ft.Container(content=ft.Stack(controls=[
+                            ft.Container(
+                                content=ft.Image(src="Redbuttonbg.png"),
+                                    
+                                    ink=True,
+                                    width=372,
+                                    height=90,
+                                    scale=0.65,
+                                    border_radius=100
+                        ),
+                        ft.Container(
+                                content=ft.Text(f"CONFIRM SELECTION",
+                                                text_align=ft.TextAlign.CENTER,
+                                                size=15,
+                                                style=ft.TextStyle(letter_spacing=2),
+                                                font_family="TtNormsExtra"),
+                                                
+                                width=372,
+                                height=90,
+                                alignment=ft.alignment.center,
+                                
+                            
+                        )
+                ]
+            ),
+            top=700,
+            left=610,
+            on_click= saveseats,
+            
+            animate_opacity=350,
+            
+            
+        )
+
+    MiniInstr= ft.Text(value="Choose available seats: (Yellow are Taken, Grey are free)",size=18, font_family="TtNormsExtra", animate_opacity=350, top=260, left=525)
 
     ChosenMovieTitle = ft.Container(content=ft.Text(value=movieTitles[CurrentMovie],
         text_align=ft.TextAlign.CENTER,
@@ -899,7 +944,12 @@ def main(page: Page) -> None:
 
     async def BackToScreenTimes(e):
         print("back clicked")
-        
+
+        ChosenMovieTitle.opacity=0
+        page.update()
+        await asyncio.sleep(0.35)
+        ChosenMovieTitle.top = 40
+        page.update()
 
         TotalBox.content.value=''
         now = where[0]
@@ -912,14 +962,20 @@ def main(page: Page) -> None:
             TextBoxContainer, 
             TotalBox,
             ChooseSeats,
-            BackButton
+            BackButton,
+            MiniInstr,
+            Confirmation
         ]:
             if item in sub2nd.controls:
                 sub2nd.controls.remove(item)
         page.update()
         
         Question1.content.value= "How many seats would you like?"
-
+        
+        
+        await asyncio.sleep(0.40)
+        ChosenMovieTitle.opacity=1
+        page.update()
         for item in [DescriptionText, 
                      MovieDescription, 
                      MovLanguageText, 
@@ -1034,6 +1090,8 @@ def main(page: Page) -> None:
         AvailableScreenings.opacity = 0
         Screenings1.opacity = 0
         Screenings2.opacity = 0
+
+        ChosenMovieTitle.opacity = 0
         page.update()
 
         await asyncio.sleep(0.350)
@@ -1053,6 +1111,8 @@ def main(page: Page) -> None:
             else:
                 None
 
+        ChosenMovieTitle.top = 130
+
         Question1.opacity = 0
         TextBoxContainer.opacity = 0
         TotalBox.opacity = 0
@@ -1062,12 +1122,15 @@ def main(page: Page) -> None:
         sub2nd.controls.append(TextBoxContainer)
         sub2nd.controls.append(TotalBox)
         sub2nd.controls.append(BackButton)
+     
         page.update()
 
         await asyncio.sleep(0.350)
         Question1.opacity = 1
         TextBoxContainer.opacity = 1
         TotalBox.opacity = 1
+        ChosenMovieTitle.opacity = 1
+        
         BackButton.opacity = 1
         page.update()
 
@@ -1234,7 +1297,8 @@ def main(page: Page) -> None:
             AvailableScreenings,
             Screenings1,
             Screenings2,
-            BackButton0
+            BackButton0,
+           
             ]
 
     )

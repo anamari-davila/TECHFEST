@@ -6,8 +6,7 @@ def Wholething(page: ft.Page):
     global SelectedSeats
     SelectedSeats.clear()
     
-    def confirmseats(e=None):
-        pass
+
     def reseteverything(e=None):
         
         allblocks= [BlockOneRow,BlockTwoRow,BlockThreeRow]
@@ -15,7 +14,7 @@ def Wholething(page: ft.Page):
         for block in allblocks:
             for column in block.content.controls:
                 for seat in column.content.controls:
-                    seat.bgcolor= ft.Colors.GREY_400
+                    seat.bgcolor= "#BAB6B6"
         SelectedSeats.clear()        
         page.update()
     
@@ -28,11 +27,11 @@ def Wholething(page: ft.Page):
 
         if seat_name not in SelectedSeats and len(SelectedSeats) !=limit:
             SelectedSeats.append(seat_name)
-            seat.bgcolor = ft.Colors.GREEN
+            seat.bgcolor = "#00843d"
             
         else:
             SelectedSeats.remove(seat_name)
-            seat.bgcolor = ft.Colors.GREY_400
+            seat.bgcolor = "#BAB6B6"
 
         print(SelectedSeats)
 
@@ -43,37 +42,37 @@ def Wholething(page: ft.Page):
     indSeatsA1 = ft.Container(content=(ft.Text(value="A1", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.Colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3, 
                             on_click=SelectSeats)
     indSeatsB1 = ft.Container(content=(ft.Text(value="B1", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.Colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsC1 = ft.Container(content=(ft.Text(value="C1", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsD1 = ft.Container(content=(ft.Text(value="D1", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsE1 = ft.Container(content=(ft.Text(value="E1", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsF1 = ft.Container(content=(ft.Text(value="F1", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     
@@ -83,37 +82,37 @@ def Wholething(page: ft.Page):
     indSeatsA2 = ft.Container(content=(ft.Text(value="A2", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsB2 = ft.Container(content=(ft.Text(value="B2", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsC2 = ft.Container(content=(ft.Text(value="C2", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsD2 = ft.Container(content=(ft.Text(value="D2", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsE2 = ft.Container(content=(ft.Text(value="E2", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsF2 = ft.Container(content=(ft.Text(value="F2", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     
@@ -123,37 +122,37 @@ def Wholething(page: ft.Page):
     indSeatsA3 = ft.Container(content=(ft.Text(value="A3", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsB3 = ft.Container(content=(ft.Text(value="B3", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsC3 = ft.Container(content=(ft.Text(value="C3", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsD3 = ft.Container(content=(ft.Text(value="D3", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsE3 = ft.Container(content=(ft.Text(value="E3", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsF3 = ft.Container(content=(ft.Text(value="F3", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     
@@ -163,37 +162,37 @@ def Wholething(page: ft.Page):
     indSeatsA4 = ft.Container(content=(ft.Text(value="A4", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsB4 = ft.Container(content=(ft.Text(value="B4", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsC4 = ft.Container(content=(ft.Text(value="C4", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsD4 = ft.Container(content=(ft.Text(value="D4", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsE4 = ft.Container(content=(ft.Text(value="E4", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsF4 = ft.Container(content=(ft.Text(value="F4", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     
@@ -205,37 +204,37 @@ def Wholething(page: ft.Page):
     indSeatsA5 = ft.Container(content=(ft.Text(value="A5", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsB5 = ft.Container(content=(ft.Text(value="B5", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsC5 = ft.Container(content=(ft.Text(value="C5", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsD5 = ft.Container(content=(ft.Text(value="D5", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsE5 = ft.Container(content=(ft.Text(value="E5", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsF5 = ft.Container(content=(ft.Text(value="F5", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     
@@ -245,37 +244,37 @@ def Wholething(page: ft.Page):
     indSeatsA6 = ft.Container(content=(ft.Text(value="A6", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsB6 = ft.Container(content=(ft.Text(value="B6", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsC6 = ft.Container(content=(ft.Text(value="C6", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsD6 = ft.Container(content=(ft.Text(value="D6", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsE6 = ft.Container(content=(ft.Text(value="E6", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsF6 = ft.Container(content=(ft.Text(value="F6", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     
@@ -285,37 +284,37 @@ def Wholething(page: ft.Page):
     indSeatsA7 = ft.Container(content=(ft.Text(value="A7", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsB7 = ft.Container(content=(ft.Text(value="B7", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsC7 = ft.Container(content=(ft.Text(value="C7", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsD7 = ft.Container(content=(ft.Text(value="D7", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsE7 = ft.Container(content=(ft.Text(value="E7", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsF7 = ft.Container(content=(ft.Text(value="F7", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     
@@ -325,37 +324,37 @@ def Wholething(page: ft.Page):
     indSeatsA8 = ft.Container(content=(ft.Text(value="A8", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsB8 = ft.Container(content=(ft.Text(value="B8", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsC8 = ft.Container(content=(ft.Text(value="C8", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsD8 = ft.Container(content=(ft.Text(value="D8", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsE8 = ft.Container(content=(ft.Text(value="E8", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsF8 = ft.Container(content=(ft.Text(value="F8", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     
@@ -369,37 +368,37 @@ def Wholething(page: ft.Page):
     indSeatsA9 = ft.Container(content=(ft.Text(value="A9", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsB9 = ft.Container(content=(ft.Text(value="B9", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsC9 = ft.Container(content=(ft.Text(value="C9", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsD9 = ft.Container(content=(ft.Text(value="D9", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsE9 = ft.Container(content=(ft.Text(value="E9", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsF9 = ft.Container(content=(ft.Text(value="F9", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     
@@ -409,37 +408,37 @@ def Wholething(page: ft.Page):
     indSeatsA10 = ft.Container(content=(ft.Text(value="A10", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsB10 = ft.Container(content=(ft.Text(value="B10", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsC10 = ft.Container(content=(ft.Text(value="C10", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsD10 = ft.Container(content=(ft.Text(value="D10", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsE10 = ft.Container(content=(ft.Text(value="E10", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsF10 = ft.Container(content=(ft.Text(value="F10", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     
@@ -449,37 +448,37 @@ def Wholething(page: ft.Page):
     indSeatsA11 = ft.Container(content=(ft.Text(value="A11", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsB11 = ft.Container(content=(ft.Text(value="B11", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsC11 = ft.Container(content=(ft.Text(value="C11", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsD11 = ft.Container(content=(ft.Text(value="D11", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsE11 = ft.Container(content=(ft.Text(value="E11", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsF11 = ft.Container(content=(ft.Text(value="F11", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     
@@ -489,37 +488,37 @@ def Wholething(page: ft.Page):
     indSeatsA12 = ft.Container(content=(ft.Text(value="A12", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsB12 = ft.Container(content=(ft.Text(value="B12", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsC12 = ft.Container(content=(ft.Text(value="C12", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsD12 = ft.Container(content=(ft.Text(value="D12", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsE12 = ft.Container(content=(ft.Text(value="E12", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     indSeatsF12 = ft.Container(content=(ft.Text(value="F12", text_align=ft.TextAlign.CENTER, weight=5)), 
                             height = 30, 
                             width = 30, 
-                            bgcolor=ft.colors.GREY_400,
+                            bgcolor="#BAB6B6",
                             border_radius= 3,
                             on_click=SelectSeats)
     
@@ -540,17 +539,20 @@ def Wholething(page: ft.Page):
                                 height=25, 
                                 width= 375,
                                 
-                                bgcolor=ft.Colors.GREY_700, 
+                                bgcolor= "#272725", 
                                 border_radius=2, )
+
+
+
 
     WholeThing = ft.Container(content=ft.Column([ScreenContainer, MainSeatingRow],
                                             horizontal_alignment=ft.CrossAxisAlignment.CENTER
                             , spacing=40),bgcolor="#c2241f", 
                             width= 560, 
-                            height= 360, 
-                            border_radius= 7,padding=0)
+                            height= 350, 
+                            border_radius= 25,padding=0)
     
     WholeThing.reset = reseteverything
-
+   
     return WholeThing
 
