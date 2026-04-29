@@ -495,10 +495,12 @@ def main(page: Page) -> None:
             genre       = "NULL"         
     )
     for moviei, timei in enumerate(assigns.values()):
-        tmdb_id  = data["results"][moviei]["id"]
+        if moviei >= len(data["results"]):
+            break
+        tmdb_id = data["results"][moviei]["id"]
         dbmovie = cinemadb.getmoviebytmdb(tmdb_id)
         if dbmovie:
-            dbmovieid = dbmovie[0]           
+            dbmovieid = dbmovie[0]
             for ti in timei:
                 cinemadb.savescreening(dbmovieid, times[ti])
     

@@ -120,15 +120,19 @@ def getallmovies():
 
 def savescreening(movie_id: int, hour: str):
     cursor.execute(
-        "INSERT OR IGNORE INTO Screenings (idMovie, Hour) VALUES (?, ?)",
-        (movie_id, hour)
-    )
-    conn.commit()
-    cursor.execute(
         "SELECT idScreening FROM Screenings WHERE idMovie = ? AND Hour = ?",
         (movie_id, hour)
     )
-    return cursor.fetchone()[0]
+    row = cursor.fetchone()
+    if row:
+        return row[0]
+
+    cursor.execute(
+        "INSERT INTO Screenings (idMovie, Hour) VALUES (?, ?)",
+        (movie_id, hour)
+    )
+    conn.commit()
+    return cursor.lastrowid
 
 def getscreeningsformovie(movie_id: int):
     cursor.execute(
