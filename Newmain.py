@@ -77,7 +77,7 @@ def main(page: Page) -> None:
     
     #Page Setup
 
-    page.window.full_screen = False
+    page.window.full_screen = True
     page.theme = ft.Theme(font_family="Main")
     page.title= "World Of Cinema"
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
